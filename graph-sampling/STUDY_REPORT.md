@@ -118,6 +118,12 @@ protein-interaction application needs an assay-specific graph and constraints;
 a dolphin behavioral application needs original observation/spatial/group data.
 These require new modeling and validation, not just more runs of this kernel.
 
+Release readiness also needs an explicit software license: this repository
+currently has no project software license, so public source availability alone
+does not establish reuse rights. This draft does not impose a license on the
+existing code. Third-party fixture permissions and the NetworkX notice are
+recorded separately in `data/PROVENANCE.md`.
+
 ## Reproduce
 
 Run from `graph-sampling/`. Saved inputs require no network. NetworkX is optional
