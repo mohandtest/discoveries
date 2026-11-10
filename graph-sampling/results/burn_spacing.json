@@ -1,0 +1,117 @@
+{
+ "reference_means": {
+  "dolphins": 34.0,
+  "karate": 39.4
+ },
+ "note": "reference means from the long dolphins_tail runs; bias = cell mean - reference",
+ "cells": [
+  {
+   "dataset": "dolphins",
+   "burn_attempts": 0,
+   "thin_attempts": 25,
+   "mean_null": 34.264,
+   "bias_vs_ref": 0.264,
+   "between_chain_mcse": 0.085,
+   "wall_s": 0.3
+  },
+  {
+   "dataset": "dolphins",
+   "burn_attempts": 5000,
+   "thin_attempts": 25,
+   "mean_null": 34.364,
+   "bias_vs_ref": 0.364,
+   "between_chain_mcse": 0.075,
+   "wall_s": 0.5
+  },
+  {
+   "dataset": "dolphins",
+   "burn_attempts": 25000,
+   "thin_attempts": 25,
+   "mean_null": 34.414,
+   "bias_vs_ref": 0.414,
+   "between_chain_mcse": 0.063,
+   "wall_s": 1.2
+  },
+  {
+   "dataset": "dolphins",
+   "burn_attempts": 125000,
+   "thin_attempts": 25,
+   "mean_null": 34.191,
+   "bias_vs_ref": 0.191,
+   "between_chain_mcse": 0.051,
+   "wall_s": 4.6
+  },
+  {
+   "dataset": "dolphins",
+   "burn_attempts": 125000,
+   "thin_attempts": 1,
+   "mean_null": 34.151,
+   "bias_vs_ref": 0.151,
+   "between_chain_mcse": 0.337,
+   "wall_s": 4.4
+  },
+  {
+   "dataset": "dolphins",
+   "burn_attempts": 125000,
+   "thin_attempts": 25,
+   "mean_null": 34.36,
+   "bias_vs_ref": 0.36,
+   "between_chain_mcse": 0.077,
+   "wall_s": 4.6
+  },
+  {
+   "dataset": "karate",
+   "burn_attempts": 0,
+   "thin_attempts": 25,
+   "mean_null": 39.3,
+   "bias_vs_ref": -0.1,
+   "between_chain_mcse": 0.031,
+   "wall_s": 0.2
+  },
+  {
+   "dataset": "karate",
+   "burn_attempts": 5000,
+   "thin_attempts": 25,
+   "mean_null": 39.551,
+   "bias_vs_ref": 0.151,
+   "between_chain_mcse": 0.072,
+   "wall_s": 0.4
+  },
+  {
+   "dataset": "karate",
+   "burn_attempts": 25000,
+   "thin_attempts": 25,
+   "mean_null": 39.111,
+   "bias_vs_ref": -0.289,
+   "between_chain_mcse": 0.095,
+   "wall_s": 1.0
+  },
+  {
+   "dataset": "karate",
+   "burn_attempts": 125000,
+   "thin_attempts": 25,
+   "mean_null": 39.268,
+   "bias_vs_ref": -0.132,
+   "between_chain_mcse": 0.114,
+   "wall_s": 4.1
+  },
+  {
+   "dataset": "karate",
+   "burn_attempts": 125000,
+   "thin_attempts": 1,
+   "mean_null": 38.006,
+   "bias_vs_ref": -1.394,
+   "between_chain_mcse": 0.269,
+   "wall_s": 4.0
+  },
+  {
+   "dataset": "karate",
+   "burn_attempts": 125000,
+   "thin_attempts": 25,
+   "mean_null": 38.921,
+   "bias_vs_ref": -0.479,
+   "between_chain_mcse": 0.064,
+   "wall_s": 4.1
+  }
+ ]
+}
