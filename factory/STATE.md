@@ -36,8 +36,10 @@ autonomously; after each P5 it continues to the next queue item.
    `factory/phases/P0-SELECT.md`.
 2. Failure-aware retrieval: `python3 factory/memory/memory.py similar
    'graph matching'` — pack hits into the briefs.
-3. Dispatch the researcher on the matching papers in `math/preprints/`
-   (locate the family's preprint at P0).
+3. Dispatch the researcher on the paper:
+   `math/preprints/Almost-Linear-Time-Maximum-Cardinality-Matching-in-Sparse-General-Graphs-September-24-2026/`
+   (result family #120; map analysis in `discovery-map/report_tcs.txt`;
+   incumbents: Blossom V and successors).
 4. Dispatch the practical-goals briefing; pick per **novelty first**
    (standing user priority; market × implementability as gates); state
    both novelty axes; record pick + rationale here and in ROADMAP;
