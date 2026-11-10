@@ -21,6 +21,7 @@ Safety:
 Usage: python3 runner.py [config.json]
 """
 import csv
+import hashlib
 import json
 import os
 import re
@@ -46,6 +47,12 @@ def mem_gb():
                   "/sys/fs/cgroup/memory/memory.usage_in_bytes"):
             if os.path.exists(p):
                 return int(open(p).read()) / 2**30
+        if os.path.exists("/proc/meminfo"):        # no cgroup visibility
+            d = {}
+            for line in open("/proc/meminfo"):
+                k, v = line.split(":", 1)
+                d[k] = int(v.strip().split()[0])
+            return (d.get("MemTotal", 0) - d.get("MemAvailable", 0)) / 2**20
     except Exception:
         pass
     return 0.0
@@ -105,9 +112,15 @@ class Campaign:
         return self.deadline - time.time()
 
     def ram_guard(self, ceiling_gb):
+        waits = 0
         while mem_gb() > ceiling_gb:
+            if self.time_left() < 600 or waits >= 30:
+                raise RuntimeError(
+                    f"RAM guard: {mem_gb():.0f} GB > {ceiling_gb} GB after "
+                    f"{waits} min; skipping (deadline pressure)")
             log(f"RAM guard: {mem_gb():.0f} GB > {ceiling_gb} GB, waiting 60s")
             time.sleep(60)
+            waits += 1
 
     # -- experiment primitives ---------------------------------------------
     def exact(self, graph, timeout_s):
@@ -132,6 +145,7 @@ class Campaign:
             out, err = proc.communicate(timeout=timeout_s)
         except subprocess.TimeoutExpired:
             proc.kill()
+            proc.communicate()          # reap the child (audit finding #8)
             stop.set()
             log(f"exact {graph}: TIMEOUT after {timeout_s}s")
             return None, timeout_s
@@ -148,7 +162,8 @@ class Campaign:
         cmd = [self.bin, "--edges", self.edge_file(graph), "--mode", "fpras",
                "--replicas", "1", "--seed", str(seed),
                "--samples", str(self.c["fpras"]["samples"]),
-               "--burn", str(self.c["fpras"]["burn"])]
+               "--burn", str(self.c["fpras"]["burn"]),
+               "--eps", str(self.c["fpras"]["eps"])]
         t0 = time.time()
         try:
             r = subprocess.run(cmd, capture_output=True, text=True,
@@ -160,7 +175,7 @@ class Campaign:
                                  self.known.get(graph, ""), ""])
             self.csv_f.flush()
             return None
-        m = re.search(r"estimate=([\d.e+]+)", r.stdout)
+        m = re.search(r"estimate=([\d.e+-]+)", r.stdout)
         s = re.search(r"seconds=([\d.]+)", r.stdout)
         if not m:
             with LOCK:
@@ -222,8 +237,13 @@ class Campaign:
                 log(f"phase {name}: experiment {exp['graph']} skipped (deadline)")
                 st.setdefault("skipped", []).append(exp["graph"])
                 continue
-            self.ram_guard(self.c["ram_ceiling_gb"])
             g = exp["graph"]
+            try:
+                self.ram_guard(self.c["ram_ceiling_gb"])
+            except RuntimeError as e:
+                log(f"phase {name}: {e}")
+                st.setdefault("skipped_ram", []).append(g)
+                continue
             if exp.get("mode") == "exact":
                 cnt, secs = self.exact(g, exp.get("timeout_s",
                                                   self.c["phase2_timeout_s"]))
@@ -237,8 +257,14 @@ class Campaign:
                     failed += 1
                     st[f"exact_{g}"] = "FAILED"
                 continue
-            base = abs(hash(name + g)) % 90000 + 10000
-            vals = self.trials(name, g, exp["trials"], base)
+            base = int(hashlib.sha256(f"{name}/{g}".encode()).hexdigest()[:12],
+                       16) % 90000 + 10000
+            try:
+                vals = self.trials(name, g, exp["trials"], base)
+            except Exception as e:
+                log(f"phase {name}: experiment {g} crashed: {e!r} — continuing")
+                st.setdefault("crashed", []).append(g)
+                vals = []
             done += len(vals)
             failed += exp["trials"] - len(vals)
             if vals and g in self.known:

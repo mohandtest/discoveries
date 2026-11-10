@@ -62,3 +62,10 @@ cp -r benchmarks/overnight /tmp/ovtest && cd /tmp/ovtest
 - mean / worst relative error against exact truth
 - **z-mean**: (mean estimate − truth) / (std/√trials) — systematic bias test
 - mean runtime per independent run; failures recorded separately
+
+**Expectation-setting (audit finding #14):** sparse structured graphs
+(ladders, ~70 edges at n=48) show much higher estimator variance than dense
+graphs — smoke tests saw rel-err up to 0.69 and ±25% coverage of 0–25% at
+`samples=1024`. That is the estimator's true behavior at this budget, not a
+malfunction; dense graphs behave far better (g36 preview: mean +1.1%,
+spread −24%..+29%). Phase 4 ladder rows should be read with this in mind.

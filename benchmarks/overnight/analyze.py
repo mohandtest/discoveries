@@ -46,12 +46,12 @@ def main():
     for (phase, graph), rs in sorted(groups.items()):
         ests, times, fails = [], [], 0
         for r in rs:
-            if r["estimate"].lstrip("-").replace(".", "").isdigit() or \
+            if r["estimate"].lstrip("-").replace(".", "").replace("e", "").replace("+", "").isdigit() or \
                ("e+" in r["estimate"] or "e-" in r["estimate"]):
                 try:
                     ests.append(float(r["estimate"]))
                     times.append(float(r["runtime_s"]))
-                except ValueError:
+                except (ValueError, TypeError):
                     fails += 1
             else:
                 fails += 1

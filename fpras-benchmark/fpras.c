@@ -11,7 +11,10 @@
  *
  * FPRAS: outer annealing schedule (nonedge weight b^-j, b = 1+1/n),
  * paired chain kernel: 1/3 two-edge switch on M1 (Metropolis), 1/3 hold,
- * 1/3 cycle exchange on a uniform discrepancy cycle (always accepted).
+ * 1/3 cycle exchange on the lowest-index discrepancy cycle (always accepted;
+ * a single-cycle exchange is a weight-preserving involution with symmetric
+ * proposal probability, so pi x pi stationarity holds — note this differs
+ * from rng.choice in the Python reference, audit finding #13).
  * Estimator: R_j = E[b^{-k(M)}], Z_hat = (n-1)!! * prod R_hat_j.
  */
 #include <stdio.h>

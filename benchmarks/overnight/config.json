@@ -48,9 +48,9 @@
       ]
     },
     "2_ground_truth": {
-      "budget_s": 11100,
+      "budget_s": 21600,
       "experiments": [
-        { "graph": "g44_p50", "mode": "exact", "timeout_s": 10800 }
+        { "graph": "g44_p50", "mode": "exact", "timeout_s": 19800 }
       ]
     },
     "3_validation": {
