@@ -41,20 +41,33 @@ static uint64_t *adj;         /* bitmask neighbors (n <= 64) */
 static int nedges;
 static char gname[256];
 
-/* ---------- exact reachable-state DP ---------- */
-/* 16-byte slots: key==0 marks an empty slot (S==0 is a base case, never memoized) */
-typedef struct { uint64_t key; uint64_t val; } slot;
+/* ---------- exact reachable-state DP (128-bit counts) ---------- */
+/* Counts reach ~7e22 at n=48, beyond uint64; accumulate in unsigned __int128.
+ * Slots are 24B (key, lo, hi); key==0 marks empty (S==0 is a base case). */
+typedef unsigned __int128 u128;
+typedef struct { uint64_t key; uint64_t lo; uint64_t hi; } slot;
 static slot *table;
 static size_t tcap, tsize;
 static uint64_t states_visited;
 
-static void tput_raw(slot *tbl, size_t cap, uint64_t key, uint64_t val) {
+static u128 join128(uint64_t lo, uint64_t hi) {
+    return ((u128)hi << 64) | lo;
+}
+static void u128_to_dec(u128 v, char *buf) {
+    char tmp[48]; int i = 0, j = 0;
+    if (v == 0) { buf[0] = '0'; buf[1] = 0; return; }
+    while (v) { tmp[i++] = (char)('0' + (int)(v % 10)); v /= 10; }
+    while (i) buf[j++] = tmp[--i];
+    buf[j] = 0;
+}
+
+static void tput_raw(slot *tbl, size_t cap, uint64_t key, u128 val) {
     size_t i = (size_t)(key * 0x9E3779B97F4A7C15ULL) & (cap - 1);
     while (tbl[i].key) {
-        if (tbl[i].key == key) { tbl[i].val = val; return; }
+        if (tbl[i].key == key) { tbl[i].lo = (uint64_t)val; tbl[i].hi = (uint64_t)(val >> 64); return; }
         i = (i + 1) & (cap - 1);
     }
-    tbl[i].key = key; tbl[i].val = val;
+    tbl[i].key = key; tbl[i].lo = (uint64_t)val; tbl[i].hi = (uint64_t)(val >> 64);
 }
 static void tinit(size_t cap) {
     tcap = cap; tsize = 0;
@@ -66,33 +79,33 @@ static void tgrow(void) {
     slot *nt = calloc(ncap, sizeof(slot));
     if (!nt) { fprintf(stderr, "OOM growing hash table to %zu slots\n", ncap); exit(1); }
     for (size_t i = 0; i < tcap; i++)
-        if (table[i].key) tput_raw(nt, ncap, table[i].key, table[i].val);
+        if (table[i].key) tput_raw(nt, ncap, table[i].key, join128(table[i].lo, table[i].hi));
     free(table);
     table = nt; tcap = ncap;
 }
-static uint64_t *tget(uint64_t key) {
+static slot *tget_slot(uint64_t key) {
     size_t i = (size_t)(key * 0x9E3779B97F4A7C15ULL) & (tcap - 1);
     while (table[i].key) {
-        if (table[i].key == key) return &table[i].val;
+        if (table[i].key == key) return &table[i];
         i = (i + 1) & (tcap - 1);
     }
     return NULL;
 }
-static void tput(uint64_t key, uint64_t val) {
+static void tput(uint64_t key, u128 val) {
     if (tsize * 10 >= tcap * 7) tgrow();
     tput_raw(table, tcap, key, val);
     tsize++;
 }
 
-static uint64_t exact_rec(uint64_t S) {
+static u128 exact_rec(uint64_t S) {
     if (S == 0) return 1;   /* base case: empty set has one (empty) matching */
-    uint64_t *hit = tget(S);
-    if (hit) return *hit;
+    slot *hit = tget_slot(S);
+    if (hit) return join128(hit->lo, hit->hi);
     states_visited++;
     int low = __builtin_ctzll(S);
     uint64_t rest = S ^ (1ULL << low);
     uint64_t m = adj[low] & rest;
-    uint64_t tot = 0;
+    u128 tot = 0;
     while (m) {
         uint64_t j = m & (~m + 1);
         tot += exact_rec(S ^ (1ULL << low) ^ j);
@@ -106,10 +119,12 @@ static void run_exact(void) {
     tinit(1ULL << 22);                       /* grows dynamically on demand */
     states_visited = 0;
     clock_t t0 = clock();
-    uint64_t count = exact_rec((1ULL << nverts) - 1);
+    u128 count = exact_rec((1ULL << nverts) - 1);
     double secs = (double)(clock() - t0) / CLOCKS_PER_SEC;
-    printf("mode=exact vertices=%d edges=%d exact=%llu states=%llu seconds=%.3f\n",
-           nverts, nedges, (unsigned long long)count,
+    char dec[48];
+    u128_to_dec(count, dec);
+    printf("mode=exact vertices=%d edges=%d exact=%s states=%llu seconds=%.3f\n",
+           nverts, nedges, dec,
            (unsigned long long)states_visited, secs);
     free(table);
 }
@@ -137,28 +152,31 @@ static void run_exact_parallel(int nwork) {
             close(pipes[k][0]);
             tinit(1ULL << 22);
             states_visited = 0;
-            uint64_t tot = 0;
+            u128 tot = 0;
             for (int idx = k; idx < np; idx += nwork)
                 tot += exact_rec(full ^ 1ULL ^ (1ULL << partners[idx]));
-            uint64_t out[2] = { tot, states_visited };
-            if (write(pipes[k][1], out, 16) != 16) _exit(2);
+            uint64_t out[3] = { (uint64_t)tot, (uint64_t)(tot >> 64), states_visited };
+            if (write(pipes[k][1], out, 24) != 24) _exit(2);
             _exit(0);
         }
         pids[k] = pid;
         close(pipes[k][1]);
     }
-    uint64_t total = 0, total_states = 0, out[2];
+    u128 total = 0;
+    uint64_t total_states = 0, out[3];
     for (int k = 0; k < nwork; k++) {
-        if (read(pipes[k][0], out, 16) != 16) { fprintf(stderr, "worker %d died\n", k); exit(1); }
-        total += out[0]; total_states += out[1];
+        if (read(pipes[k][0], out, 24) != 24) { fprintf(stderr, "worker %d died\n", k); exit(1); }
+        total += join128(out[0], out[1]); total_states += out[2];
         close(pipes[k][0]);
         waitpid(pids[k], NULL, 0);
     }
     double secs = 0;
     clock_gettime(CLOCK_MONOTONIC, &ts1);
     secs = (ts1.tv_sec - ts0.tv_sec) + (ts1.tv_nsec - ts0.tv_nsec) / 1e9;
-    printf("mode=exact vertices=%d edges=%d exact=%llu states=%llu workers=%d seconds=%.3f\n",
-           nverts, nedges, (unsigned long long)total,
+    char dec[48];
+    u128_to_dec(total, dec);
+    printf("mode=exact vertices=%d edges=%d exact=%s states=%llu workers=%d seconds=%.3f\n",
+           nverts, nedges, dec,
            (unsigned long long)total_states, nwork, secs);
 }
 

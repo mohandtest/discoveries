@@ -1,0 +1,78 @@
+{
+  "deadline_hours": 8,
+  "ram_ceiling_gb": 280,
+  "ram_kill_gb": 330,
+  "trial_concurrency": 20,
+  "fpras": { "samples": 1024, "burn": 1024, "eps": 0.25 },
+  "phase2_timeout_s": 10800,
+  "graphs_dir": "graphs",
+  "binary": "fpras2",
+  "graph_files": {
+    "g36_p50": "g36_p50_s42.edges", "g40_p50": "g40_p50_s42.edges",
+    "g44_p50": "g44_p50_s42.edges", "g48_p50": "g48_p50_s42.edges",
+    "g48_p30": "g48_p30_s42.edges", "g52_p50": "g52_p50_s42.edges",
+    "g52_p30": "g52_p30_s42.edges", "g56_p50": "g56_p50_s42.edges",
+    "g56_p30": "g56_p30_s42.edges", "g64_p50": "g64_p50_s42.edges",
+    "g64_p30": "g64_p30_s42.edges", "ladder24": "ladder24.edges",
+    "ladder28": "ladder28.edges",
+    "g24_p50": "g24_p50_s42.edges", "g28_p50": "g28_p50_s42.edges",
+    "g32_p50": "g32_p50_s42.edges"
+  },
+  "regression": [
+    { "graph": "g24_p50", "expected": "77137026" },
+    { "graph": "g28_p50", "expected": "8698633677" },
+    { "graph": "g32_p50", "expected": "1835224024020" },
+    { "graph": "g36_p50", "expected": "592998646745549" }
+  ],
+  "known_exact": {
+    "g24_p50": "77137026",
+    "g28_p50": "8698633677",
+    "g32_p50": "1835224024020",
+    "g36_p50": "592998646745549",
+    "g40_p50": "179249264420609805",
+    "ladder24": "75025",
+    "ladder28": "514229"
+  },
+  "graph_n": {
+    "g36_p50": 36, "g40_p50": 40, "g44_p50": 44, "g48_p50": 48,
+    "g48_p30": 48, "g52_p50": 52, "g52_p30": 52,
+    "g56_p50": 56, "g56_p30": 56, "g64_p50": 64, "g64_p30": 64,
+    "ladder24": 48, "ladder28": 56
+  },
+  "phases": {
+    "1_reliability": {
+      "budget_s": 1800,
+      "experiments": [
+        { "graph": "g36_p50", "trials": 200 },
+        { "graph": "g40_p50", "trials": 200 }
+      ]
+    },
+    "2_ground_truth": {
+      "budget_s": 11100,
+      "experiments": [
+        { "graph": "g44_p50", "mode": "exact", "timeout_s": 10800 }
+      ]
+    },
+    "3_validation": {
+      "budget_s": 1800,
+      "experiments": [
+        { "graph": "g44_p50", "trials": 200 }
+      ]
+    },
+    "4_scaling": {
+      "budget_s": 7200,
+      "experiments": [
+        { "graph": "g48_p50", "trials": 32 },
+        { "graph": "g48_p30", "trials": 32 },
+        { "graph": "g52_p50", "trials": 32 },
+        { "graph": "g52_p30", "trials": 32 },
+        { "graph": "g56_p50", "trials": 32 },
+        { "graph": "g56_p30", "trials": 32 },
+        { "graph": "g64_p50", "trials": 32 },
+        { "graph": "g64_p30", "trials": 32 },
+        { "graph": "ladder24", "trials": 32 },
+        { "graph": "ladder28", "trials": 32 }
+      ]
+    }
+  }
+}
