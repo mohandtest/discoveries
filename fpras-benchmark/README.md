@@ -76,11 +76,16 @@ n=40 123 s · n=44 1217.5 s** (20.3 min, ~48 GiB hash table).
 
 **First exact ground truth at n=44:** G(44, 0.5), seed 42 has
 **38,960,201,918,564,595,040 ≈ 3.90×10¹⁹ perfect matchings** — beyond
-uint64 (1.8×10¹⁹), hence the 128-bit arithmetic. FPRAS is ~160× faster
-than exact at n=40 and ~1,270× at n=44 (0.96 s per independent run).
-At n=48 the extrapolated ~8B reachable states need >400 GiB — beyond
-this server — so **n=44 is the practical exact ceiling on this
-hardware, and the FPRAS is necessary beyond it.**
+uint64 (1.8×10¹⁹), hence the 128-bit arithmetic — over **1,129,482,570
+reachable DP states** (61k → 496k → 3.47M → 24.0M → 165M → 1.13B for
+n = 24 → 28 → 32 → 36 → 40 → 44: a steady ×6.9 per 4 vertices, still
+~4 orders of magnitude below the 2⁴⁴ subset bound). An independent
+rerun reproduced the count bit-identically in 1213.5 s (campaign run:
+1217.5 s). FPRAS is ~160× faster than exact at n=40 and ~1,270× at
+n=44 (0.96 s per independent run). At n=48 the extrapolated ~7.8B
+reachable states need >400 GiB — beyond this server — so **n=44 is
+the practical exact ceiling on this hardware, and the FPRAS is
+necessary beyond it.**
 
 ### 200-independent-run validation (unattended campaign, 2026-11-10)
 
