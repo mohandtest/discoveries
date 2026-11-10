@@ -7,8 +7,15 @@ applications that turn the constants into practice.
 
 Tooling: `switch_exact.c` (exact enumeration of all labeled graphs with a
 degree sequence + exact transition graph + exact probability propagation;
-verified against `exact_mixing.py` at n=6 d=2: 70 states, TV@10 = 0.628441,
-TV@100 = 0.019548, and against `enumerate_degrees` counts 17/27/15).
+fork-parallel on the server, 22 cores). **Verification:** the C reproduces
+`exact_mixing.py` — an independent Python implementation — at n=6 d=2
+(70 states, TV@10 = 0.628441, TV@100 = 0.019548) *and at n=8 d=2*
+(3,507 states: TV@50/100/250/500 = 0.687280/0.379801/0.056616/0.001909,
+identical to six digits); state counts match `enumerate_degrees`
+(17/27/15) and the labeled 2-regular sequence (70/3,507/30,016/286,884 at
+n=6/8/9/10); the n=6 triangle-study (a third implementation) agrees; and
+the complement symmetry d↔n−1−d is observed exactly (n8d3 ≡ n8d4:
+19,355 states, identical mixing times).
 Campaign run on the 24-core server, 22 cores per case, canonical + 32 random
 starts (8 at the n=12 frontier). "t(1/4)" = first attempt count at which
 TV-to-uniform ≤ 1/4, maximized over sampled starts (not all starts — the
