@@ -37,20 +37,27 @@ def parse(txt):
 
 
 def main():
+    import math
     root = Path(sys.argv[1] if len(sys.argv) > 1 else 'results/mixing')
     rows = []
     for f in sorted(root.glob('*.txt')):
         r = parse(f.read_text())
         if r:
             r['tag'] = f.stem
+            q = math.comb(r['n'], 4)
+            r['quads'] = q
+            r['t25_per_sweep'] = round(r['t25'] / q, 2) if r['t25'] > 0 else None
+            r['t05_per_sweep'] = round(r['t05'] / q, 2) if r['t05'] > 0 else None
             rows.append(r)
     rows.sort(key=lambda r: (r['n'], r['sequence']))
     print(f"{'tag':10} {'n':>2} {'sequence':26} {'states':>10} "
-          f"{'t(1/4)':>7} {'t(0.05)':>8} {'2n^8':>11} {'over':>11}")
+          f"{'t(1/4)':>7} {'t(0.05)':>8} {'sweep25':>8} {'sweep05':>8} "
+          f"{'2n^8':>11} {'over':>11}")
     for r in rows:
         seq = r['sequence'] if len(r['sequence']) <= 26 else r['sequence'][:23] + '...'
         print(f"{r['tag']:10} {r['n']:>2} {seq:26} {r['states']:>10,} "
-              f"{r['t25']:>7} {r['t05']:>8} {r['proven_2n8']:>11,} "
+              f"{r['t25']:>7} {r['t05']:>8} {r['t25_per_sweep']:>8} "
+              f"{r['t05_per_sweep']:>8} {r['proven_2n8']:>11,} "
               f"{r['overprovision']:>10.0f}x")
     with open(root / 'mixing_table.csv', 'w', newline='') as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys()) if rows else
