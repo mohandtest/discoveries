@@ -1,0 +1,41 @@
+{
+  "input": "data/karate.edgelist",
+  "input_sha256": "41e6a7038b36331d2569dde2bd1b61eb17c263c734dc15cfc0a7c86a61b6cbe2",
+  "nodes": 34,
+  "edges": 78,
+  "observed_triangles": 45,
+  "chains": 8,
+  "burn_attempts": 20000,
+  "samples_per_chain": 200,
+  "spacing_attempts": 200,
+  "seeds": [
+    20261110,
+    20261111,
+    20261112,
+    20261113,
+    20261114,
+    20261115,
+    20261116,
+    20261117
+  ],
+  "acceptance_fraction_per_chain": [
+    0.40986666666666666,
+    0.41273333333333334,
+    0.40758333333333335,
+    0.4124,
+    0.41251666666666664,
+    0.41031666666666666,
+    0.41283333333333333,
+    0.4089
+  ],
+  "mean_null_triangles": 39.441875,
+  "between_chain_mc_se_mean": 0.09293785125786228,
+  "observed_or_higher_tail_fraction": 0.123125,
+  "between_chain_mc_se_tail": 0.005504665229213696,
+  "triangle_rhat_warning_indicator": 0.9992499732462509,
+  "null_range": [
+    25,
+    55
+  ],
+  "warning": "Exploratory MCMC estimates; common starting graph, no proven burn-in or mixing. SE excludes bias. Zero tail hits is not zero probability. Connectivity is not preserved."
+}
