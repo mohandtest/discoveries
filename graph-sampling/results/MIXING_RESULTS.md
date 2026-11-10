@@ -72,6 +72,18 @@ before the in-flight rows land:
 | n=8 het (hub d=6) | 70 | 140–280 | 300–1,400 |
 | n=10–12 het (heavy tail) | 210–495 | 420–1,980 | 800–10,000 |
 
+**Evidence-based cap for the n=12 rows** (decided 11:20 UTC, before any
+n=12 outcome): exact propagation is memory-bandwidth-bound — n10d3's
+canonical start measured ~7.6 s/step at ~12M states (~13 GB of random
+CSR access per step at effective ~2 GB/s). At n=12 d=2 (38.8M states,
+~135 valid moves each) the cost model gives ~42 GB touched per step →
+8–20 s/step → t(0.05) at the predicted 2,000–4,000 steps is **10–30
+hours per start** — beyond this campaign's budget. The n=12 rows are
+therefore documented via the sweep-law extrapolation (990–1,980 for
+t(1/4)) rather than measured exactly; the exact ladder tops out at
+n=11. This is a measurement-infrastructure limit, not a chain property:
+the sampler itself runs at ~200k attempts/s regardless of n.
+
 Early shape: t(1/4) grows slowly — 50 (n=6) → 250 (n=8–9) → 500 (n=10) —
 tracking C(n,4), **not** n⁸. The practical reading: *a few hundred to a
 few thousand attempted switches bring the chain to TV ≤ 1/4 on all
