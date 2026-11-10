@@ -14,6 +14,10 @@ import math
 import random
 import statistics
 import sys
+import platform
+import time
+
+from diagnostics import summarize
 from pathlib import Path
 
 
@@ -120,6 +124,7 @@ def main():
         labels, edges = read_graph(a.edge_list)
     except (OSError, ValueError) as e:
         p.error(str(e))
+    started = time.perf_counter()
     observed = triangle_count(adjacency(len(labels), edges))
     chains, accepted = [], []
     for c in range(a.chains):
@@ -128,8 +133,14 @@ def main():
     chain_means = [statistics.mean(c) for c in chains]
     chain_tails = [sum(v >= observed for v in c) / len(c) for c in chains]
     se = statistics.stdev(chain_means) / math.sqrt(a.chains)
-    tail_se = statistics.stdev(chain_tails) / math.sqrt(a.chains)
+    diagnostic = summarize(chains, observed)
     report = {
+        'python_version': platform.python_version(),
+        'elapsed_seconds': time.perf_counter() - started,
+        'source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'triangle_diagnostics': diagnostic,
+        'accepted_moves_per_chain': accepted,
+        'attempts_per_chain': a.burn + a.samples * a.thin,
         'input': a.edge_list,
         'input_sha256': hashlib.sha256(Path(a.edge_list).read_bytes()).hexdigest(),
         'nodes': len(labels), 'edges': len(edges), 'observed_triangles': observed,
@@ -139,7 +150,7 @@ def main():
         'mean_null_triangles': statistics.mean(chain_means),
         'between_chain_mc_se_mean': se,
         'observed_or_higher_tail_fraction': statistics.mean(chain_tails),
-        'between_chain_mc_se_tail': tail_se,
+        'between_chain_mc_se_tail': diagnostic['mcse_tail'],
         'triangle_rhat_warning_indicator': rhat(chains),
         'null_range': [min(map(min, chains)), max(map(max, chains))],
         'warning': 'Exploratory MCMC estimates; common starting graph, no proven burn-in or mixing. SE excludes bias. Zero tail hits is not zero probability. Connectivity is not preserved.'

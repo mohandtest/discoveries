@@ -1,0 +1,2 @@
+# Optional research baseline and fixture preparation; core CLI stays stdlib-only.
+networkx==3.5

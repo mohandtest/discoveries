@@ -1,6 +1,15 @@
-# Degree-preserving graph sampling (OpenAI/math #131)
+# Degree-preserving graph sampling prototype
 
 Research starter for sampling **labeled simple undirected graphs with a fixed degree sequence**. Runs locally with Python 3 and no dependencies. This is independent of the overnight perfect-matching benchmark.
+
+## Practical null-model study
+
+Start with [NETWORK_PROTOTYPE.md](NETWORK_PROTOTYPE.md) for the standard-library CLI,
+[STUDY_REPORT.md](STUDY_REPORT.md) for results and reproduction, and
+[RESEARCH_REVIEW.md](RESEARCH_REVIEW.md) for prior work and application choices.
+The production edge-pair sampler now has exact audits, a matched-null NetworkX
+comparison, repeated uncertainty calibration, and three documented public inputs.
+The findings include diagnostic failures and unresolved rare-tail probabilities.
 
 ## What is implemented
 

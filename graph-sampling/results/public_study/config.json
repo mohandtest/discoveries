@@ -1,0 +1,29 @@
+{
+  "chains": 4,
+  "samples": 200,
+  "seed": 20261120,
+  "budgets": [
+    {
+      "name": "short",
+      "burn_sweeps": 20,
+      "spacing_sweeps": 2
+    },
+    {
+      "name": "long",
+      "burn_sweeps": 80,
+      "spacing_sweeps": 8
+    }
+  ],
+  "datasets": [
+    "karate",
+    "florentine",
+    "dolphins"
+  ],
+  "metrics": [
+    "triangles",
+    "four_cycles",
+    "components",
+    "edge_overlap",
+    "degree_product"
+  ]
+}

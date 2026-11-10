@@ -27,3 +27,13 @@ Save input provenance, versions, seeds, attempted and accepted moves, runtime, r
 - [NetworKit randomization tutorial](https://networkit.github.io/dev-docs/notebooks/Randomization.html), an existing implementation and baseline to investigate.
 
 The current sampler uses uniform vertex quadruples and is not established to be the chain covered by OpenAI/math result 131. No claimed polynomial mixing bound is inherited here.
+
+## Implemented iteration (2026-11-10)
+
+[STUDY_REPORT.md](STUDY_REPORT.md) records the completed production-kernel audit,
+three-sequence repeated calibration, actual NetworkX proposal-loop comparison,
+and three public-data examples. These address the initial research sequence on
+small cases; they do not resolve general convergence, rare tails or domain
+constraints. The diagnostic gate produced both false reassurance and poor power.
+Further studies should compare established convergence methods, separate burn
+from spacing changes, and specify domain constraints before extending graph type.

@@ -1,0 +1,51 @@
+{
+  "python": "3.12.14",
+  "implementation": "CPython",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "networkx": "3.5",
+  "base_commit": "18daed49f8be3263a5081ce13dd31ac24c1404b7",
+  "source_sha256": {
+    "analyze_research.py": "bf7fd3b00cdd3b810bedf3e45b241d60c6f7e069565b864592e64870a3932476",
+    "calibration_study.py": "121e0ab42b59f7e55a2bdbdf7fa1f02a9525cd40aaa807c08b26d50a1bbdf7b5",
+    "degree_switch_probe.py": "7fbf7e1a8cf80df57cccf02f37fa0a8240e723e616b8b221b6875e8b89e7d240",
+    "diagnostics.py": "3ded2d11044c659da49d09327d058267ec6511430401743d90bd20d757384011",
+    "exact_mixing.py": "03c37cb78574fbf414b5e43b658cb006d77b33e22caf4e49f1e92342ce3993e2",
+    "heterogeneous_audit.py": "f05b753eeb2e11d79f1533f5ec1b1b64d879f9653c886be5021f994cda1f3d90",
+    "network_null.py": "55acd6dd4084e587ded65e08d6be76806b65932282f93949568306f62b8b24c1",
+    "nx_baseline.py": "0e69d618b1ba51fe0b644fa0bdcdacab0f7b589230bdf3ae599997cf8a94ca39",
+    "observables.py": "362c2364f5baacfd53ac95f749c71f74e4af93611e87c80f27139ba1cd135917",
+    "prepare_data.py": "0d22f279b67eb7930994fdc416ade7d4512f710c60df580265db04389854ec2c",
+    "production_audit.py": "1b9bc724c808d45d29c7fedbc872b6ffa20aa22238aaba4d31419c9793d43daf",
+    "record_environment.py": "9dd994ae757ffc674f4770f92c899d801068172aca151b2cac23476d51b6ef3d",
+    "requirements-research.txt": "341094fcd9d620ce899177af98b72e22027476de9c4f59859bb5572d92ed8e1f",
+    "run_research.py": "a6a62da5f31f47a5b8e5524da6509ab9399e8447e112ff979bcdb9a52edb237d",
+    "test_network_null.py": "f9beede5d236588561673a621f5b585332a80329a3c989b3ba8e4465df74d0b0",
+    "test_null_audits.py": "cd80f991ca2c8866ff51f570b13e984e52c5b0a355342826f4b414883aab10e1",
+    "test_research.py": "45c26dcafac463aa4f0bd3356ae26ad11d6ffcfced7b808fed9eaaebafa47755",
+    "test_sampling.py": "df928eac75609874998ba5f4a33c5972ce52fb6d697df2c71d5a96a2d5184296",
+    "triangle_null_study.py": "8dd0950dc681134741dbb39134da4e07446f325e52064e3b3d4f7cd2dac854c7",
+    "verify_results.py": "8cedf6af82443198ca116fb2190e0156abbb567363f59a810923666218aa9dc5"
+  },
+  "input_sha256": {
+    "data/NETWORKX_LICENSE.txt": "3cf7c3a179d817b23b8b8568211769fefdf93797d207d984b8b2fa24d0220b33",
+    "data/PROVENANCE.md": "7c75650dc5d2cd4b65289869abbf22e8bc06e0cf1a900b48e04f49876496af34",
+    "data/dolphins.edgelist": "55f244402caa04bf9164b701298ae3c40613ab0543724e7d299b19de13396684",
+    "data/florentine.edgelist": "81fad04bf769992f803decc58fd881adb04c0325338a813b6f71fdf3077fa845",
+    "data/karate.edgelist": "41e6a7038b36331d2569dde2bd1b61eb17c263c734dc15cfc0a7c86a61b6cbe2",
+    "data/manifest.json": "38b57814fcfd124d3d139b9f2c38f68ee1fab5a74884fbea1e9b0f3b43d863dc"
+  },
+  "artifact_sha256": {
+    "results/MEASURED_RESULTS.md": "644a637cb44d1c5d332e22e3de70973bf4ba15c9026e6179a6db79a99b397663",
+    "results/VALIDATION.txt": "eac9fbee14f8fe7695f8b3d827d6ed00227867c15219f82f4c1dddb5e1f84f9a",
+    "results/calibration/raw.csv": "a1b64f9959b74393c2446334fc542363ffbd9b9f2274ec3bb4bcbeb20db349c8",
+    "results/calibration/summary.json": "e200a2d141cb05c46969e0e88fbcc2181992e9f466424827a3252b0f5c884faa",
+    "results/karate_samples.csv": "001a6f3f72526d65d6f9f27708284cb06339828a36f999f6d987e19a1336efab",
+    "results/karate_summary.json": "8d342e9963d05d1662545869b770aaf06bef83d40aada4f922ce4899eb7dcf99",
+    "results/production_exact.json": "1ebfb445bc2053e6ff7afc62a22441ee6b7160c3b7a34d585f0f39884977f473",
+    "results/public_study/config.json": "5c651d6952f1419677053adbe57419b0f6fe522d9a0e650d45859b4915ca0cb7",
+    "results/public_study/samples.csv": "c5de69077b95ef5f899905fae1230224f5ea91642435e43a56aa74142f037094",
+    "results/public_study/summary.json": "2b442b3f2929a49c2057db95d55c247e3637022e26d95f7ceeb6f308dd40dabc"
+  },
+  "note": "Source hashes identify working-tree code, not just the base commit. Runtime fields vary. No server was used."
+}
