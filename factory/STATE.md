@@ -17,17 +17,15 @@ autonomously; after each P5 it continues to the next queue item.
    `reports/algo1-fpras-constants-DRAFT.md` (user go received)
 3. [pass #4+] deterministic F_p factorization; mean-payoff games
    (ROADMAP candidates #2–3)
-4. [pass #5?] **k-server → KV-cache eviction for local LLM inference**
-   (user eureka lens, 2026-11-10): the log²(k+1)-competitive randomized
-   k-server pair (`Squared-logarithmic-randomized-k-server...` +
-   `Uniform-computation-of-the-squared-logarithmic-k-server-bound...`,
-   whose main theorem — polynomial preprocessing + per-request cost —
-   was verified verbatim from the paper source). First theory-backed KV
-   eviction policy + first implementation of optimal-order k-server;
-   ground truth = offline OPT by DP on small traces. Runner-up from
-   the same hunt: ω ≤ 9/4 matrix multiplication (needs verification
-   more than benchmarking; expected honest NO_ADVANTAGE for local
-   sizes). Ranked behind the matching pilot; user can direct a jump.
+4. [closed 2026-11-10 — negative] **k-server → KV-cache eviction** hunt:
+   the only implementable openai/math→llama.cpp transfer found (log²(k)
+   competitive KV-eviction policy), but it is a memory-management
+   guarantee, not a speed win — it does not meet the user's bar
+   ("much faster Sharp-Spark"). Full candidate audit recorded in memory
+   #25: no openai/math finding yields a practical inference speedup at
+   small-model scale (constants, model mismatch, or lower bounds).
+   Hunt closed at user direction; re-openable if the objective becomes
+   long-context memory management instead of throughput.
 4. [task] factory improvements queued by retrospectives (none yet)
 
 ## Directives (user injections — recorded, then followed)
