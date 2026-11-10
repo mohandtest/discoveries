@@ -106,12 +106,14 @@ static int64_t hget(u128 key) {
 
 int main(int argc, char **argv) {
     int regular = -1; char *degs = NULL; int nstarts = 32; uint64_t seed = 42;
+    int t25_only = 0;
     for (int i = 1; i < argc; i++) {
         if (!strcmp(argv[i], "--n")) n = atoi(argv[++i]);
         else if (!strcmp(argv[i], "--regular")) regular = atoi(argv[++i]);
         else if (!strcmp(argv[i], "--degrees")) degs = argv[++i];
         else if (!strcmp(argv[i], "--starts")) nstarts = atoi(argv[++i]);
         else if (!strcmp(argv[i], "--seed")) seed = strtoull(argv[++i], 0, 10);
+        else if (!strcmp(argv[i], "--t25only")) t25_only = 1;
         else { fprintf(stderr, "unknown arg %s\n", argv[i]); return 1; }
     }
     if (n < 4 || n > 16) { fprintf(stderr, "need 4 <= n <= 16\n"); return 1; }
@@ -260,14 +262,14 @@ int main(int argc, char **argv) {
                         if (k == 0)
                             fprintf(stderr, "canonical t=%d tv=%.6f\n", t, tv);
                         if (t25 < 0 && tv <= 0.25) t25 = t;
-                        if (t05 < 0 && tv <= 0.05) t05 = t;
+                        if (!t25_only && t05 < 0 && tv <= 0.05) t05 = t;
                         if (tv < 1e-15) {
                             if (t25 < 0) t25 = t;
                             if (t05 < 0) t05 = t;
                             break;
                         }
                     }
-                    if (t25 >= 0 && t05 >= 0) break;
+                    if (t25 >= 0 && (t25_only || t05 >= 0)) break;
                 }
                 res_t25[k] = t25; res_t05[k] = t05;
             }
