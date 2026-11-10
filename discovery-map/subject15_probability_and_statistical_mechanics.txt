@@ -1,0 +1,88 @@
+# Subject 15: Probability and statistical mechanics
+
+## 211. Geometry, diffusion, and spectra of random planar maps
+Critical Fortuin--Kasteleyn planar maps converge to Liouville quantum gravity spheres for 0<q 4 and to the Brownian continuum random tree for q>4, establishing the surface-to-tree geometric transition. For FK--Ising and spanning-tree-weighted maps, stationary random walks converge to Liouville Brownian motion on the limiting sphere. The FK--Ising spectral result also gives convergence of eigenvalues and heat traces, using the stated Brownian/LQG inputs.
+
+## 212. No bigeodesics and smooth limit shapes in planar first-passage percolation
+Proves that planar first-passage percolation has no doubly infinite geodesic for iid nonnegative nonatomic edge weights when the minimum of four weights has finite second moment. For exponential weights, the limit shape is strictly convex with C^1 boundary. Differentiability also holds for every Gamma law with positive shape and rate.
+
+## 213. No infinite critical clusters on quasi-transitive graphs
+Resolves the Benjamini--Schramm criticality conjecture for bond percolation on every infinite connected locally finite quasi-transitive graph with p_c<1: at the critical probability, there is almost surely no infinite cluster. The family also establishes this conclusion for both nearest-neighbor bond and site percolation on Z^3.
+
+## 214. The Benjamini--Schramm nonuniqueness conjecture
+Proves p_c<p_u for Bernoulli bond percolation on every infinite connected locally finite nonamenable quasi-transitive graph, resolving the Benjamini--Schramm nonuniqueness conjecture. Thus there is a nonempty range of probabilities with infinitely many infinite clusters. A stronger operator bound also establishes the critical triangle condition.
+
+## 215. Massive continuum limits and exact mass asymptotics for planar O(n) models
+Constructs the canonical continuum limit of the two-dimensional nearest-neighbor O(3) model: a non-Gaussian local relativistic theory with a unique vacuum and a positive mass gap. For the square-lattice O(4) model, determines the exact leading asymptotic of the full transfer gap, m_ lat ( ) 32e^ /4-1/2 \,e^ - . The family also proves exponential spin-correlation decay for two-dimensional nearest-neighbor O(n) models with n 3 at every positive temperature.
+
+## 216. Critical logarithmic corrections and BKT scaling for the planar XY model
+For the square-lattice nearest-neighbor cosine XY model, proves critical axis correlations C_ _c (r) Ar^ -1/4 ( r)^ 1/8 and the Berezinskii--Kosterlitz--Thouless essential singularity _c- ( ) B, with A,B>0 after the free-box thermodynamic limit. For finite square-symmetric interactions containing nearest neighbors, discrete Gaussian heights converge to Gaussian fields throughout the rough phase, including its threshold, along geometric torus sizes. Critical center-magnetization and spin-field conclusions retain their stated height, renormalization, and field-input assumptions.
+
+## 217. The low-temperature Sherrington--Kirkpatrick fluctuation law
+For every fixed inverse temperature >1, determines the fluctuation scale and limiting law of the zero-field Gaussian Sherrington--Kirkpatrick log partition function. Its variance is asymptotic to c_ n^ 1/3 , with c_ >0, confirming the predicted n^ 1/6 standard-deviation scale. Exact centering and standardization give full-sequence convergence to a uniquely characterized nondegenerate law.
+
+## 218. Conformal universality for weakly interacting and disordered Ising models
+Weak finite-range square-symmetric even multispin perturbations of the square-lattice Ising model preserve critical bulk spin and energy limits; weak square-symmetric contour interactions also yield chordal SLE _3 interface limits. With sufficiently weak iid bond disorder of any fixed bounded nondegenerate mean-zero law, critical spin interfaces converge to the same law in probability over environments.
+
+## 219. GOE universality for random regular graphs with weak disorder
+For every fixed degree d 3, the bulk adjacency-eigenvalue point process of a uniform simple random d-regular graph converges to the Gaussian orthogonal ensemble law, including for cubic graphs. The same fixed-energy universality persists under sufficiently weak fixed iid uniform diagonal disorder, throughout compact bands strictly inside the clean spectral edges.
+
+## 220. Directional zero--one laws and ballisticity in random environments
+On Z^d, d 3, directional escape has probability zero or one for iid strictly elliptic nearest-neighbor environments, and for stationary ergodic finite-range-dependent environments under uniform ellipticity. In iid uniformly elliptic environments with d 2, almost-sure directional transience implies a deterministic limiting velocity with positive projection in that direction, resolving the ballisticity conjecture.
+
+## 221. The M\'ezard--Parisi formula for diluted spin glasses
+Proves the M\'ezard--Parisi hierarchical cavity formula for Poisson-diluted even-arity Ising models satisfying the Panchenko--Talagrand factorization and positivity assumptions, with only first-moment integrability. The limiting free energy equals the infimum over finite-depth hierarchical trial laws. This includes the Viana--Bray model, symmetric diluted even-spin models, and weighted soft even-K satisfiability.
+
+## 222. Perceptron free energies and microscopic jamming
+Determines finite-temperature variational free energies for Gaussian Ising perceptrons with bounded Borel log-potentials and Gaussian spherical perceptrons with bounded continuous potentials, at every positive pattern density. A spherical extension treats bi-orthogonally invariant disorder with compact limiting singular-value distributions and no outliers. At margin -1, the quadratic-penalty spherical model has a sharp feasibility threshold and limiting gap and force laws, with system size, zero temperature, and critical density taken in that order.
+
+## 223. Conformal limits of square-lattice random-cluster interfaces
+Proves chordal SLE _ limits for critical square-lattice random-cluster interfaces for 0<q 4, with =4 / (- q/2): bounded Jordan domains are allowed for q 1, and smooth Jordan domains for q<1, under the stated marked-boundary approximations. For 1 q 4, complete nested plane loops converge to CLE _ .
+
+## 224. Critical and near-critical universality for Voronoi percolation
+Proves Cardy's formula for annealed critical Poisson--Voronoi crossing probabilities in every bounded Jordan quadrilateral. With each model normalized by its own expected unit-square pivotal count, the conditional joint near-critical crossing-threshold laws for rational polygonal quads converge in environment probability to the triangular-lattice reference law. This establishes quenched near-critical universality for crossing thresholds.
+
+## 225. Gaussian free field limits for the balanced six-vertex model
+The balanced square-lattice six-vertex height field with a=b=1 and 0<c 2 converges to a Gaussian free field, including at the endpoint c=2. The plane state is defined by balanced-torus limits. For unit height increments and Green kernel -(2 )^ -1 |x-y|, the exact variance multiplier is 1/ (c/2).
+
+## 226. The double-dimer CLE _4 conjecture in the half-plane
+Resolves the half-plane Temperleyan form of the double-dimer scaling-limit conjecture: the complete loop ensemble formed by two independent dimer coverings of the Temperleyan square lattice converges to nested CLE _4. Convergence matches every macroscopic loop as an unparametrized curve, upgrading convergence of loop observables to convergence of the loops themselves.
+
+## 227. The dynamical phase transition in the Sherrington--Kirkpatrick model
+For zero-field Gaussian SK heat-bath dynamics with rate-one updates per spin, proves worst-start cutoff on the n scale for fixed 0 <1, mixing time n^ 2/3+o(1) at =1, and stretched-exponential mixing from a Gibbs-sampled fixed starting configuration for >1, in probability over disorder. At criticality, rescaled stationary and quench autocorrelation processes have universal random limits for Gaussian and Rademacher disorder; the quench limit relaxes to the stationary limit.
+
+## 228. Continuum phase transitions for radial pair potentials
+Constructs stable distance-dependent pair interactions for three-dimensional classical particles with a first-order phase transition: the canonical free energy has a derivative jump at one inverse temperature throughout an open density interval. One potential has a divergent repulsive core; another is bounded and continuous with an integrable power-law tail, realizing the type of transition sought in Simon's continuum problem.
+
+## 229. Sharp three- and four-state reconstruction thresholds
+Proves the exact reconstruction threshold d ^2>1, with nonreconstruction at equality, for three-state symmetric and four-state ferromagnetic broadcasting on regular trees (d 2) and observed Poisson trees (mean d>1 and d>0, respectively), with Poisson advantage averaged without conditioning on survival. The three-state theorem allows both signs of and gives the exact weak-recovery threshold for the symmetric three-community stochastic block model.
+
+## 230. Exact Hausdorff measure for SLE
+Resolves Schramm’s Hausdorff-measure question for chordal SLE _ , 0< <8. The explicit gauge r^d( (1/r))^ (2-d)/2 , d=1+ /8, gives almost surely positive finite measure to every trace segment ([s,t]) with 0<s<t< , and finite expected measure to the trace in every bounded disk.
+
+## 231. The free uniform spanning forest is a factor of IID
+On every infinite connected locally finite simple unweighted graph, the free uniform spanning forest is a factor of independent vertex labels, by one isomorphism-equivariant rule using no root. Translation-invariant strongly Rayleigh binary processes on every countable group, including invariant determinantal processes with Hermitian positive-contraction kernels, are also factors of IID.
+
+## 232. Gaussian fields and SLE interfaces for Lipschitz heights
+Proves Gaussian free field limits on bounded smooth simply connected domains for triangular-lattice height models: uniform odd heights with increments 0, 2 and two-arc boundary values 1, and zero-boundary integer Lipschitz heights weighted by fixed x [1/ 2,1]. Uniform real Lipschitz heights also converge to a Gaussian field; at a tuned opposite-boundary amplitude, their interface converges to chordal SLE _4, establishing Schramm’s real-field/interface predictions.
+
+## 233. The joint critical Ashkin--Teller scaling limit
+Identifies the joint scaling limit of Ashkin--Teller heights and both complete current-cluster collections throughout the critical line, including the four-state Potts endpoint. In bounded Jordan domains with admissible lattice approximations and wired primal/free dual boundaries, the height converges to the predicted Gaussian free field, and the clusters to canonical recursive sets of that same field, retaining every nesting depth.
+
+## 234. All-temperature pressure for orthogonally invariant Ising spin glasses
+Gives an exact variational formula for the limiting pressure of orthogonally invariant Ising spin glasses at every fixed temperature, both almost surely and in expectation. The coupling matrix is a Haar-random rotation of a deterministic spectrum converging to a compactly supported law, with extreme eigenvalues converging to its support edges. The zero-field ground-state energy follows as temperature tends to zero.
+
+## 235. Random-SAT thresholds, sharp variance and computability
+For random k-SAT with independent uniformly signed proper clauses sampled with replacement, proves finite positive limiting thresholds and hitting-time variance _k(n) for every fixed k 3, and computability of the 3-SAT threshold. We credit Gaia Carenini with priority for resolving the threshold-existence conjecture in her concurrent https://eccc.weizmann.ac.il/report/2026/229/
+
+## 236. The factor-of-IID threshold for free Ising states on trees
+Determines when the free zero-field ferromagnetic Ising state on the infinite d-regular tree is a factor of independent vertex labels: exactly when (d-1)^ -1/2 , including equality, for d 3 and 0. The construction uses no root and is almost surely equivariant for each fixed tree automorphism, resolving the ferromagnetic case of Lyons's question.
+
+## 237. The three-quarter diameter exponent for honeycomb walks
+Proves the diameter form of Nienhuis's predicted three-quarter exponent: a uniformly chosen n-step self-avoiding walk on the honeycomb lattice has diameter n^ 3/4+o(1) . Its local mass and covering numbers have exponent 4/3. These estimates hold at every sufficiently large fixed length, simultaneously across scales, with arbitrarily high polynomial probability.
+
+## 238. Optimal logarithmic mixing of the Thorp shuffle
+Proves that the Thorp shuffle randomizes N=2^d labeled cards in ( N) physical shuffles, settling its optimal mixing order for power-of-two deck sizes. Convergence is in total variation from the worst initial ordering and concerns the entire permutation, not just individual card positions.
+
+## 239. Sharp singularity rates for symmetric sign matrices
+Determines the sharp exponential singularity rate of symmetric random sign matrices with independent entries on and above the diagonal. Uniform signs give ( A_n=0)=(1/2+o(1))^n; for fixed bias p (0,1) \ 1/2\ , the rate is (p^2+(1-p)^2+o(1))^n. In the biased case, agreeing rows attain this rate.

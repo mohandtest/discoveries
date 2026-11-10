@@ -1,0 +1,55 @@
+# Subject 4: Topology
+
+## 304. The Hilbert--Smith conjecture in every dimension
+Every locally compact second-countable Hausdorff group acting faithfully and jointly continuously on a connected finite-dimensional topological manifold is a Lie group. This proves the Hilbert--Smith conjecture in all finite dimensions, for Hausdorff second-countable manifolds without boundary.
+
+## 305. Counterexamples to disk embedding and Wall's manifold conjecture
+The unrestricted four-dimensional disk-embedding conjecture fails: framed algebraic dual spheres do not suffice to obtain disjoint locally flat spanning disks. In particular, the free group F_2 is not good in the sense of Freedman--Quinn. Also constructs a finitely presented integral Poincaré duality group of dimension four with a finite classifying space but no realization as the fundamental group of a closed aspherical topological four-manifold, disproving Wall's conjecture.
+
+## 306. The purely cosmetic surgery conjecture for knots in S^3
+Distinct Dehn surgery slopes on a nontrivial smooth knot in S^3 never produce orientation-preservingly homeomorphic manifolds, proving the purely cosmetic surgery conjecture. The statement includes the meridional slope.
+
+## 307. Failure of rational injectivity for maximal coarse assembly
+Constructs a uniformly discrete bounded-geometry space whose maximal coarse assembly map is not rationally injective. The example is a coarse disjoint union of finite connected graphs of uniformly bounded degree, with an infinite-order kernel class. A companion gives the analogous failure for reduced coarse assembly, disproving the rational coarse Novikov conjecture.
+
+## 308. Smith--Toda complexes at every height with varying primes
+For every n 0, constructs a finite Smith--Toda spectrum at a prime p depending on n, with Brown--Peterson homology BP_*/(p,v_1, ,v_n) and the canonical comodule structure. Thus Smith--Toda complexes exist at every height when the prime may vary; an explicit example realizes V(4) at p=1009.
+
+## 309. The Kervaire invariant problem at the prime three
+Resolves the odd-primary Kervaire invariant problem at the prime three: exactly the standard classes with indices 0, 2, and 3 survive in the mod-three Adams spectral sequence, in stems 10, 106, and 322. Each surviving detection coset contains an element of exact additive order three.
+
+## 310. Quillen's conjecture in rational homology
+Proves the rational-homology form of Quillen's conjecture for every finite group and every prime. If the largest normal p-subgroup of G is trivial, the poset of nontrivial elementary abelian p-subgroups has nonzero augmented reduced rational homology and is therefore not contractible.
+
+## 311. Chai's invariant-ideal conjecture
+Proves Chai's invariant-ideal conjecture for Lubin--Tate deformation rings over finite residue fields, at every prime and positive height n. Through the implication of Barthel--Heard--Naumann, this proves the Hovey--Strickland conjecture: dualizable K(n)-local spectra have exactly n+2 thick tensor ideals, and their Balmer spectrum is a chain of n+1 points.
+
+## 312. The Grothendieck homotopy hypothesis
+Proves the Grothendieck homotopy hypothesis for -groupoids associated with every Grothendieck coherator in the Ara--Henry convention: these algebraic objects recover the homotopy theory of spaces.
+
+## 313. Finite generation for the K(n)-local sphere
+Answers the degreewise finiteness question of Hovey and Hovey--Strickland: every homotopy group of the K(n)-local sphere is a finitely generated Z_p-module, for every prime, positive height and integer degree. The same conclusion holds after K(n)-localizing any finite p-local spectrum.
+
+## 314. The chromatic Smith fixed-point problem for finite p-groups
+Determines the optimal chromatic loss from geometric H-fixed points to geometric G-fixed points for every subgroup H of a finite p-group G. At every nonnegative height, the loss equals the shortest subnormal-chain length from H to G with cyclic quotients. Each quotient counts once regardless of order, and finite spectra witness sharpness.
+
+## 315. The four-dimensional Singer conjecture
+Proves that the L^2-Betti numbers of the universal cover of every closed connected aspherical topological four-manifold vanish outside degree two. More generally, the same conclusion holds for every finite connected aspherical integral Poincar\'e complex of formal dimension four, proving the four-dimensional Singer conjecture in this wider class.
+
+## 316. Curtis’s conjecture
+Proves Curtis’s conjecture: the positive-degree mod-two stable Hurewicz image of the sphere is spanned by the images of the Hopf-invariant-one classes , , and the Kervaire-invariant-one classes that exist.
+
+## 317. Thomason model structures in every strict higher dimension
+Resolves the Ara--Maltsiniotis conjecture: for every n 1 and n= , small strict globular n-categories admit proper combinatorial Thomason model structures Quillen equivalent to simplicial sets. Thus strict higher categories model the homotopy theory of spaces in every stated dimension.
+
+## 318. Chromatic splitting: counterexamples and filtrations
+Disproves strong chromatic splitting at height three for primes p 5, and weak splitting for the derived p-completed sphere at heights p (p 5) and p+1 (p 7). Nevertheless, for n 1 and p>n+1, the overlap L_ n-1 L_ K(n) S_p^ admits a 2^n-stage filtration by the predicted localized-sphere pieces. At height three and prime three, even finite assembly from such pieces fails in the category of E(2)-local modules over the derived completed sphere.
+
+## 319. Counterexamples to the Hahn--Wilson conjecture at height two
+Refutes the Hahn--Wilson conjecture at chromatic height two. For every sufficiently large prime p, constructs a connective p-complete spectrum of exact fp-type two that cannot be built from completed BP 2 by finitely many sums, shifts, cones and retracts. The examples nevertheless satisfy the finite and telescopic localization comparisons.
+
+## 320. A four-dimensional counterexample to Borel rigidity
+Constructs closed connected aspherical topological four-manifolds that are homotopy equivalent but not homeomorphic, with a common word-hyperbolic fundamental group. This disproves even the homeomorphism-existence formulation of the Borel conjecture in dimension four.
+
+## 321. A counterexample to Wall's finite D(2) conjecture
+Constructs a finite connected three-dimensional CW complex whose universal cover has no integral homology above degree two and whose third cohomology vanishes for every local coefficient module, but which has no finite two-dimensional homotopy model. This disproves Wall's finite D(2) conjecture; the example has infinite fundamental group.

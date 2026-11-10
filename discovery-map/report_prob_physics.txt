@@ -1,0 +1,124 @@
+# Probability, Statistical Mechanics & Mathematical Physics — Result Family Report
+
+Subjects 15 (#211–239) and 17 (#260–284). ★ = deep-dived from the preprint intro.
+
+## Subject 15
+
+**211. Random planar maps.** Finding: critical FK planar maps converge to LQG spheres (0<q≤4) or the Brownian CRT (q>4); walks converge to Liouville Brownian motion, with spectra. Approach: peeling bijections give recursions matching LQG fixed points. Lesson: bijections plus recursions yield LQG.
+
+**212. Planar FPP.** Finding: no bigeodesics for iid nonatomic weights; exponential limit shape strictly convex with C¹ boundary. Approach: bigeodesics reduce to coexisting geodesics in opposite directions, excluded by tube resampling; convexity via Busemann differentiability. Lesson: direction analysis governs planar FPP.
+
+**213. Critical percolation on quasi-transitive graphs.** Finding: no infinite cluster at p_c on any quasi-transitive graph with p_c<1; also Z³ bond/site. Approach: sharp thresholds plus Burton–Keane counting made invariant, with sprinkling. Lesson: invariance substitutes for amenability.
+
+**214. Benjamini–Schramm nonuniqueness.** Finding: p_c<p_u on every nonamenable quasi-transitive graph; an operator bound gives the critical triangle condition. Approach: a spectral bound yields positive connectivity just above p_c. Lesson: operator bounds replace geometry.
+
+**215. Planar O(n) models.** Finding: 2D O(3) has a non-Gaussian continuum limit with unique vacuum and mass gap; exact O(4) gap asymptotic; exponential decay for n≥3, β>0. Approach: reflection positivity and correlation inequalities give gap bounds; the O(4) constant from transfer matrices. Lesson: infrared bounds plus integrable constants construct QFTs.
+
+**216. Planar XY model.** Finding: critical correlations r^{−1/4}(log r)^{1/8} and the BKT singularity; Gaussian-field limits for discrete Gaussian heights. Approach: exact free-box spin-wave representation plus contour renormalization. Lesson: solvable representations plus renormalization give BKT.
+
+**★217. Low-temperature SK fluctuations.** Finding: for zero-field Gaussian SK at fixed β>1, sd(F_n)=n^{1/6+o(1)} and Var(F_n)=n^{1/3+o(1)} — the predicted n^{−5/6} free-energy-density exponent. Approach: targets a positive Laplace-transform window for log E e^{s(F_n^c−EF_n^c)} just above n^{−1/6}: Guerra interpolation compares SK with covariance-perturbed auxiliary systems, while Parisi PDE minimizer structure — interval support [0,q_β] and positive initial density (Lopatto, plus a fourth-derivative estimate) — gives the lower bound; transform matching the upper. Lesson: Parisi-minimizer structure is quantitative input, pinning fluctuation exponents.
+
+**218. Weakly perturbed/disordered Ising universality.** Finding: weak even perturbations preserve critical Ising limits and give SLE₃ interfaces; weak iid bond disorder gives quenched SLE₃ in probability. Approach: random-current switching transfers Ising observables; the FK representation imports SLE₃. Lesson: switching converts stability into near-Ising comparisons.
+
+**219. GOE universality for random regular graphs.** Finding: bulk eigenvalues of d-regular graphs (d≥3) have GOE statistics; persists under weak diagonal disorder inside bands. Approach: sparse-operator comparison of Green's functions to a Gaussian-divisible operator, plus delocalization. Lesson: local weak limits induce universal spectra.
+
+**220. Random walks in random environments.** Finding: directional escape on Z^d has probability 0 or 1 (strict ellipticity, d≥3); transience implies a deterministic ballistic velocity (iid, d≥2). Approach: escape recast as environment-tail events; ballisticity via a velocity martingale against a regenerated direction. Lesson: tail reduction converts transience into ergodicity.
+
+**★221. Mézard–Parisi formula for diluted spin glasses.** Finding: for Poisson-diluted even-arity Ising models in the Panchenko–Talagrand class (incl. Viana–Bray) under first-moment conditions, the limiting pressure equals the infimum of the hierarchical cavity functional over finite depths — their equality conjecture. Approach: a finite-tree cavity calculus — bounded perturbations impose replica-branching identities; delaying each branching depth one level enables an induction concentrating all multioverlaps (not just pairs) over depths, then cavity insertion permits comparison with independent messages. Lesson: multioverlap concentration is the obstruction between A-S schemes and finite-RSB cavity formulas; averaging over branching depths clears it.
+
+**222. Perceptrons and jamming.** Finding: variational free energies for Ising and spherical perceptrons at all densities; at margin −1, sharp feasibility threshold and gap/force laws. Approach: Guerra–Auffinger–Chen interpolation gives the Parisi functional; jamming via zero-temperature limits and KKT analysis. Lesson: Parisi interpolation extends to constraint Hamiltonians.
+
+**★223. FK interface limits.** Finding: critical square-lattice FK interfaces converge to chordal SLE_{κ(q)}, κ(q)=4π/arccos(−√q/2), for 1≤q≤4, nested loops to CLE_{κ(q)}; at q=1, Cardy's formula. Approach: rebuilds square-lattice discrete holomorphicity from scratch: logarithmic slit partition-function comparisons (a polygon budget) control crossings; an angular transfer operator's two leading modes propagate twist; a four-change observable with reflection-derived boundary values gives the SLE martingale via Loewner; loops upgrade to CLE. Lesson: where fermionic observables fail (q≠2,4), partition-function bookkeeping plus one discrete-holomorphic observable still pin the SLE/CLE limit.
+
+**224. Voronoi percolation.** Finding: Cardy's formula for critical Poisson–Voronoi percolation; quenched near-critical universality of crossing thresholds versus the triangular lattice. Approach: annealed pivotal-count estimates feed Cardy's derivation. Lesson: pivotal counts are the near-critical clock.
+
+**225. Balanced six-vertex model.** Finding: the balanced height field (0<c≤2) converges to a GFF with exact variance multiplier 1/arcsin(c/2), endpoint included. Approach: exact variance via determinantal identities plus tightness; endpoint by comparison with double dimers. Lesson: one constant plus tightness gives the limit.
+
+**226. Half-plane double dimers.** Finding: two independent dimer coverings' loops converge to nested CLE₄, as unparametrized curves. Approach: Temperleyan bijection to FK/tree interface pairs; winding observable convergence plus rigidity. Lesson: observables plus rigidity give curves.
+
+**★227. SK dynamical phase transition.** Finding: for zero-field SK heat-bath dynamics: worst-start cutoff for β<1 at log n/(2λ(β)); mixing n^{2/3+o(1)} at β=1; stretched-exponential Gibbs-start mixing for β>1, over disorder in probability; at criticality, quench and stationary autocorrelations have universal limits. Approach (cutoff paper): an exact gradient mechanism — dS_t f = K_t df for a vector semigroup K_t, with max g − min g ≤ 2√n·sup‖dg‖ reducing total variation to gradient decay; the upper bound drives gradients below n^{−1/2} past log n/(2λ) by propagation plus an energy bound, the lower uses an observable with bias decaying just above λ, uniformity by iteration. Lesson: gradient semigroups give both cutoff location and mechanism.
+
+**228. Continuum pair potentials.** Finding: 3D stable pair potentials with a first-order transition (free-energy derivative jump), including a bounded continuous one — Simon's problem realized. Approach: continuum Pirogov–Sinai droplet expansions with metastable comparison. Lesson: Pirogov–Sinai reaches continuum systems.
+
+**229. Reconstruction thresholds.** Finding: exact threshold dλ²>1 (equality nonreconstruction) for 3-state symmetric and 4-state ferromagnetic broadcasting on trees; gives the 3-community block-model recovery threshold. Approach: second-moment bounds to the endpoint; magnetization fixed-point analysis. Lesson: Kesten–Stigum is tight at q=3,4.
+
+**230. Hausdorff measure of SLE.** Finding: the gauge r^d(log 1/r)^{(2−d)/2}, d=1+κ/8, has positive finite measure on SLE trace segments — Schramm's question resolved. Approach: Beurling/martingale neighborhood estimates calibrated by SLE self-similarity. Lesson: Minkowski estimates plus self-similarity fix gauges.
+
+**231. FUSF is a factor of IID.** Finding: the FUSF is a factor of iid on every graph; likewise invariant strongly Rayleigh processes on groups. Approach: Wilson's algorithm at infinity with an invariant random root, via loop-erased walk labels. Lesson: LERW algorithms are equivariant.
+
+**232. Lipschitz height models.** Finding: triangular-lattice integer/real Lipschitz height models converge to Gaussian fields; at tuned amplitude the interface is SLE₄. Approach: harmonic observables, martingale convergence; Temperleyan observables with x-weights plus Loewner. Lesson: one tuned observable yields SLE₄.
+
+**233. Ashkin–Teller scaling limit.** Finding: on the whole critical line, AT heights converge to the predicted GFF and current clusters to its recursive sets, all nesting depths. Approach: FK/random-current representations tie spins and currents; heights via double dimers; clusters via CLE₄-type exploration. Lesson: currents expose the cluster tree.
+
+**234. Orthogonally invariant spin glasses.** Finding: exact variational formula for the limiting pressure at all temperatures for Haar-rotated spectra; ground-state energy as T→0. Approach: asymptotic freeness reduces disorder to a spectral measure; Panchenko-style synchronization gives a functional order parameter. Lesson: free probability ports Parisi theory to invariant disorder.
+
+**235. Random k-SAT.** Finding: finite positive thresholds and Θ(n) hitting-time variance for k≥3; computability of the 3-SAT threshold (crediting Carenini's concurrent threshold proof). Approach: first/second moment with exposure variance control; a computable enclosure. Lesson: hitting-time and thresholds share one bookkeeping.
+
+**236. Free Ising states on trees.** Finding: the free ferromagnetic Ising state on the d-regular tree is a factor of iid exactly for β(d−1)^{−1/2} ≤ 1, equality included. Approach: equivariant boundary-message sampling with transfer positivity; decimability obstruction. Lesson: factors of iid obey the reconstruction threshold.
+
+**237. Honeycomb self-avoiding walks.** Finding: uniform n-step honeycomb SAWs have diameter n^{3/4+o(1)} (Nienhuis's exponent); local mass/covering exponent 4/3, uniform across scales. Approach: finite-energy tube/bridge transfer estimates propagate covering bounds across scales. Lesson: tube estimates fix SAW exponents without SLE.
+
+**238. Thorp shuffle.** Finding: the Thorp shuffle mixes 2^d cards in O(d) shuffles, worst case — optimal. Approach: coupling certified by routing densities whose compatibility entropy contracts per shuffle. Lesson: entropy-contraction certificates beat path coupling.
+
+**239. Singularity of symmetric sign matrices.** Finding: P(A_n=0)=(1/2+o(1))^n for uniform signs; sharp biased rate (p²+(1−p)²+o(1))^n, attained by agreeing rows. Approach: isolate the row-agreement event, then least-singular-value and anticoncentration estimates. Lesson: isolate the dominant event.
+
+## Subject 17
+
+**260. Spacetime Penrose inequalities.** Finding: sharp enclosing-area spacetime Penrose inequality in all dimensions n≥3 under dominant energy and weak trapping, with rigidity; charged extensions. Approach: area-contrast estimates along a minimum-enclosing foliation reduce to a Jang-type problem. Lesson: enclosing-area functionals are the right quantity.
+
+**261. Anderson model.** Finding: uniform potentials: pure point spectrum at all disorder in d=2; purely ac spectrum with positive weight at weak disorder in d≥3. Approach: fractional-moment estimates versus a convergent resolvent path expansion. Lesson: the dichotomy follows from matching expansions.
+
+**262. 1D Lieb–Thirring.** Finding: the sharp 1D matrix-potential constant is the scalar one-bound-state value; equality exactly sums of sech² solitons plus zero channels. Approach: stabilization plus integrable spectral-curve methods. Lesson: solitons are the equality cases of sharp inequalities.
+
+**263. Ionization.** Finding: molecules of charge Z bind at most Z+CM electrons; universal ionization-energy and outer-radius bounds; TF asymptotics for removal costs. Approach: refined kinetic inequalities and IMS localization; TF with localized error. Lesson: kinetic inequalities gate binding.
+
+**264. Strong cosmic censorship near Kerr.** Finding: near each subextremal Kerr bridge, generic two-ended asymptotically flat data have C²-inextendible developments (square-integrable connection criterion), no symmetry. Approach: quantitative blue-shift instability propagated through a characteristic construction; genericity by transversality. Lesson: linear instability drives nonlinear inextendibility.
+
+**★265. Gapped area law and PEPS.** Finding: unique ground states of finite-range Hamiltonians on square-lattice domains obey an entropy area law from a uniform gap alone; on L×L squares, gapped nearest-neighbor ground states admit PEPS approximations with polynomial bond dimension and error ≤ L^{−1}. Approach: detectability lemma / quasi-adiabatic continuation — the gap generates local unitaries on nested regions, giving clustering and the area law; the PEPS truncates the circuit's bonds. Lesson: a gap, fed through quasi-adiabatic flow, becomes entropic and tensor-network structure.
+
+**266. MUBs in dimension six.** Finding: N(6)=3 — Zauner's dimension-six conjecture, by certified computation; companion proof of the Matolcsi–Ruzsa–Weiner conjecture. Approach: exhaustive orbit search over complex Hadamards with binary64 certificates. Lesson: certified computation proves finite quantum conjectures.
+
+**★267. Positive-temperature BEC.** Finding: the canonical Gibbs state of the 3D hard-sphere gas has BEC — for each exclusion distance and small density there is a positive volume-independent temperature with positive condensate fraction; at T=0 the Bogoliubov depletion law holds for repulsive potentials. Approach (intro): a positive-temperature extension of the short-path/bridge method — the Gibbs kernel is factored through its square root so the density matrix is bounded below by comparing path pairs sharing a bath; localization and tilting give joint control over many cells; trajectory certificates plus obstacle-skeleton percolation show survival. Lesson: zero-temperature path comparisons retool for thermal states; the hard part is joint local control over many cells.
+
+**268. Spin-one Haldane gap.** Finding: the spin-1 antiferromagnetic Heisenberg chain on even periodic rings has a uniform spectral gap (Haldane's conjecture); companion boundary-field and index results. Approach: AKLT-type MPS structure — a domain-wall automaton with chemical-potential comparison. Lesson: MPS turns 1D gaps into wall counts.
+
+**★269. Laughlin gap stability.** Finding: the Laughlin V₁ Hamiltonian at filling 1/3 on round spheres keeps a unique ground state and a uniform gap under weak scalar one-body potentials in the LLL; gap and threshold uniform over all large N and profiles. Approach (intro): takes the unperturbed Fock-space gap of a companion V₁ inequality as input; a local LLL calculus (coherent orbitals, pair annihilators, propagation estimates) transports observables along a gapped path between fluxes; rotation averaging yields a positive four-body term coercing charge; relative bounds show a weak potential cannot close the gap, constants certified. Lesson: gap stability = unperturbed gap + observable transport + a coercive averaged interaction.
+
+**270. BFSS bound states.** Finding: relative SU(N) BFSS has exactly one normalizable zero-energy state per N≥2; SU(2) has infinitely many positive-energy bound states, contradicting the original paper. Approach: a variational family verified against the supercharge square; coherent-state ansätze for the tower. Lesson: SUSY algebra plus ansätze settle bound states.
+
+**271. Bloch's law.** Finding: T^{3/2} law with exact coefficient for 3D Heisenberg ferromagnets (all spins, finite-range couplings); spontaneous magnetization for d≥3; first lattice correction. Approach: Bogoliubov magnon bounds via correlation inequalities; magnetization via the infrared bound and reflection positivity. Lesson: magnon inequalities give exact coefficients.
+
+**272. Entanglement without secret key; PPT-square.** Finding: an entangled state on C¹⁰⊗C¹⁰ with zero distillable secret key; a PPT channel on M₂₁ whose square is not entanglement-breaking — Christandl's PPT-square conjecture disproved. Approach: explicit tensor constructions certified by LP-duality witnesses. Lesson: small dimensions admit certification.
+
+**273. Entropy photon-number inequality.** Finding: beam-splitter outputs have entropy photon number at least the transmissivity-weighted input average, any input entanglement; thermal inputs attain equality. Approach: quantum heat-semigroup de Bruijn argument; Gaussian extremality. Lesson: entropy-power inequalities lift to quantum optics.
+
+**274. QAC⁰ parity lower bound.** Finding: QAC⁰ circuits (Toffoli gates, measured output) cannot compute parity with fixed positive advantage; same for strict majority via Xu–Li. Approach: light-cone polynomial method — low-degree output polynomial, influence pruning, anticoncentration (Raz's method quantized). Lesson: classical lower-bound techniques extend to measured quantum outputs.
+
+**275. QMA-hardness of continuum Coulomb energy.** Finding: the 3D continuum Coulomb energy infimum is QMA-hard even with unit-charge rational nuclei. Approach: Feynman–Kitaev clocks in electron-confinement configurations with gap amplification. Lesson: continuum chemistry inherits QMA-hardness.
+
+**276. GAD channel capacity.** Finding: unassisted classical capacity of every qubit generalized amplitude-damping channel found by one-variable optimization; additivity with all finite-dimensional channels. Approach: three-line/Jensen extremality; concavity gives additivity. Lesson: one-parameter channels yield to convex extremality.
+
+**277. Threshold repetition for entangled games.** Finding: for any two-prover game with entangled value v<1, winning v+ε of k repetitions decays exponentially. Approach: threshold parallel-repetition via martingale/entropy transcript control. Lesson: amplification needs only a value gap.
+
+**278. Kohn–Sham representability failure.** Finding: a three-electron two-nucleus Coulomb molecule's ground density has no Kohn–Sham ensemble representation in L^{3/2}+L^∞. Approach: exact-arithmetic construction plus a concavity/Hohenberg–Kohn contradiction. Lesson: DFT representability fails.
+
+**279. Exact quantum factoring.** Finding: polynomial-time quantum circuits factor every integer with probability one over a fixed finite gate set. Approach: exact compilation of rotations into the gate set plus deterministic modular arithmetic. Lesson: exact universality removes error bookkeeping.
+
+**280. Strongly rational VOAs.** Finding: every simple unitary strongly rational VOA generates a completely rational conformal net, with matching braided tensor categories of modules/sectors. Approach: unitarizability plus spectral flow and braiding construct the net. Lesson: VOA and net pictures coincide.
+
+**★281. QAOA attains the SK ground-state energy.** Finding: QAOA reaches the SK ground-state energy per spin with size tending to infinity before depth — finite depth and deterministic size/disorder-independent angles achieve any accuracy, proving the eventual Parisi-optimality conjecture — plus optimal leading-order MaxCut on large-degree random regular graphs. Approach (intro): a fixed-word tree calculus — a word's SK energy equals its √D-scaled tree expectation, a bounded quadratic form on a Gaussian occupation space with a unitary central limit; a near-optimal bounded classical formula (finite-iteration Parisi) is synthesized into gates via masked controls through unused spins, a contraction bounding the error; temporary seed controls run the computation and are removed via packet invariants and a singular echo, leaving an ordinary QAOA word. No depth bound given. Lesson: depth optimality reduces to classical-function synthesis in the fixed-word Gaussian limit space.
+
+**282. Scale-to-conformal in 4D QFT.** Finding: scale symmetry implies local conformal symmetry for 4D unitary QFTs with discrete scaling spectrum and a local scale current; traceless stress-tensor improvement. Approach: Ward-identity analysis; discreteness upgrades scale to special conformal identities. Lesson: spectral discreteness is the operative hypothesis.
+
+**283. Unitary synthesis from a Boolean oracle.** Finding: every n-qubit unitary is approximable within diamond-norm 1/2 by a polynomial-size circuit with a suitable Boolean oracle — constant-error Aaronson–Kuperberg. Approach: phase-kickback query simulation with amplified oracle copies. Lesson: synthesis needs constant error only.
+
+**284. Randomized vs quantum query complexity.** Finding: R(f)=O((1+Q(f))⁴) is sharp in the exponent for total Boolean functions — the conjectured cubic bound fails. Approach: a nearly quartic separation via composition with exactly computed adversary/polynomial bounds. Lesson: tight composition drives separations.
+
+## Meta-lessons (Probability, Stat Mech & Physics)
+
+- **Guerra interpolation and A-S schemes dominate the spin-glass program.** Free energy, fluctuations (#217), diluted systems (#221), perceptrons (#222), invariant disorder (#234), and dynamics (#227) reduce to interpolation against covariance-perturbed auxiliary systems. Multioverlap concentration falls to depth averaging (#221), Parisi-density structure (#217), or free probability (#234).
+- **SLE/Loewner technology rests on discrete holomorphic observables — and survives their absence.** FK interfaces (#223) rebuild observable theory from partition-function budgets plus one four-change observable; Ising universality (#218), heights (#232), AT currents (#233), double dimers (#226), Voronoi (#224), SLE measure (#230), SAW diameter (#237) follow.
+- **Rigorous renormalization wins phase transitions and their constants.** BKT logarithms (#216), the O(3) mass gap and O(4) asymptotics (#215), continuum transitions (#228), and the SAW exponent (#237) combine solvable representations with contour renormalization; BEC (#267) is the many-body analogue, joint multi-cell thermal control the obstacle.
+- **Fock-space gap transport is the workhorse of quantum stability.** Laughlin stability (#269) imports a uniform gap, transports observables along gapped paths, and rotation-averages to a coercive interaction; the same architecture appears as quasi-adiabatic continuation in the area law/PEPS (#265), magnon inequalities (#271), and MPS wall-counting for Haldane (#268).
+- **Duality and random-current representations convert universality into comparison.** Switching identities carry Ising observables through perturbations and disorder (#218), expose AT current-cluster trees (#233), support the free-box XY analysis (#216), and feed equivariant sampling for factors of iid (#231, #236).
+- **The computation interface is thick.** QAOA provably reaches the SK Parisi optimum and optimal MaxCut on high-degree regular graphs (#281). Sampling connects to inference: SAT thresholds (#235), reconstruction = block-model recovery (#229), Thorp shuffle (#238). Quantum information gives counterexamples (#272, #278, #266) and lower bounds (#274, #275, #284); certified numerics (#266, #269) and exact compilation (#279) make proof computational.

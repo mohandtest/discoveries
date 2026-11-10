@@ -1,0 +1,19 @@
+# Subject 6: Mathematical logic
+
+## 240. Shelah's eventual categoricity conjecture
+Proves Shelah's eventual categoricity conjecture in ZFC: for each bound on the L\"owenheim--Skolem number, a uniform threshold makes categoricity of an abstract elementary class in one cardinal above that threshold imply categoricity throughout the same tail. Categoricity means uniqueness up to isomorphism at a given cardinality. Under the continuum hypothesis, a proposed specific Hanf threshold need not suffice.
+
+## 241. Rigidity of the Turing degrees
+Every order automorphism of the Turing degrees is the identity, resolving their rigidity problem. Thus no nontrivial relabeling of degrees preserves the ordering by relative computability.
+
+## 242. Single-fold Diophantine representations
+Every recursively enumerable set of tuples of natural numbers has a Diophantine representation with exactly one auxiliary solution for each member and none for nonmembers. This proves the single-fold conjecture and hence the finite-fold conjecture. Diophantine solvability over the nonnegative integers remains undecidable even with an at-most-one-solution promise.
+
+## 243. Choiceless counting does not capture polynomial time
+Confirms the Blass--Gurevich--Shelah noncapture conjecture: consistency of a linear system over F_3 defines a polynomial-time query on unordered finite structures that choiceless polynomial time with counting cannot express. A separate result shows that adding witnessed symmetric choice strictly increases expressive power. Both separations hold for the full counting formalism, allowing hereditarily finite sets of arbitrary finite rank.
+
+## 244. The partition principle does not imply choice
+Assuming ZF is consistent, constructs a model in which every surjective image of a set injects into that set, yet the axiom of choice fails. Choice for ordinal-indexed families still holds. From any countable transitive model of ZFC, a separate construction gives a transitive symmetric extension with these properties and no new countable sequences of ground-model elements.
+
+## 245. The -Barendregt--Geuvers--Klop conjecture
+Proves that weak normalization implies strong normalization for every pure type system: if every legal expression in every valid context has a -normal form, every -reduction sequence terminates. This resolves the -Barendregt--Geuvers--Klop conjecture, including nonfunctional rules and open contexts.

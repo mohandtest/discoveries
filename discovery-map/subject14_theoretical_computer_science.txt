@@ -1,0 +1,124 @@
+# Subject 14: Theoretical computer science
+
+## 102. The Unique Games Conjecture and optimal approximation thresholds
+Proves Khot's Unique Games Conjecture. Independent direct reductions also establish NP-hardness, on unweighted graphs, of approximation beyond the Goemans--Williamson ratio for Max-Cut, below factor two for Vertex Cover, and within any fixed constant factor for Min-UnCut and directed feedback vertex set. These direct proofs use established PCP and Label Cover hardness results.
+
+## 103. Derandomization of logarithmic space: L= RL = BPL
+Proves L= RL = BPL , resolving derandomization for bounded-error logarithmic-space computation. An effective compiler converts each randomized polynomial-time logarithmic-space machine deciding a language with one-sided or two-sided error into a deterministic logarithmic-space decider with explicit polynomial running-time bounds.
+
+## 104. Quasipolynomial algorithms for mean-payoff, stochastic and parity games
+Gives deterministic algorithms using 2^ O(( (L+2))^2) bit operations, for complete binary input length L, for ordinary mean-payoff games and two separate extensions. They compute exact values and optimal positional strategies in ordinary games, the nonnegative expectation-of-liminf value set in turn-based stochastic games, and the winning set for nonnegative liminf mean payoff conjoined with parity. Signed rewards, rational chance probabilities, and parity priorities are unrestricted and binary-encoded.
+
+## 105. The 2-to-1 Games Conjecture with perfect completeness
+Proves Khot's 2-to-1 Games Conjecture with perfect completeness: for every fixed rational (0,1), it is NP-hard to distinguish satisfiable games from games whose optimum is at most , on explicit unweighted instances. The alphabet depends only on , and every right-hand label has exactly two preimages under each constraint map.
+
+## 106. Hardness of coloring three-colorable graphs
+It is NP-hard to color a three-colorable graph using any fixed number c 3 of colors. More strongly, for every fixed 0< <1/3, a deterministic polynomial-time reduction from 3SAT produces simple unweighted graphs that are three-colorable in the satisfiable case and have no independent set of size n otherwise, where n is the number of vertices.
+
+## 107. Matrix multiplication with exponent at most 9/4
+Proves 9/4 over C, giving O_ (n^ 9/4+ ) arithmetic operations for square matrix multiplication. In characteristic zero, some inner dimension n^a with a>0.465 permits n^ 2+o(1) rectangular multiplication. Further square bounds give <2.258 outside finitely many positive characteristics and <2.371054886006746 over every fixed field.
+
+## 108. A cubic permanent--determinant lower bound
+Proves an (n^3) lower bound for the border determinantal complexity of the n n permanent over C. Even coefficientwise limits of determinants of affine-linear matrices require matrix size at least cn^3, for an absolute c>0 and all sufficiently large n; the same bound therefore holds for exact representations.
+
+## 109. Integer multiplication below n n
+Multiplies two n-bit integers exactly at every input length in deterministic worst-case time O(n( n)^ 1- ), with =2^ -182 , on one fixed finite-alphabet Turing machine with finitely many one-dimensional tapes. This disproves the Sch\"onhage--Strassen n n optimality conjecture in the ordinary multitape bit model.
+
+## 110. Optimal-order randomized k-server on arbitrary metrics
+Establishes a randomized competitive ratio O( ^2(k+1)) for k-server on every metric space, matching the worst-case lower-bound order. One policy serves every finite oblivious request sequence, including on infinite unbounded metrics. On finite rational metrics, a uniform implementation has polynomial preprocessing and per-request bit cost in the input length and (t+1) at request t, with a finite instance-dependent additive movement constant.
+
+## 111. One-sample matroid prophet inequalities against an almighty adversary
+For every finite matroid known in advance, gives a distribution-independent online rule using one independent sample per element and earning a universal constant fraction of the expected offline optimum. Values are independent and nonnegative, with finite expected optimum. The guarantee holds even when the arrival-order adversary sees all samples, values, and the rule's entire random seed; no polynomial-time implementation is asserted.
+
+## 112. Beyond the square-root exponent for depth-three circuits
+Constructs a single language in deterministic polynomial time whose n-bit membership function requires 2^ ( n) total gates in unbounded-fan-in OR--AND--OR circuits, at every sufficiently large input length. This crosses the square-root-exponent threshold for explicit depth-three Boolean circuit lower bounds.
+
+## 113. Approximate counting and the perfect-matching entropy conjecture
+Gives a fully polynomial randomized approximation scheme for counting perfect matchings in arbitrary finite simple graphs, with exact detection of zero counts. Also proves the perfect-matching entropy conjecture of Anari, Oveis Gharan, and Vinzant, bounding the maximum entropy of a matching law at every feasible edge-marginal vector in a loopless labelled multigraph, including boundary points.
+
+## 114. Approximate counting of common integer polymatroid bases
+Gives a fully polynomial randomized approximation scheme for counting common integer bases of two integral polymatroids of equal total rank, supplied by exact rank-value oracles. Capacities are binary-encoded, each integer vector counts once, and oracle calls and bit operations outside the oracles are polynomial on every execution. For matroids presented by independence oracles, the results also cover common independent sets of prescribed, unrestricted, or maximum cardinality, even when the ranks differ.
+
+## 115. Sampling and counting contingency tables with arbitrary margins
+For nonnegative integer matrices with prescribed row and column sums, gives exact uniform sampling in expected polynomial bit time and almost-uniform sampling in worst-case polynomial bit time. The dimensions and binary-encoded margins are unrestricted. Also gives a fully polynomial randomized approximation scheme for counting such tables with arbitrary individual cell bounds, including structural zeros, with polynomial cost on every execution.
+
+## 116. Uniform identity testing for noncommutative formulas
+For each characteristic, constructs in deterministic polynomial bit time a polynomial-dimensional matrix tuple detecting every nonzero division-free noncommutative formula of bounded size over any field of that characteristic. Rational formulas over Q also admit polynomial-size hitting lists whenever they have a defined rational-matrix evaluation.
+
+## 117. Uniform sparsest cut: hardness and semidefinite gaps
+Proves that approximating Uniform Sparsest Cut within any fixed constant factor is NP-hard, even with nonnegative rational capacities and unit demands. The Goemans--Linial semidefinite relaxation also has integrality gaps of order at least n /( n)^3, approaching the square-root-logarithmic upper bound.
+
+## 118. Unbounded bin-packing gaps and the modified integer round-up conjecture
+Disproves the modified integer round-up conjecture of Scheithauer and Terno: the integral bin-packing optimum can exceed its configuration linear-programming value by an arbitrarily large additive constant. Approximating the optimum within any fixed additive constant is also NP-hard, even when every item exceeds 1/6 and each bin holds at most five items.
+
+## 119. The Courtade--Kumar and Hellinger conjectures
+Proves the Courtade--Kumar conjecture: among Boolean functions of independent uniform bits, a single coordinate retains the most mutual information after independent bit-flip noise. A stronger theorem treats randomized binary summaries at fixed initial information. The Hellinger conjecture is also proved for every Boolean output bias and noise correlation.
+
+## 120. Almost-linear-time exact matching in general graphs
+Gives a randomized algorithm finding an exact maximum-cardinality matching in any simple undirected graph in (n+m)^ 1+o(1) word time, with success probability at least 2/3. The time bound holds on every computation path. The same guarantees apply to finding a spanning subgraph with prescribed admissible vertex degrees, or deciding that none exists.
+
+## 121. Almost-linear expected-time approximation of edit distance
+For every fixed rational (0,1), gives a randomized (1+ ) approximation to unit-cost edit distance in worst-case expected time N^ 1+o(1) , with success probability at least 2/3. The strings have total length N and polynomially bounded integer symbols. This is an asymptotic guarantee at fixed accuracy.
+
+## 122. Superpolynomial lower bounds and quasipolynomial reconstruction from deletion traces
+At every fixed deletion probability in (0,1), reconstructing an arbitrary length-n binary string requires n^ ( n) independent traces, ruling out polynomial-sample reconstruction. A uniform decoder achieves quasipolynomial sample and running-time bounds for known fixed rational retention probabilities. When the deletion probability is at most n^ - for fixed >0, both bounds become polynomial in the input and parameter encoding.
+
+## 124. Polynomial-time scheduling on three identical machines
+Resolves the three-processor unit-job scheduling problem of Garey and Johnson: a deterministic polynomial-time algorithm minimizes makespan for nonpreemptive unit-length jobs with arbitrary precedence constraints on three identical parallel machines. For an explicitly given precedence graph, it decides deadline feasibility exactly and constructs a feasible schedule.
+
+## 125. The approximation threshold for metric k-median
+Gives a deterministic polynomial-time (1+2/e+ )-approximation for finite rational metric k-median with specified candidate facilities, for every fixed >0. Assuming P NP, the optimal infimum approximation factor is 1+2/e.
+
+## 126. Exponential semidefinite complexity of perfect matching
+Proves that every exact semidefinite lift of the perfect matching polytope has exponential size, answering Rothvoss's polynomial-size lift question negatively. The bound holds even for the positive semidefinite rank of its odd-cut slack matrix after any fixed shift 0< <1, allowing arbitrary real positive semidefinite factors.
+
+## 127. The asymptotic Gotsman--Linial conjecture
+Proves that a degree-at-most-d polynomial threshold function on the uniform n-dimensional Boolean cube has average sensitivity at most 8d n, uniformly for 1 d n. Average sensitivity counts expected output changes under single-bit flips. This establishes the asymptotic Gotsman--Linial conjecture, allowing polynomial zeros with sign (0)=1.
+
+## 128. A factor-two approximation for shortest common superstring
+Gives a deterministic polynomial-time algorithm constructing a common superstring of length at most twice the optimum for every finite family of explicitly represented strings. The running time is polynomial in the full encoded input length, including symbol labels.
+
+## 129. Exponential state costs for two-way automata
+Proves exponential lower bounds both for complementing two-way nondeterministic finite automata and for simulating one-way nondeterministic automata by two-way deterministic ones. The latter resolves the Sakoda--Sipser state-succinctness conjecture over growing finite alphabets; both results rule out polynomial state bounds independent of alphabet size.
+
+## 130. Fourier transforms below n n
+Gives a deterministic length-n discrete Fourier transform algorithm using O(n( n)^ 1- ) operations for every n, with explicit =10^ -13 . The model uses exact complex arithmetic, unrestricted coefficients and a supplied root of unity, and counts scalar preparation and logarithmic-word indexing.
+
+## 131. Polynomial mixing of graph switches with prescribed degrees
+Resolves the simple-undirected Kannan--Tetali--Vempala conjecture: the lazy edge-switch chain mixes in O(n^8) time for every graphical labeled degree sequence. The same degree-constrained graphs can also be sampled exactly uniformly by an almost-surely terminating algorithm with expected polynomial bit running time.
+
+## 132. A counterexample to the quadratic sensitivity conjecture
+Constructs total Boolean functions with block sensitivity bs (f) s(f)^ for a fixed >2, disproving the quadratic strengthening of the Sensitivity Conjecture. Here s(f) counts influential individual-bit flips, while block sensitivity allows disjoint groups of bits to change together.
+
+## 133. The complexity of Weisfeiler--Leman refinement
+Proves unconditional n^ (k) deterministic time lower bounds for joint and separate k-dimensional Weisfeiler--Leman equivalence, for sufficiently large fixed k in the specified sequential adjacency-matrix models. With dimension as input, joint equivalence is EXPTIME-complete even on subcubic graphs; deciding whether refinement identifies a graph is also EXPTIME-complete.
+
+## 134. Generalized star height at most three
+Every regular language over a finite alphabet has a generalized regular expression with at most three nested Kleene stars, allowing union, concatenation and complement over the same alphabet. This establishes an absolute bound independent of automaton size, resolving the uniform-boundedness version of the generalized star-height problem.
+
+## 135. Sharp homogeneous depth-five complexity of matrix products
+Over every characteristic-zero field, the (1,1) entry of a product of n independent n n variable matrices requires n^ ( n) gates in homogeneous depth-five sum--product circuits. This sharp bound allows shared gates and bottom linear forms involving all variables.
+
+## 136. The quasilinear PCP-for-PPAD conjecture
+Resolves the quasilinear PCP-for-PPAD conjecture. An End-of-Line instance of length N reduces to numerical circuit constraints of total length N( N)^ O(1) such that any polynomially encoded rational assignment satisfying all but a fixed fraction to fixed accuracy yields an endpoint solution. Such assignments always exist, giving robust local verification with only quasilinear size overhead.
+
+## 137. One-tape time simulation in two-fifths-power space
+Determines the halting and finite-control outcome of a fixed deterministic one-writable-tape machine up to time T using O(T^ 2/5 ^C(T+2)) space, improving the square-root exponent. Heads move at most one cell per step; finitely many read-only input heads are allowed. Initial contents are independent of T, and contents and input symbols have polylogarithmic-space access. Simulation time is unrestricted.
+
+## 138. Subset Sum in O(2^ 0.49n ) time
+Gives a uniform randomized classical algorithm for worst-case Subset Sum in ordinary O(2^ 0.49n ) word-RAM time on polynomial-bit inputs, where n counts the integers. The time bound holds on every execution and success probability is at least 2/3 on every input. Inputs may repeat positive integers; words have O(n+b) bits for maximum input bit length b.
+
+## 139. Subpolynomial queries for log-concave sampling
+For C^2 potentials with a supplied minimizer and I ^2V 2I, proves that sampling within total variation 1/10 requires only C_ d^ exact value-and-gradient queries for every fixed >0. The bound holds on every run, with unrestricted computation between queries. A logarithmic lower bound also holds, so the optimal power-law exponent in this oracle model is zero.
+
+## 140. Memory--sample lower bounds for noiseless Gaussian regression
+For fixed A>0, a one-pass learner with Ad^2 persistent bits needs _A(d (1/ )) noiseless Gaussian samples to recover a unit vector to angular error 0< 1/10 with probability 2/3, uniformly in accuracy for large d. Computation and randomized updates are unrestricted, but output uses only the terminal state, stopping index and fresh randomness.
+
+## 141. The existential theory of the reals and existential--universal sentences in the counting hierarchy
+Proves that the existential theory of the reals lies in the counting hierarchy. More generally, truth of existential--universal real sentences can be decided at one fixed level of that hierarchy, even when their integer polynomials are specified by arithmetic circuits.
+
+## 142. Deterministic polynomial factorization over prime fields
+Gives a uniform deterministic algorithm that completely factors every nonzero dense degree-n polynomial over a prime field F_p, including multiplicities, in bit complexity polynomial in (n+1) p. The prime is supplied in binary. No randomness, integer-factorization or primitive-root oracle, or GRH assumption is required.
+
+## 378. Disproof of the Exponential Time Hypothesis
+For every fixed k 2, a deterministic algorithm counts the satisfying assignments of a k-CNF with n variables and m clauses in time (n+m)^ O_k(1) 2^ n/( n)^ 1/2+o(1) . This yields superlinear circuit lower bounds for a language in E ^ NP on infinitely many input lengths.

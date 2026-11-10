@@ -1,0 +1,34 @@
+# Subject 11: Functional analysis
+
+## 322. Tingley's sphere-isometry problem
+Resolves Tingley's problem: every surjective isometry between the unit spheres of nonzero real Banach spaces extends uniquely to a surjective real-linear isometry of the whole spaces. No dimension restriction is imposed, so the metric geometry of the unit sphere determines the Banach space up to linear isometry.
+
+## 323. Relative independence of the separable quotient problem
+Establishes, relative to the consistency of a measurable cardinal, that the separable quotient problem is independent of ZFC. The assertion that every infinite-dimensional Banach space has a separable infinite-dimensional quotient can hold for all real and complex Banach spaces, whereas the continuum hypothesis yields counterexamples over both fields.
+
+## 324. Lipschitz equivalence without linear isomorphism
+Constructs separable real Banach spaces that are globally bi-Lipschitz equivalent but not linearly isomorphic, resolving the separable Lipschitz-isomorphism problem negatively. Thus even the complete metric structure up to bi-Lipschitz equivalence does not determine a separable Banach space's linear isomorphism class.
+
+## 325. The complete Crouzeix conjecture
+Resolves the complete Crouzeix conjecture: for every bounded operator A on a complex Hilbert space and every finite matrix-valued polynomial P, one has P[A] 2 _ z W(A) P(z) , where W(A) is the numerical range. The constant 2 is sharp, independent of the matrix size, and valid in infinite dimensions.
+
+## 326. The cotype--cotype conjecture under the approximation property
+Resolves the cotype--cotype conjecture for real Banach spaces with the approximation property. Such a nonzero space is K-convex if and only if both it and its dual have finite Rademacher cotype, with possibly different exponents. Equivalently, these cotype assumptions force nontrivial Rademacher type.
+
+## 327. Markov type characterizes superreflexivity
+Proves that every real Banach space with Markov type p for some p>1 admits an equivalent uniformly convex norm, answering Naor's renorming question. Together with the known converse, this characterizes superreflexivity by nontrivial Markov type.
+
+## 328. Fixed points of nonexpansive maps in reflexive Banach spaces
+Resolves Kirk's reflexive-space fixed-point problem: every nonexpansive selfmap of a nonempty closed bounded convex subset of a real reflexive Banach space has a fixed point. The result uses the original norm, without assuming uniform convexity.
+
+## 329. A counterexample to Pietsch's metric-entropy duality conjecture
+Disproves Pietsch's dimension-free duality conjecture for metric entropy. Origin-symmetric convex bodies violate every proposed choice of universal constants in the conjectured comparison between covering numbers and those of the polar bodies, even when the covering body is a cube.
+
+## 330. A negative answer to Kalton's Lipschitz-free approximation question
+Constructs a countable uniformly discrete metric space whose real Lipschitz-free Banach space has the approximation property but not the bounded approximation property, answering Kalton's question negatively. Finite-rank operators approximate the identity on every compact set, but their norms cannot share a finite bound.
+
+## 331. Asymptotic midpoint uniform convexity without asymptotically uniformly convex renorming
+Constructs a real reflexive Banach space with an asymptotically midpoint uniformly convex norm but no equivalent asymptotically uniformly convex norm, extending Baudier's separation to reflexive spaces. In the same space, depth-k countably branching diamonds require distortion at least 1+k/12 , so midpoint uniform convexity does not force uniformly bounded diamond distortion even under reflexivity.
+
+## 332. Metric Markov cotype two for _1
+Proves that real _1 has metric Markov cotype two, answering Mendel and Naor's question. Consequently, every Lipschitz map from an arbitrary subset of a real Hilbert space into _1 extends to the whole space with a universal multiplicative loss in its Lipschitz constant, resolving Ball's extension problem for this target.

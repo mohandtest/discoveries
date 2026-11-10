@@ -1,0 +1,109 @@
+# Subject 3: Algebraic and complex geometry
+
+## 032. The rational Hodge conjecture for CM abelian varieties
+Proves the rational Hodge conjecture for every complex CM abelian variety, in every dimension and codimension. Through Milne's theorems, this also gives the Tate conjecture for all abelian varieties over finite fields and the Hodge standard conjecture for abelian varieties in every characteristic.
+
+## 033. Campana's orbifold Iitaka conjecture and logarithmic subadditivity
+Proves Campana's orbifold Iitaka subadditivity conjecture for smooth Fujiki-class- C manifolds with rational simple-normal-crossing boundaries. For projective fibrations f:U V of smooth complex quasi-projective varieties with connected fibers, general fiber F, and (V) 0, proves Popa's inequality (U) (F)+ \ (V), Var (f)\ , where variation measures the whole geometric generic fiber.
+
+## 034. Log abundance and effective Iitaka fibrations
+Using logarithmic Iitaka subadditivity, proves log abundance in every dimension for normal compact K\"ahler log canonical pairs with effective rational boundary: an analytically nef Q-Cartier adjoint is semiample. It also proves projective log abundance over every algebraically closed field of characteristic zero and the effective Iitaka fibration conjecture for smooth projective varieties of nonnegative Kodaira dimension in that setting. A further result resolves the finite-rational-coefficient index conjecture for connected projective semi-log-canonical log Calabi--Yau pairs over such fields in each fixed dimension and for each fixed finite set of rational boundary coefficients, with a uniform index independent of the number of components.
+
+## 035. Threefold log abundance in numerical dimension one in characteristic p>3
+Proves log abundance for projective log canonical threefold pairs over algebraically closed fields of characteristic p>3 when the effective boundary is rational and the Q-Cartier adjoint is nef of numerical dimension one. The adjoint is semiample, without requiring the original variety to be terminal or Q-factorial.
+
+## 036. Numerical semiampleness and generalized minimal models
+Proves numerical semiampleness for nef adjoints K_X+B+M with K_X+B pseudo-effective and M nef rational, for projective klt rational pairs over algebraically closed characteristic-zero fields and smooth compact K\"ahler rational klt simple-normal-crossing pairs, using Bott--Chern cohomology in the latter case. Separately, projective generalized log canonical rational pairs over such fields admit minimal models for pseudo-effective adjoints and Mori fiber spaces otherwise, with nef b-data fixed.
+
+## 037. The sharp ordinary-double-point volume gap
+Proves the ordinary-double-point volume-gap conjecture: every singular complex algebraic klt germ of dimension n 2, with zero boundary, has normalized volume at most 2(n-1)^n. Equality holds precisely for an analytic ordinary double point.
+
+## 038. Fujita's freeness conjecture
+Proves Fujita's freeness conjecture at its sharp bound in every dimension: for a smooth projective complex variety X of dimension n and an ample line bundle L, the adjoint K_X+mL is globally generated for every integer m n+1.
+
+## 039. Nagata's conjecture and maximal Seshadri constants
+Proves Nagata's strict inequality _i m_i<d r for every nonzero effective plane curve of degree d through r 10 very general complex points, with arbitrary multiplicities m_i. It also proves maximal multipoint Seshadri constants (L^n/r)^ 1/n for every smooth polarized projective variety of dimension n 2 and all sufficiently large r: at very general points over C, and at the geometric generic tuple over any algebraically closed field of positive characteristic.
+
+## 040. Bloch's conjecture for complex surfaces
+Proves Bloch's conjecture: for every smooth connected projective complex surface S with p_g(S)=0, the Albanese map CH _0(S)^0 Alb (S)( C) on integral degree-zero zero-cycles is an isomorphism. This combines the new p_g=q=0 theorem with the classical theorem of Bloch, Kas, and Lieberman.
+
+## 041. Hyperk\"ahler SYZ and projective-space bases
+Proves the strong hyperk\"ahler SYZ conjecture: every holomorphic line bundle with nonzero nef isotropic first Chern class on a compact irreducible holomorphic symplectic K\"ahler manifold is semiample. It also proves that every projective Lagrangian fibration with normal projective base has projective space as its base, in every dimension and deformation type.
+
+## 042. Oka classification for K3 surfaces and other compact complex surfaces
+Proves that every complex K3 surface is Oka, including nonprojective surfaces. More generally, every connected minimal compact complex surface of Kodaira dimension zero is Oka; a connected minimal compact complex surface of class VII is Oka exactly when it is a Hopf or Enoki surface.
+
+## 043. P=W for fixed-determinant moduli spaces
+Proves P_k=W_ 2k =W_ 2k+1 on the full rational cohomology of smooth coprime fixed-determinant, trace-free Higgs moduli spaces and their character varieties for composite ranks over smooth projective complex curves of genus at least two. This includes variant cohomology and, together with the known prime-rank theorems, establishes the fixed-determinant P=W conjecture in every coprime rank.
+
+## 044. The equivariant cohomological Hikita conjecture for quivers
+Proves the equivariant cohomological Hikita correspondence for every finite quiver, including loops and multiple arrows, with arbitrary dimension and framing vectors and commuting flavor torus. When every semistable point is stable and the gauge action is free, the equivariant cohomology of the Nakajima variety is canonically the coordinate ring of the scheme-theoretic cocharacter-fixed locus of its flavor-deformed Coulomb branch.
+
+## 046. Counterexamples to Shafarevich holomorphic convexity
+Constructs a smooth projective complex fourfold with large fundamental group whose universal cover contains no positive-dimensional compact analytic subvariety but is neither Stein nor holomorphically convex. A separate smooth projective complex surface already disproves unrestricted Shafarevich holomorphic convexity in dimension two.
+
+## 047. Complex counterexamples to cancellation and affine fibrations
+Constructs an integral complex affine fourfold X A^4 with X A^1 A^5, disproving affine-space cancellation over C in dimension four. It also disproves the Dolgachev--Weisfeiler affine-fibration conjecture: smooth surjections X A^1 and A^5 A^2 have every residue-field fiber isomorphic to affine three-space but are not Zariski-locally trivial.
+
+## 048. A characteristic-zero counterexample to Lipman--Zariski
+Constructs a singular normal affine complex surface with free rank-two tangent sheaf, disproving the characteristic-zero Lipman--Zariski conjecture.
+
+## 049. A stable-coordinate counterexample in four variables
+Constructs a polynomial in four complex variables that is not a coordinate but becomes one after adjoining a single variable, disproving the Stable Coordinate conjecture in four variables. Every fiber is affine three-space, yet none of its embeddings is rectifiable, also disproving the Abhyankar--Sathaye conjecture even when all fibers are affine spaces.
+
+## 050. A counterexample to Griffiths' positivity conjecture
+Constructs ample rank-two bundles on P^1 P^1 with no smooth Hermitian metric of strictly Griffiths-positive curvature, disproving Griffiths' positivity conjecture already on the quadric surface.
+
+## 051. Kobayashi's canonical-ampleness conjecture
+Every compact connected K\"ahler manifold of positive complex dimension with no nonconstant entire curve has ample canonical bundle and is therefore projective. This proves Kobayashi's canonical-ampleness conjecture in the smooth compact K\"ahler setting.
+
+## 052. Tangent-bundle splittings and universal covers
+A splitting of the tangent bundle of a compact K\"ahler manifold into two integrable holomorphic subbundles induces a compatible product decomposition of its universal cover, proving the two-summand form of Beauville's splitting conjecture. On smooth rationally connected projective manifolds, both summands are automatically integrable, establishing H\"oring's conjecture and the corresponding product decomposition.
+
+## 053. A counterexample to Pixton's original completeness conjecture
+Constructs a tautological relation on a moduli space of stable pointed curves that vanishes in rational Chow, hence in rational cohomology, but lies outside Pixton's original relation span. This disproves the Chow and rational-cohomological forms of his original completeness conjecture.
+
+## 054. Counterexamples to Kuznetsov's rationality conjecture
+For every sufficiently large admissible Hassett discriminant, a very general smooth complex cubic fourfold is irrational despite having both an untwisted geometric K3 category and an integral Hodge-theoretic K3 association. This disproves Kuznetsov's rationality conjecture and the sufficiency of the associated-K3 criterion for rationality; the discriminant threshold is ineffective.
+
+## 055. Toda's Gepner conjecture and large-volume stability
+Proves Toda's Gepner conjecture for every smooth complex quintic threefold, constructing a numerical Bridgeland stability condition with the prescribed phase shift 2/5. Also constructs numerical Bridgeland stability conditions at every sufficiently large volume on all smooth projective complex threefolds with trivial canonical bundle, with the exact ordinary and square-root-Todd central charges.
+
+## 056. Termination of fourfold minimal model programs
+Proves termination of every existing generalized log canonical flip sequence on globally Weil Q-factorial compact K\"ahler fourfolds, with rational boundary, fixed rational analytically nef b-data, and projective small flip diagrams with the prescribed ample signs. Also proves termination of arbitrary permitted minimal model programs for projective log canonical fourfolds with rational boundary in characteristic zero.
+
+## 057. Campana's abelianity conjecture and special varieties
+Proves Campana's abelianity conjecture: special compact K\"ahler manifolds have virtually abelian fundamental groups. Using this theorem, establishes the same conclusion for order-two root orbifolds of smooth projective complex fourfolds along one nonempty smooth connected divisor, when special in the stated differential-line sense. For smooth special complex quasi-projective varieties, proves that every finite-dimensional complex linear representation of the fundamental group has virtually nilpotent image of class at most two.
+
+## 058. The Koll\'ar--Pardon universal-cover conjecture
+Proves the Koll\'ar--Pardon conjecture: the semialgebraic universal covers of connected normal projective complex varieties are exactly products D C^m F, with D bounded symmetric and F simply connected, normal, and projective. A universal cover is quasi-projective exactly when the bounded symmetric factor is absent. In particular, a smooth projective variety covered by C^n has a finite étale cover by an abelian variety.
+
+## 059. Counterexamples to Zariski's multiplicity conjecture
+Disproves Zariski's multiplicity conjecture by constructing reduced holomorphic hypersurface germs that are ambiently homeomorphic but have different multiplicities. The examples include hypersurfaces in C^4 with isolated critical points and multiplicities four and five.
+
+## 060. The Global Spherical Shell conjecture
+Every connected minimal compact complex surface of class VII with b_2>0 contains a global spherical shell, proving the positive-b_2 Global Spherical Shell conjecture. Such a shell is a holomorphically embedded neighborhood of the standard three-sphere in C^2 \ 0\ whose complement is connected.
+
+## 062. The LeBrun--Salamon conjecture and projective contact classification
+Proves the LeBrun--Salamon conjecture: every closed connected positive quaternionic-K\"ahler manifold of real dimension at least eight is homothetic to a compact symmetric Wolf space. It also proves contact-Fano homogeneity and classifies smooth connected complex projective contact manifolds of complex dimension at least three: those with b_2=1 are adjoint varieties with their canonical contact structures, while those with b_2 2 have underlying manifold P(T^*Z) for a smooth projective variety Z.
+
+## 063. The generalized Mukai conjecture
+Proves the generalized Mukai conjecture: every positive-dimensional smooth complex projective Fano manifold of dimension n, Picard number and pseudoindex satisfies ( -1) n, with equality exactly for ( P^ -1 )^ . Here the pseudoindex is the least anticanonical degree of a rational curve.
+
+## 064. The -constant problem for surface singularities
+Proves topological right-triviality for every holomorphic one-parameter family of isolated hypersurface singularities in C^3 with constant Milnor number, resolving the surface case of the -constant problem. After shrinking the parameter disk and representatives, ambient homeomorphisms vary jointly continuously, fix the origin section and preserve the defining functions.
+
+## 065. Virasoro constraints for complete intersections and projective bundles
+Proves the full ordinary unreduced descendant Virasoro conjecture for smooth complete intersections in complex projective space, in every genus and curve class with arbitrary cohomology insertions. The constraints also pass from any smooth projective complex base satisfying them to the projectivization of every algebraic vector bundle of rank at least two, and hence to projective-bundle towers.
+
+## 066. Bounded klt complements for Fano contractions
+Proves the finite-rational-coefficient form of Shokurov’s bounded-klt-complement conjecture for -lc complex Fano-type pairs with nef anti-log-canonical divisor. For -lc Fano contractions over any algebraically closed characteristic-zero field, it gives klt complements near every base point, with index bounded only by dimension and positive rational .
+
+## 067. The Campana--Peternell conjecture in dimension six
+Proves the Campana--Peternell conjecture in complex dimension six: every smooth connected complex projective Fano sixfold with nef tangent bundle is rational homogeneous.
+
+## 068. Anticanonical nonvanishing under smooth semipositivity
+If X is a smooth connected complex projective variety and -K_X admits a smooth Hermitian metric with nonnegative curvature, then H^0(X,-mK_X) 0 for some m>0. Thus smooth semipositivity forces a nonzero section of a positive tensor power of the anticanonical bundle in every dimension.
+
+## 069. Quantum geometric Langlands at irrational level
+Proves the unramified de Rham quantum geometric Langlands equivalence for every connected simple complex algebraic group on every smooth projective connected complex curve, at every shifted level c C Q. It identifies the full derived categories of twisted D-modules for the group and its Langlands dual, retaining all global forms and connected components.

@@ -1,0 +1,238 @@
+# Report: Subject 3 (Algebraic & Complex Geometry, 36 families) and Subject 2 (Algebra, 18 families)
+
+Sources: /tmp/opencode/map/subject03_algebraic_and_complex_geometry.txt, subject02_algebra.txt; deep dives from PDFs under `math/preprints/`. **Verification caveat:** three related preprints (Hodge conjecture for products of K3 surfaces; algebraicity of Weil classes on split abelian eightfolds; algebraicity of Kuga–Satake correspondences for K3 surfaces) were **withdrawn Oct 6, 2026** over a sign error in a "stabilization-trace" double-point argument. The flagship CM abelian varieties paper stands; a separate surviving paper proves Hodge conjectures on a K3 quadratic locus. (The Abelian Zilber–Pink family lives in a different subject file.)
+
+## Subject 3: Algebraic and complex geometry
+
+**032. Rational Hodge conjecture for CM abelian varieties** ★DEEP DIVE
+- **Finding**: Every rational (p,p)-class on a complex CM abelian variety is algebraic, in all dimensions and codimensions; via Milne's theorems this yields the Tate conjecture for abelian varieties over finite fields and the Hodge standard conjecture in every characteristic. (Human-edited writeup per the README.)
+- **Approach**: Reduces every CM Hodge class (Pohlmann balance criterion, Hazama four-label relations) to algebraicity of "four-factor switch" lines U(v1)⊗U(v2)⊗U(v3)^c⊗U(v4)^c with v1+v2=v3+v4, each U(v) = H^1 of a CM variety B(v). Geometric heart: a nonzero mixed (2,2)-period built from **holomorphic theta one-forms on arithmetic ball quotients** (unitary signature (2,1) at one embedding, definite elsewhere); weak approximation on compact-place data varies a rank-two theta tensor with fixed finite-theta input, keeping the distinguished-embedding period nonzero; endpoints factor through degree-one Hodge maps, and algebraic divisor kernels convert the functional into a vector on the target line. Arithmetic input — descent of theta classes to rational CM Hodge maps — comes from Hecke endomorphisms of Albanese products of ball-quotient components, a **Frobenius-vs-Hecke polynomial relation** from counting ordinary isogeny neighbors forcing slope 0 or 1, upgraded to pure Hodge types by weak admissibility and descended over all Galois conjugates.
+- **Lesson**: Explicit theta/Kudla–Millson differential-form constructions plus Hecke–Frobenius slope bookkeeping can manufacture algebraic cycles where abstract Hodge theory cannot.
+
+**033. Campana's orbifold Iitaka subadditivity** — Orbifold Iitaka subadditivity for Fujiki class-C manifolds with rational snc boundaries; Popa's inequality κ̄(U) ≥ κ̄(F) + κ̄(V) − Var(f) for log smooth fibrations.
+- **Approach**: Logarithmic positivity-of-direct-images over the fibration's moduli.
+- **Lesson**: Variation of the geometric generic fiber is the right correction term.
+
+**034. Log abundance and effective Iitaka fibrations** ★ — Log abundance in every dimension for compact Kähler log canonical pairs with effective rational boundary (nef adjoint ⇒ semiample), projective log abundance in char 0, the effective Iitaka fibration conjecture, and a uniform index theorem for log Calabi–Yau pairs.
+- **Approach**: Dimensional induction driven by log Iitaka subadditivity (033); uniform index via denominator-boundedness.
+- **Lesson**: Log subadditivity converts nefness into semiampleness in full generality.
+
+**035. Threefold log abundance, ν=1, char p>3** — Semiampleness of nef adjoints on log canonical threefolds in char p>3 with rational boundary and numerical dimension one, without terminal/Q-factorial hypotheses.
+- **Approach**: Positive-characteristic MMP with numerical-dimension-one specialization.
+- **Lesson**: Low numerical dimension is where char-p abundance becomes tractable.
+
+**036. Numerical semiampleness and generalized minimal models** — Nef adjoints K_X+B+M are numerically semiample when K_X+B is pseudo-effective (klt rational pairs; compact Kähler via Bott–Chern); generalized pairs admit minimal models or Mori fiber spaces.
+- **Approach**: Numerical-dimension induction on generalized pairs.
+- **Lesson**: Numerical semiampleness is the fallback when full abundance is out of reach.
+
+**037. Ordinary-double-point volume gap** — Normalized volume of any n-dimensional klt germ with zero boundary is ≤ 2(n−1)^n, equality exactly at the ordinary double point.
+- **Approach**: Degeneration plus volume-monotonicity inequalities for valuations.
+- **Lesson**: Local volume is maximized by the simplest node.
+
+**038. Fujita's freeness conjecture** ★DEEP DIVE
+- **Finding**: K_X + (n+1)L is globally generated for ample L on a smooth complex projective n-fold — the sharp bound in every dimension.
+- **Approach**: Refines Angehrn–Siu vanishing: instead of cutting a positive-dimensional minimizing center at positivity cost, it controls the center uniformly by **comparing growth of images of restriction maps against a tangential first variation** — a convex/Okounkov-style estimate uniform over singular subvarieties of unbounded degree — then lifts a nonzero fiber value via a local discrepancy-and-vanishing mechanism.
+- **Lesson**: Uniform growth estimates over all integral subvarieties replace positivity-tax center cutting.
+
+**039. Nagata and maximal Seshadri constants** — Strict Nagata inequality for plane curves through r≥10 very general points; maximal multipoint Seshadri constants (L^n/r)^{1/n} for all n≥2 at very general points (char 0) and geometric generically in char p for large r.
+- **Approach**: Degeneration to toric/branch-cover models plus char-p specialization.
+- **Lesson**: Very-general-point statements transport through positive characteristic.
+
+**040. Bloch's conjecture for complex surfaces** — CH_0^0(S) ≅ Alb(S) for every smooth projective complex surface with p_g=0.
+- **Approach**: A new p_g=q=0 theorem plus Bloch–Kas–Lieberman.
+- **Lesson**: Reducing p_g=0 to the q=0 case finishes a 50-year problem.
+
+**041. Hyperkähler SYZ and projective-space bases** — Every nef isotropic line bundle on a compact irreducible holomorphic symplectic manifold is semiample; projective Lagrangian fibrations with normal projective base have base P^n.
+- **Approach**: Isotropic-flow and fibration-base rigidity arguments.
+- **Lesson**: SYZ semiample follows from base rigidity of Lagrangian fibrations.
+
+**042. Oka classification of compact complex surfaces** — Every K3 surface is Oka (even nonprojective); all minimal surfaces of Kodaira dimension 0; class VII surfaces are Oka iff Hopf or Enoki.
+- **Approach**: Elliptic fibrations and explicit uniformization of complement geometries.
+- **Lesson**: Oka-ness is governed by Kodaira dimension for surfaces.
+
+**043. P=W for fixed determinant** — P_k = W_{2k} = W_{2k+1} on full rational cohomology of coprime fixed-determinant Higgs/character moduli for composite ranks, completing the fixed-determinant P=W conjecture in all coprime ranks.
+- **Approach**: Nonabelian Hodge theory with filtration comparisons over variant cohomology.
+- **Lesson**: P=W behaves well under fixing determinant once prime ranks are known.
+
+**044. Equivariant cohomological Hikita conjecture for quivers** — For every finite quiver (loops, multiple arrows, arbitrary framing), flavor-equivariant cohomology of the Nakajima variety is the coordinate ring of the cocharacter-fixed locus of the flavor-deformed Coulomb branch, when the gauge action is free.
+- **Approach**: Equivariant localization and scheme-theoretic fixed-locus comparison.
+- **Lesson**: 3d-mirror symmetry survives maximal generality of quiver data.
+
+**046. Non-Stein universal cover fourfold** ★DEEP DIVE
+- **Finding**: A smooth projective complex fourfold with large fundamental group whose universal cover has no positive-dimensional compact analytic subvariety yet is not Stein — refuting even the direct Shafarevich form; a companion surface disproves unrestricted holomorphic convexity in dimension two.
+- **Approach**: Embed a simple abelian surface A with π1(A)→π1(X) ≃ Z; the rank-three kernel cover of A is diffeomorphic to R×(S^1)^3 with H_3≠0, while a Stein surface has CW homotopy type of dimension ≤ 2 — a purely **topological obstruction** to Steinness. An arithmetic complex-hyperbolic arrangement yields a distinguished surface with cyclic monodromy; local covers are analyzed via hyperbolic path graphs; projective realization embeds into a fourfold and removes blowups preserving monodromy.
+- **Lesson**: Subcover homology can defeat analytic Steinness even with no compact subvarieties present.
+
+**047. Cancellation and affine fibration counterexamples** — X × A^1 ≅ A^5 for a singular affine fourfold X (no cancellation in dim 4); smooth surjections with all fibers A^3 that are not Zariski-locally trivial (Dolgachev–Weisfeiler).
+- **Approach**: Explicit polynomial constructions with coordinate-ring invariants.
+- **Lesson**: Cancellation fails just above the known stable range.
+
+**048. Lipman–Zariski counterexample** — A singular normal affine complex surface with free rank-two tangent sheaf.
+- **Approach**: Explicit quotient singularity with computed derivation module.
+- **Lesson**: The tangent sheaf cannot detect smoothness in char 0.
+
+**049. Stable coordinate counterexample** — A four-variable polynomial that is not a coordinate but becomes one in five variables; all fibers are A^3 yet no embedding is rectifiable (Abhyankar–Sathaye fails).
+- **Approach**: Derivation/Lüroth-type invariants obstructing rectification.
+- **Lesson**: Stable coordinates need not be coordinates in four variables.
+
+**050. Griffiths positivity counterexample** — Ample rank-2 bundles on P^1×P^1 with no strictly Griffiths-positive Hermitian metric.
+- **Approach**: Curvature obstruction via induced Chern forms on subvarieties.
+- **Lesson**: Griffiths positivity is strictly stronger than ampleness on a quadric.
+
+**051. Kobayashi's canonical ampleness conjecture** — Compact Kähler with no nonconstant entire curves has ample K_X, hence is projective.
+- **Approach**: Brody reparameterization plus jet-degeneracy forcing K_X big and nef, then abundance.
+- **Lesson**: Hyperbolicity forces algebraicity of the canonical bundle.
+
+**052. Tangent splittings and universal covers** — Integrable tangent-bundle splittings on compact Kähler manifolds induce product decompositions of the universal cover (Beauville); on rationally connected manifolds integrability is automatic (Höring).
+- **Approach**: Leaf-space analysis and transport of the splitting.
+- **Lesson**: Holomorphic splittings rigidify to the universal cover.
+
+**053. Pixton completeness counterexample** — A tautological relation on moduli of stable curves in Chow/cohomology outside Pixton's original relation span.
+- **Approach**: High-arity boundary computation with verifiable non-membership.
+- **Lesson**: Pixton's relation set was incomplete.
+
+**054. Kuznetsov rationality counterexamples** — Very general cubic fourfolds with untwisted geometric K3 category and integral Hodge-theoretic K3 association that are nonetheless irrational, for all large admissible Hassett discriminants.
+- **Approach**: Kuznetsov-component-to-K3 functor, then Hodge-theoretic irrationality of the associated K3.
+- **Lesson**: K3 categorification is not sufficient for rationality (threshold ineffective).
+
+**055. Toda's Gepner conjecture** — Numerical Bridgeland stability conditions on every smooth quintic with the prescribed 2/5 phase shift; large-volume stability conditions with exact central charges on all Calabi–Yau threefolds.
+- **Approach**: Exceptional-collection tilts of the large-volume condition with controlled gluing.
+- **Lesson**: Gepner points are reachable by explicit phase shifts from large volume.
+
+**056. Termination of fourfold MMPs** — Termination of generalized log canonical flip sequences on globally Weil Q-factorial compact Kähler fourfolds, and of arbitrary permitted LMMPs for projective log canonical fourfolds in char 0.
+- **Approach**: Special termination plus fourfold flip existence with fixed b-data.
+- **Lesson**: MMP termination is closed through dimension four, including Kähler.
+
+**057. Campana's abelianity conjecture** — Special compact Kähler manifolds have virtually abelian π1; applications to root orbifolds of special fourfolds and virtually nilpotent (class ≤ 2) images of finite-dimensional representations of special quasi-projective varieties.
+- **Approach**: Orbifold base decomposition plus positivity-driven representation rigidity.
+- **Lesson**: Specialness constrains the fundamental group arithmetically.
+
+**058. Kollár–Pardon universal-cover conjecture** — Semialgebraic universal covers of normal projective complex varieties are exactly D×C^m×F (D bounded symmetric, F simply connected normal projective); quasi-projectivity iff no symmetric factor; C^n-covered varieties are finitely étale-covered by abelian varieties.
+- **Approach**: Shafarevich morphism to the holomorphic-convex core plus fiber classification.
+- **Lesson**: Universal covers of projective varieties have a rigid three-factor structure.
+
+**059. Zariski multiplicity conjecture counterexamples** — Ambiently homeomorphic reduced hypersurface germs with multiplicities 4 and 5 (isolated critical points in C^4).
+- **Approach**: Topological modifications with tracked multiplicity.
+- **Lesson**: Multiplicity is not a topological invariant of hypersurface germs.
+
+**060. Global Spherical Shell conjecture (b2>0)** — Every minimal class-VII surface with b_2>0 contains a global spherical shell.
+- **Approach**: Degeneration/foliation analysis reducing to the known GSS classification.
+- **Lesson**: The class-VII enigma collapses at positive b_2.
+
+**062. LeBrun–Salamon conjecture** — Every positive quaternionic-Kähler manifold of real dimension ≥ 8 is a Wolf space; contact-Fano homogeneity; projective contact manifolds classified (b_2=1: adjoint varieties; b_2≥2: P(T*Z)).
+- **Approach**: Twistor/contact positivity and rigidity, bypassing interference analysis.
+- **Lesson**: Positivity of the twistor structure determines the geometry outright.
+
+**063. Generalized Mukai conjecture** — (ρ−1)·ν ≤ n for smooth Fano manifolds, equality exactly for (P^{ν−1})^ρ, ν the pseudoindex.
+- **Approach**: Rational-curve family dimension bounds tied to pseudoindex.
+- **Lesson**: Pseudoindex controls product decompositions of Fanos.
+
+**064. μ-constant problem for surfaces** — Topological right-triviality of holomorphic families of isolated hypersurface singularities in C^3 with constant Milnor number, with jointly continuous ambient homeomorphisms.
+- **Approach**: Geometric monotonicity of the family producing integrated homeomorphisms.
+- **Lesson**: μ-constant families are topologically trivial for surfaces.
+
+**065. Virasoro constraints for complete intersections** — Full unreduced descendant Virasoro conjecture for complete intersections in P^n, all genera/classes/insertions; constraints propagate to P(E) and projective-bundle towers.
+- **Approach**: Gromov–Witten quantum Lefschetz with quantum-vector-field operators.
+- **Lesson**: Virasoro constraints propagate along projective bundles.
+
+**066. Bounded klt complements for Fano contractions** — Finite-rational-coefficient bounded klt complements for ε-lc Fano-type pairs and ε-lc Fano contractions, index bounded by dimension and ε only.
+- **Approach**: Reduction to a globally bounded model via MMP and ε-complement induction.
+- **Lesson**: Complement boundedness survives contraction to arbitrary bases.
+
+**067. Campana–Peternell in dimension six** — Fano sixfolds with nef tangent bundle are rational homogeneous.
+- **Approach**: Mori–Mukai-type classification by ρ, with nefness constraining contractions.
+- **Lesson**: The nef-tangent program is complete through dimension six.
+
+**068. Anticanonical nonvanishing under smooth semipositivity** — A smooth semipositive metric on −K_X forces H^0(X,−mK_X)≠0 for some m>0, in every dimension.
+- **Approach**: Holonomy analysis of the metric and holomorphic forms on covers.
+- **Lesson**: Smooth semipositivity is algebraically restrictive without positivity.
+
+**069. Quantum geometric Langlands at irrational level** — Unramified de Rham QGL equivalence for every connected simple group at every shifted level c ∈ C⊗Q, identifying full derived categories of twisted D-modules.
+- **Approach**: Beilinson–Drinfeld quantization of the Hitchin system with uniform tracking of the shift.
+- **Lesson**: Quantum Langlands is level-independent once shifts are treated uniformly.
+
+## Subject 2: Algebra
+
+**193. Serre's intersection-multiplicity positivity** ★DEEP DIVE
+- **Finding**: χ_R(M,N) > 0 whenever M⊗N has finite length and dim M + dim N = dim R, over any regular local ring, including ramified mixed characteristic.
+- **Approach**: Reduces to complete domains D, E with P+Q m-primary; finite Galois extensions give algebras C_D, C_E with additive normalized (Faltings/Gabber–Ramero) lengths. A first comparison — rational K-theory with support at the closed point, via **Land–Tamme descent for truncating invariants** — shows the Galois-twist average of normalized Tor Euler characteristics equals |G|·a_D·a_E·χ(D,E). A second comparison in a category killing free sequences of negligible normalized rank (approximating C_D/xC_D by finite-length modules with controlled resolution ranks) shows each twisted value is positive, the lower bound coming from perfectoid/almost-purity parameter-Koszul exactness. No lim Cohen–Macaulay towers on the quotient domains are assumed.
+- **Lesson**: Normalized-length bookkeeping plus K-theoretic descent converts perfectoid-calibrated approximations into strict positivity.
+
+**194. Lech's multiplicity conjecture** ★DEEP DIVE
+- **Finding**: e(R) ≤ e(S) for every flat local homomorphism of nonzero Noetherian local rings, all dimensions and characteristics.
+- **Approach**: Ulrich-method overhaul: since weakly-lim Ulrich modules do not exist over every domain (Yhee; companion counterexample 195), the proof works with **short free complexes** (Iyengar–Ma–Walker) in degrees 0..d with finite-length homology, whose multiplicity/Betti inequalities suffice. Char p uses weakly lim Ulrich sequences via Hilbert–Kunz machinery (following Ma); char 0 uses specialization from a graded source with Cohen factorizations.
+- **Lesson**: Complex-level replacements for Ulrich modules bypass module-existence obstructions.
+
+**195. Small Cohen–Macaulay counterexample** — A 3-dimensional complete normal local C-domain with no nonzero finitely generated maximal Cohen–Macaulay module (also essentially-of-finite-type versions).
+- **Approach**: Universal-drop construction adapted to equal characteristic.
+- **Lesson**: MCM existence fails in dimension three, closing off a class of proof strategies.
+
+**196. Kaplansky zero-divisor counterexample** — A finitely presented torsion-free group G (finite 2-dimensional classifying space) with F_2[G] having zero divisors.
+- **Approach**: Small-cancellation-adjacent construction with explicit idempotent decomposition.
+- **Lesson**: Torsion-freeness of the group does not force domain-ness of its algebra.
+
+**197. Nonsofic groups and group-ring pathologies** — A finitely presented torsion-free nonsofic group; F_2[G] not directly finite (Kaplansky fails without torsion); nonsurjective injective cellular automata (Gottschalk fails); an integral group-ring invertible matrix with FK determinant in (0,1) (Determinant Conjecture fails).
+- **Approach**: One torsion-free group engineered via graphs of groups/monoid presentations to defeat sofic approximation, each consequence verified against its precise formulation.
+- **Lesson**: One well-chosen finitely presented group refutes a cascade of analytic conjectures.
+
+**198. Little finitistic dimension counterexample** — A finite-dimensional complex algebra whose finite-dimensional modules have unbounded finite projective dimension.
+- **Approach**: Quiver-and-relation algebra with controlled graded homological behavior.
+- **Lesson**: Little finitistic dimension is false; big remains open.
+
+**199. Auslander–Reiten / Tachikawa / Nakayama counterexamples** — Char-2 rational-function-field algebras disproving the AR and Gorenstein-projective conjectures and Tachikawa's second conjecture; an endomorphism algebra disproving classical/generalized/strong Nakayama, Auslander–Gorenstein, and Wakamatsu tilting; persistent under field extension.
+- **Approach**: Explicit construction with higher-Auslander-style endomorphism algebras.
+- **Lesson**: One algebra can falsify a constellation of homological conjectures.
+
+**200. EGH and lex-plus-powers Betti theorem** ★DEEP DIVE
+- **Finding**: Over any characteristic-zero field, any homogeneous ideal containing a regular sequence of arbitrary length (degrees ≥ 2) admits a lex-plus-powers ideal with the same Hilbert function and no smaller graded Betti numbers in every homological and internal degree.
+- **Approach**: Reduces to the Artinian case over C, then proves the Artinian Lex-Plus-Powers Betti theorem: commute the defining forms with "division coefficients" to linearize leading terms; compare graded resolutions and leading coefficient spaces; bound monomials inside the prescribed exponent box; prove **stabilization of the initial ideals inside the exponent box**; control Betti numbers of stable ideals via "shadows" and "end slices" — a finite combinatorial comparison — then descend to J = L + (x_i^{a_i}).
+- **Lesson**: Exponent-box stabilization turns an infinitary syzygy comparison into a finite shadow-type inequality.
+
+**201. Kurosh division-ring counterexample** — A countable char-0 division ring, algebraic over and 2-generated over its center, of infinite dimension over the center.
+- **Approach**: Direct-limit construction with Amitsur-style inversions.
+- **Lesson**: Local finiteness fails even with two generators.
+
+**202. Blockwise Alperin weight conjecture** — k(B) equals the number of conjugacy classes of B-weights for every block of every finite group, all primes.
+- **Approach**: Reduction to quasisimple blocks plus inductive verification.
+- **Lesson**: Representation conjectures reduce to almost-simple blocks.
+
+**203. Donovan's conjecture** — Finitely many Morita equivalence classes of blocks with defect group of fixed order, over every algebraically closed field of char p, and integrally over complete mixed-char DVRs with algebraically closed residue field.
+- **Approach**: Fusion-system reductions and boundedness of source-algebra data.
+- **Lesson**: Donovan's conjecture holds integrally, not just over fields.
+
+**204. Tensor saturation for Spin(2n)** — Saturation factor one for type D: invariants at a dilation imply invariants at the original triple of dominant weights.
+- **Approach**: LR/hive identities reducing to type A components.
+- **Lesson**: Saturation is a lattice phenomenon, provable type by type.
+
+**205. Saxl's conjecture** — Every staircase representation's tensor square contains every irreducible of S_n; moreover every S_n (n∉{2,4,9}) has an irreducible whose square is universal.
+- **Approach**: Cyclic polytabloid constructions with explicit dominance counting.
+- **Lesson**: Specht-module domination arguments can be made uniform in n.
+
+**206. Finite lattice representation: counterexamples and undecidability** — Some finite lattices are not congruence lattices of finite algebras; no algorithm decides representability or full-subgroup-interval status.
+- **Approach**: Pudlák–Tůma-style embedding analysis with an encoded halting problem.
+- **Lesson**: The finite lattice representation problem is negatively undecidable.
+
+**207. ℓ¹-Bass and complex Bass trace conjectures** — Hattori–Stallings traces of idempotents over ℓ¹(G) are supported on finitely many finite-order conjugacy classes (all groups); the integral Bass trace conjecture and Kaplansky's idempotent conjecture for torsion-free groups over any char-0 domain follow.
+- **Approach**: Approximation of ℓ¹ idempotents by finite-support ones with trace-norm control.
+- **Lesson**: Banach-algebra idempotent theory feeds back into pure algebra.
+
+**208. Finite Benson–Etingof–Ostrik conjecture** — Every finite symmetric tensor category in char p (including char 2) admits a fiber functor to a higher Verlinde category Ver_{p^n}.
+- **Approach**: Reduction to pointed cases with an explicit Verlinde-target construction.
+- **Lesson**: Higher Verlinde categories are universal targets for finite symmetric tensor categories.
+
+**209. Integral Gersten counterexamples** — Two explicit 2-dimensional ramified regular local rings of mixed characteristic (0,5) with nonzero integral K-theory classes (degrees 3 and 5) vanishing over the fraction field.
+- **Approach**: Explicit K-theory computation on ramified DVR extensions.
+- **Lesson**: Gersten injectivity fails integrally in specific low degrees.
+
+**210. Foulkes for sixth powers and quadratic stabilization** — Sym^6(Sym^b V) ↪ Sym^b(Sym^6 V) for all b ≥ 6; more generally Sym^b(Sym^a V) → Sym^a(Sym^b V) is surjective for a ≥ 2, b ≥ a(a−1) — dimension-independent.
+- **Approach**: Plethysm/straightening with highest-weight tracking of the multiplication map.
+- **Lesson**: Plethysm surjectivity has a clean quadratic stabilization threshold.
+
+## Meta-lessons (Algebra & Algebraic Geometry)
+
+- **Kuga–Satake/correspondence transport dominates Hodge work**: the surviving K3-quadratic-locus paper proves Hodge conjectures on self-powers of K3 surfaces whose transcendental space embeds isometrically in U_Q^⊕2 ⊥ ⟨−1⟩^4, by transporting cycles through **algebraic Kuga–Satake correspondences with degree-preserving source/target projectors**. The withdrawn K3-products and abelian-eightfold papers show the fragility of signed double-point/stabilization-trace counting: one sign-convention error propagated across three papers before withdrawal. Algebraicity claims resting on signed intersection enumeration need an independent sign audit.
+- **p-adic/crystalline machinery is load-bearing in commutative algebra**: Serre positivity uses perfectoidization, almost purity, and Land–Tamme K-theoretic descent; Lech uses Hilbert–Kunz multiplicity in char p plus specialization; the CM Hodge theorem uses Frobenius-vs-Hecke slope dichotomies. Mixed-characteristic ramification stops being an obstruction once normalized lengths replace ordinary lengths.
+- **Reduction-to-positive-characteristic and very-general-point transfer recur** (Nagata/Seshadri, EGH char-0 descent from Artinian C-statements, Lech's specialization), typically with Galois-averaging or weak approximation to handle denominators.
+- **MMP induction with fixed b-data organizes the abundance cluster** (033→034→036→056→066): log Iitaka subadditivity ⇒ semiampleness ⇒ abundance with termination; bounded-complement results feed the induction; Kähler versions run in parallel via Bott–Chern cohomology.
+- **Computational content is real but uneven**: undecidability (lattice representation, 206); effective bounds (uniform index 034, bounded complements 066, quadratic stabilization b ≥ a(a−1) in 210, explicit (0,5) rings 209); but some geometric thresholds are explicitly ineffective (Kuznetsov discriminant, 054).
+- **Counterexample engineering is highly leveraged**: single constructions refute multiple conjectures at once (197: Kaplansky + Gottschalk + Determinant; 199: seven homological conjectures; 047: cancellation + Dolgachev–Weisfeiler; 049: stable coordinate + Abhyankar–Sathaye). Topological obstructions (H_3 of subcovers, 046; CW-dimension of Stein surfaces) and multiplicity bookkeeping (059) are the recurring mechanisms.

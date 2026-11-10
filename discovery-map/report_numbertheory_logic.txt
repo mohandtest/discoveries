@@ -1,0 +1,219 @@
+# Report: Subject 01 (Number theory, 31 families) & Subject 06 (Mathematical logic, 6 families)
+
+Entries marked ★ received a full-text deep dive into the corresponding preprint in `math/preprints/`. A cross-subject algorithmic companion (deterministic factorization over F_p) is deep-dived at the end.
+
+## Number theory
+
+### 001. Milne's rationality conjecture
+- **Finding**: For abelian varieties over Q with good reduction, a specialized Hodge class pairs rationally with every complementary product of divisor classes, with the same rational number in all prime-to-p étale realizations and in crystalline cohomology; together with result 032 this realizes every specialized Hodge class by one rational cycle simultaneously in all realizations.
+- **Approach**: Proves the conjecture in full, including residue characteristic 2, by first establishing it for CM abelian varieties (via the Hodge theorem and explicit cycle constructions) and transferring to general good-reduction abelian varieties; the "abelian covers / Gale correspondences" preprint handles the powers case where cycles are constructed geometrically.
+- **Lesson**: Arithmetic compatibility across cohomology theories can be certified by constructing a single explicit cycle — a template for replacing comparison isomorphisms with witnesses.
+
+### 002. ★ Full BSD formula in Selmer coranks 0 and 1
+- **Finding**: The complete BSD leading-term formula — analytic rank, Mordell–Weil rank, finiteness of Sha, and the exact leading coefficient with all local and period factors — holds for every E/Q whose full q-power Selmer group has corank 0 or 1 at some prime q. With result 006 this gives full BSD for a density-one set of quadratic twists of every E/Q.
+- **Approach**: The analytic input (Heegner points at corank 1, Kato-type control at corank 0) is standard; the paper's real work is the *integral* comparison. It works with integral cohomology complexes and finite models of Selmer structures, computes determinant volumes on both the arithmetic side (Kummer lattices) and the analytic side (integral Siegel classes, theta series), and uses auxiliary primes and residual specialization to detect and extract primitive classes. Theta-series congruences at high finite characters kill unwanted divisors: a "switching" argument at auxiliary primes adds tame directions whose lifting obstructions span the possible bad primes, so the integral quotient between the two determinant volumes is shown to be a unit. CM curves are assembled separately.
+- **Lesson**: Rank formulas are only half the story — the exact leading term is a lattice-volume identity, and congruence/switching machinery can convert congruences between modular objects into integrality of arithmetic constants.
+
+### 003. ★ The quasi-Riemann hypothesis
+- **Finding**: Every Dirichlet L-function, including ζ(s), is zero-free in Re(s) > 11/12; the same half-plane is zero-free for every finite-order Hecke L-function over Q(√−3). A companion paper gives a different proof reaching Re(s) > 7/8. In particular Landau–Siegel zeros do not exist (see companion below).
+- **Approach**: The engine is a smoothed power-saving estimate for ν-twisted Möbius sums over the Eisenstein integers O = Z[ω]. Step 1: a Möbius bound A₁(D) ≪ D^{1−δ+ε} for smooth sums over ideals of norm ~D implies, by the Littlewood equivalence (smoothed Hecke version), a zero-free half-plane. Step 2: embed A₁ in a family A_u(D) of sextic-twisted sums, u ∈ O, and prove the mean square Σ_u |A_u(D)|² ≪ D^{1+ε}H with H = D^{1+ϑ}. This alone is not enough; the saving comes from *primes in the twist parameter*: for primary primes p of norm ~Y, χ_n(p⁶) = 1 off a negligible set, so A_{p⁶}(D) = A₁(D) + O(D/Y), and averaging these ≍ Y/log Y identities against the mean square gives |A₁(D)|² ≪ D^{1+ε}H^{5/6} + D²H^{−1/3}, i.e. A₁(D) ≪ D^{11/12+ε} — the exponent 11/12 appears as the interpolation of the two terms, with ϑ tuned per requested loss. Step 3: the mean square itself is proved by Poisson summation in the row variable u: Fourier transforms of the sextic characters are sextic Gauss sums, which by Gauss–Jacobi identities absorb the µ factor and become cubic Gauss sums — precisely the coefficients of Kubota's cubic theta series on the metaplectic cover. Möbius inversion strips the completed theta to its primitive part, and Step 4 iterates the *dual* mean-square estimate recursively (the dual estimate for the theta coefficients is re-inserted as a new family), bootstrapping until the required (HX)^εX bound holds. The machinery of cubic theta coefficients connects to Heath-Brown–Patterson and Dunn–Radziwiłł work on Patterson's conjecture, and the recursive large sieve builds on Heath-Brown's quadratic large sieve.
+- **Algorithmic/computability content**: Explicit and substantial. The fixed zero-free half-plane yields (i) the least quadratic nonresidue mod p ≪ (log p)^C, hence deterministic polynomial-time Tonelli–Shanks square-root extraction; (ii) a deterministic polynomial-time Miller primality test; (iii) the effective class-number bound h(D) ≫ √|D|/log log|D|; and (iv) confirmation of Euler's list of 65 idoneal numbers via Weinberger–Elsenhans–Klüners–Nicolae class-group computations. The PNT-in-AP error x^{11/12}log x has an absolute *effective* constant.
+- **Lesson**: A mean-square identity plus twist-parametric multiplication (A_{p⁶} ≈ A₁) is a new route to classical zero-free regions — and the analytic input was deliberately shaped so that its corollaries are effective algorithms.
+
+### Companion: Uniform exclusion of Landau–Siegel zeros (Re(s) > 11/12 proof)
+- **Finding**: An absolute c > 0 with (1−β) log q ≥ c for every real zero β of every primitive real Dirichlet L-function of conductor q.
+- **Approach**: Interpolation determinant method. A real zero forces a prime bias (χ(p) = 1 dominates at scale e^{1/(1−β)}). One builds an N⁴-column determinant from rows indexed by (α₁,α₂,α₃) with entries θ_n^{α₁}σ(θ_n)^{α₂}στ(θ_n)^{α₃} (θ's generating a number field, σ, στ conjugates), retaining rows by a lexicographic weight with a large fixed H. At odd primes with χ(p) = −1, the Frobenius action p-th-powers θ_n to a conjugate, so subtracting blocks extracts powers of p; divisibility accumulates a factor log U while the determinant's size grows only (3/4)log U (a uniform multivariable interpolation lemma on a linear image of an integer box in C⁴, with aspect-ratio-independent thresholds) — an incompatible pair of estimates. This is the same divisibility-vs-size contradiction that powers the Catalan and π papers below.
+- **Lesson**: The determinant method is the house style: manufacture an integer that is provably huge (divisibility) and provably small (analytic interpolation), and let the gap do the work.
+
+### 004. ★ Hilbert's tenth problem over Q
+- **Finding**: No algorithm decides whether an integer-coefficient polynomial in an arbitrary number of variables has a rational zero (variables count is part of the input). Undecidability of H10(Q) is thus proved *without* a Diophantine definition of Z in Q — the route taken by all prior partial results.
+- **Approach**: Not a Diophantine model. The proof builds, for each nonconstant f, an effectively generated sequence of *finite rational tests* with: f has an integer zero ⟺ every test succeeds. If a rational-solvability oracle existed, one runs two parallel searches — enumerate integer tuples, enumerate tests until one fails — and undecidability follows provided a failing test exists whenever f has no integer zero. That arithmetic core: assuming all tests succeed, compactness produces a zero of f in an elementary extension R of Q carrying integer/valuation data and a rank-one elliptic group with a fixed nontorsion point P of finite index in its integral points. Each a ∈ R is tagged by an elliptic point T_a = η(a)P with additive, injective index η: R → *Z. Two local comparisons (formal elliptic logarithm quotients on the curve and its conjugate) force the index to agree with a to prescribed p-adic precision at *contact primes* — primes where one of five prescribed rational linear forms has odd valuation, supplied by a height estimate h(s) ≤ H·M(s)^c of Garcia-Fritz–Pasten–Vidaux type (five-point configuration on P¹). A family of abelian surfaces with five-point ramification, compared by Faltings height against base height and a *uniform bound for the modular level* (modularity is invoked here), forces a height contradiction if the tests all pass. Prime patterns realizing both conjugate local tests are constructed by a uniform elementary sieve. A final section computes the Turing degree and puts the construction in quartic normal form.
+- **Computability content**: The theorem is inherently algorithmic (a negative one): it shows rational solvability is undecidable by reduction *through* the semi-decision structure of the tests, not through definability of Z. The finite tests are explicitly generated, so the proof itself is a (non-terminating-in-general) reduction machine.
+- **Lesson**: Undecidability over Q was unlocked by replacing "define Z in Q existentially" with "certify integer solvability by finite rational experiments" — compactness does the transfer, height ramification does the rigidity.
+
+### 005. ★ Catalan's constant is irrational
+- **Finding**: G = β(2) = Σ(−1)^j/(2j+1)² is irrational — the first individual irrationality result among even Dirichlet beta values, going beyond Rivoal–Zudilin "one of β(2),…,β(10)" statements.
+- **Approach**: A determinant variant of Apéry's method circumventing the classical obstruction (Zudilin's Apéry-like linear forms for G do not tend to zero after denominator clearing). Determinants ∆_N of size n = 48N are built from moments of two elementary kernels; each entry is a rational linear combination of 1, G, ζ(2), and polynomial rows are chosen with high Taylor contact so that the ζ(2) term cancels in every entry. Under the hypothesis G ∈ Q all determinants are rational; a two-layer denominator analysis (orders p² and p at large odd primes are handled separately — first-layer cancellation alone would fail) gives a lower bound on log|∆_N| from prime valuations, while an integral representation gives an incompatible upper bound. Nonvanishing — normally the weak point of mixed signed determinants — is made *arithmetic*: for N a large prime, Frobenius together with a pair of polynomial bases reduces the growing matrix to three fixed rational matrices, whose nonvanishing is verified by an exact finite certificate. The reduction kills determinant growth along an unbounded prime sequence without any positivity claim.
+- **Lesson**: When linear forms won't decay, promote them to determinants: Taylor-contact design cancels the nuisance value (ζ(2)), and reducing nonvanishing at Frobenius-primes to a finite certificate turns an analytic property into a checkable computation.
+
+### 006. Goldfeld's conjecture
+- **Finding**: For every E/Q, quadratic twists with analytic rank 0 and 1 each have density 1/2 (signed squarefree twist parameters by absolute value), and the mean analytic rank tends to 1/2. Companion papers prove the 2-converse (2^∞-Selmer corank 0 or 1 equals analytic and Mordell–Weil rank, Sha finite) and the mean rank statement.
+- **Approach**: The 2-converse paper detects analytic rank through special L-value coefficients, uses trace identities and prime substitutions, then analyzes Selmer matrices as 2-descent data with "three-state relations" on a binary cube, with cyclotomic interpolation supplying nonvanishing at rank zero. The mean-rank paper controls the contribution of rare high-rank twists — the known gap between density and mean statements — using coefficients that detect analytic rank and moment estimates over the twist family.
+- **Lesson**: Family-averaged Selmer data (matrices, not just averages of ranks) can both predict and converse with analytic ranks; the "rare large-rank" tail must be a separate theorem.
+
+### 007. Two-point Chowla and corrected binary Elliott
+- **Finding**: The ordinary two-point Chowla conjecture: Liouville correlations along fixed nonproportional affine forms have a power-of-logarithm saving O(x/(log x)^c) with an absolute exponent; the binary corrected Elliott conjecture holds for complex multiplicative functions |f| ≤ 1 when one factor is uniformly nonpretentious against each fixed Dirichlet character times n^{it}, |t| ≤ x.
+- **Approach**: Logarithmically averaged two-point correlation analysis: an orthogonal/energy decomposition of the multiplicative functions reduces everything to a nonpretentiousness dichotomy, which the logarithmic average converts into cancellation at every cutoff, in fixed residue classes.
+- **Lesson**: Nonpretentiousness is the right qualitative dichotomy — it converts "no hidden character structure" directly into correlation decay.
+
+### 008. Deligne–Drinfeld conjecture
+- **Finding**: The rational Grothendieck–Teichmüller Lie algebra grt₁, with the Ihara bracket, is freely generated by one element in each odd weight 3,5,7,…, with the corresponding weight-graded isomorphism.
+- **Approach**: Analyzes the graded Ihara bracket: exhibits independent generators in each odd weight (via explicit cocycles), proves they exhaust by a weight-by-weight dimension/spectral comparison, and matches the completed free Lie algebra structure.
+- **Lesson**: Free-generation statements about motivic Lie algebras can be closed by a clean induction once the right one-generator-per-weight generators are made explicit.
+
+### 009. Bogomolov–Pop reconstruction
+- **Finding**: Function fields of transcendence degree ≥ 2 over algebraically closed constants are recovered from K^{M}_1/K, K^{M}_2/K and their product — recovering the perfect closure and constants (char(ℓ) ≠ char K), and the original field plus named base in equal characteristic; also Bogomolov–Pop reconstruction from abelian-by-central pro-ℓ Galois data.
+- **Approach**: The Bogomolov–Tschinkel commutator method: reconstruct the valuation theory from K^{M}_2 via rigid elements and the "commutator map," then rebuild the field from its space of valuations, with Frobenius and ℓ-adic unit ambiguities identified and removed.
+- **Lesson**: Milnor K-theory modulo the characteristic is an anabelian sensor: second-order data (the product map) already encodes geometry.
+
+### 010. Fontaine–Mazur modularity at the prime 2
+- **Finding**: Every continuous odd absolutely irreducible 2-adic 2-dim'l representation of G_Q, unramified outside finitely many primes, occurs in a completed Hecke algebra at some odd tame level; the classical statement (de Rham at 2, distinct Hodge–Tate weights) gives modularity up to Tate twist, with no residual restrictions.
+- **Approach**: Dyadic modularity lifting without residual irreducibility, supported by a companion theorem computing the dimension of the 2-adic Hecke algebra at odd tame level, which converts "occurs in a completed Hecke algebra" into classical automorphy; unrestricted pro-modularity companions handle the pro-2 layer.
+- **Lesson**: The prime 2 was the last holdout because residual images are small; Hecke-algebra dimension theorems substitute for the missing residual rigidity.
+
+### 011. Ford–Konyagin–Luca conjecture
+- **Finding**: The normalized ordered logs of the prime factors of p−1 (with multiplicity) converge jointly to the Poisson–Dirichlet law PD(1) as p runs uniformly over primes ≤ x; consequently infinitely many n have > n^{1−ε} totient preimages for every ε > 0.
+- **Approach**: Shifted-prime probabilistic number theory: models the prime factors of p−1 by an inhomogeneous Poisson process over the primes (the same object that governs uniform random integers), with sieve control of the shifted-prime distribution, and identifies the scaling limit as PD(1); the totient-preimage corollary follows because PD(1) mass forces many large-factor ancestors.
+- **Lesson**: p−1 behaves, in its factorization, like a random integer with a log-log correction — uniformity over primes is provable, not just heuristic.
+
+### 012. Erdős–Pomerance joint Dickman conjecture
+- **Finding**: log P⁺(n)/log n and log P⁺(n+1)/log n are asymptotically independent in natural density, with Dickman marginals; P⁺(n) < P⁺(n+1) has density exactly 1/2.
+- **Approach**: Sieve-theoretic joint distribution: the fundamental lemma handles each integer's factorization, and correlation bounds for the pair (n, n+1) show the two sieve events decouple; Buchstab/Dickman bookkeeping then gives the marginals and independence.
+- **Lesson**: Shifted-integer correlation inputs (of Chowla type) are what make joint distribution results about factorization honest.
+
+### 013. Ostmann's inverse Goldbach conjecture
+- **Finding**: No finite modification of the primes is additively decomposable: P_∞ = A + B with A, B ⊆ Z_{≥0} each of size ≥ 2 is impossible up to finitely many exceptions.
+- **Approach**: Assume a decomposition and derive a contradiction from representation-counting in dyadic intervals: sieve upper/lower bounds for the primes versus the convolution structure of A + B force both summands to have a rigid sparsity/periodicity that the primes' distribution forbids.
+- **Lesson**: "Primes look random additively" can be turned into an indecomposability theorem — a rigidity statement proven by quantitative distribution rather than structure.
+
+### 014. Restricted geometric Langlands, generic Ramanujan, Arthur parameters
+- **Finding**: The Q_ℓ-linear restricted geometric Langlands equivalence for connected reductive groups on smooth projective curves over F_q (four stated characteristic hypotheses), and over any algebraically closed field of char p if p is very good and p ∤ |W_G|; Ramanujan at every place for globally generic cuspidal representations of split adjoint exceptional groups over global function fields; and, assuming finite-level Ramanujan–Arthur decomposition, global Arthur enhancements of cuspidal excursion parameters recovering the parameter on the full Weil group including inertia.
+- **Approach**: Constructs Hecke eigensheaves in positive characteristic (tameness, Frobenius structures) and identifies the spectral side through excursion operators; temperedness at ramified places for globally generic exceptional groups is proven separately, feeding Ramanujan.
+- **Lesson**: In char p, the geometric problem is closed outright for most groups, and *temperedness* — the analytic Ramanujan property — follows geometrically for exceptional groups, reversing the usual flow from automorphic to geometric.
+
+### 015. Torus-packet equidistribution
+- **Finding**: Haar equidistribution, with no escape of mass, for volume-weighted torus packets: arbitrary lattices and prescribed local types in totally real fields of prime degree ≥ 5, arbitrary-order Picard packets in primitive quartic fields, and maximal-order ideal-class packets in primitive sextic fields.
+- **Approach**: Higher-dimensional Duke theory: amplification and subconvex estimates for the relevant L-functions on the torus, plus homogeneous-space harmonic analysis and lattice counting, pushed through in degrees and orders never before treated.
+- **Lesson**: Duke's equidistribution principle survives total generality of the torus data once subconvexity is available in that degree.
+
+### 016. Zilber–Pink in abelian varieties and the Siegel threefold
+- **Finding**: The abelian Zilber–Pink conjecture over Q: every irreducible subvariety of an abelian variety has finitely many maximal atypical subvarieties relative to its smallest containing torsion coset. Also the full curve case in the Siegel threefold A₂ for Hodge-generic curves over Q, without boundary or reduction hypotheses.
+- **Approach**: An inductive "largest atypical" strategy combining abelian Ax–Schanuel, unlikely-intersection height bounds, and orbit asymptotics; the A₂ case splits by isogeny type (elliptic squares, E × CM, quaternionic division points — separate companion papers) and each is closed by its own height/dimension count.
+- **Lesson**: Zilber–Pink yields to a case analysis by isogeny type: once each "geometric component" of the atypical locus is treated, finiteness follows from a uniform inductive bound.
+
+### 017. ★ The irrationality exponent of π is 2
+- **Finding**: µ(π) = 2: for every ν > 2 there is Q(ν) such that |π − p/q| ≥ q^{−ν} for all integers p and q ≥ Q(ν) — the conjectured optimal Diophantine approximation bound (weaker than bounded partial quotients, and non-effective). Corollary: the classical Flint–Hills series Σ 1/(n³ sin²n) converges (angles in radians); more generally Σ 1/(n^a |sin n|^b) converges iff a > max{1, b}.
+- **Approach**: A multivariable interpolation determinant adapted to *logarithmic curves*, in the tradition of Mahler/Mignotte/Hata but qualitatively different in aim: instead of an explicit exponent, the determinant is arranged so that the interpolation estimate has thresholds independent of the centers of the approximating system. Successively separated approximation denominators (Roth's many-variable theme) make the determinant an integer with a large forced divisibility/size, and the two estimates — divisibility on one side, interpolation bounds on a logarithmic function on the other — collide once ν > 2. The paper carefully fences off prior claimed proofs (documenting a sign obstruction in one).
+- **Computability content**: Deliberately *non-effective*: the threshold Q(ν) is not computed; the Flint–Hills implication only needs the qualitative exponent via a dyadic spacing argument.
+- **Lesson**: Roth-style many-variable interpolation can settle qualitative exponent statements that no explicit Padé construction reaches — effectiveness is traded away by design.
+
+### 018. Margulis–Platonov over global fields
+- **Finding**: For an absolutely almost simple simply connected G over any global field (including function fields of characteristic 2), every noncentral abstract normal subgroup of G(k) is the inverse image of an open normal subgroup of the finite product of its anisotropic nonarchimedean local groups.
+- **Approach**: Reduction to the isotropic case via Kneser–Tits type results, with abstract normal subgroups controlled through the level topology on local groups; characteristic 2 function fields require separate treatment of the anisotropic local classification.
+- **Lesson**: Abstract normal subgroup structure of rank-one-friendly groups is completely local: the arithmetic of G(k) is governed by its anisotropic local factors.
+
+### 019. p-adic section conjecture
+- **Finding**: Rational points on every smooth proper geometrically connected curve of genus ≥ 2 over a finite extension of Q_p correspond bijectively to conjugacy classes of sections of the arithmetic étale fundamental group; also Grothendieck's global section conjecture over Q for X₀(N), X₁(N) of genus ≥ 2.
+- **Approach**: p-adic Hodge-theoretic analysis of the maximal pro-ℓ/pro-p quotient plus descent-obstruction methods; the global statement for modular curves rides on established finite-descent theorems (descent locus = rational points there).
+- **Lesson**: Grothendieck's section conjecture is true locally over p-adic fields — the obstruction was always the global descent locus, not the local anabelian geometry.
+
+### 020. Squarefree quartics and power-free values
+- **Finding**: The squarefree-values conjecture for irreducible quartics with no fixed prime-square divisor (positive Euler-product density), and (d−2)-power-free density for irreducible integer polynomials of degrees 4–8; with Browning's theorem this covers every d ≥ 4.
+- **Approach**: Number-field factorization of the splitting behavior, determinant estimates with *adaptive* auxiliary primes to control the sieve's local error, and explicit low-degree geometry where the discriminant structure is analyzed by hand.
+- **Lesson**: Low-degree power-free values were stuck on square discriminants; adaptive auxiliary primes are the flexible sieve input that fixes the error terms case by case.
+
+### 021. Jacobsthal's function, quadratic bound
+- **Finding**: h(k) ≪ k²/(log log(3k))²: every interval of that length contains an integer coprime to a given integer with at most k distinct prime divisors — removing the classical logarithmic loss, uniformly over prime sets and interval position.
+- **Approach**: A mean-value estimate for the density of sifted integers via large-sieve technology at higher moments, improving on Iwaniec's k²log²k by eliminating the log through a sharper distributional input.
+- **Lesson**: A quadratic Jacobsthal bound is exactly the input needed for covering-system and algorithmic coprimality questions; sieve moments, not new primes, were the missing ingredient.
+
+### 022. Weak inhomogeneous Duffin–Schaeffer
+- **Finding**: For every shift γ and finite-valued ψ, divergence of Σφ(q)ψ(q)/q implies ∥qx − γ∥ < ψ(q) for infinitely many q for a.e. x — with unrestricted numerators and no Diophantine condition on γ.
+- **Approach**: Transplants the Koukoulopoulos–Maynard proof architecture (Cauchy–Schwarz over quasi-copy grids, a dyadic hierarchy tree over prime factors of denominators) to the inhomogeneous setting, where shifts destroy the translation structure the homogeneous argument used.
+- **Lesson**: The KM graph/tree technology is robust to perturbing the target: "almost every x" statements tolerate shifts and unreduced fractions.
+
+### 023. Patterson's first moment for cubic Gauss sums
+- **Finding**: Unconditional proof of Patterson's first-moment conjecture in the all-primary form: normalized cubic Gauss sums over primary Eisenstein primes of norm ≤ X have main term (6/5)c∗X^{5/6}/log X, with every fixed nonzero Fourier angular mode of smaller order.
+- **Approach**: Fourier/angular decomposition of the normalized Gauss sum on the metaplectic (Kubota) side, with the main term extracted from the theta series of the cubic residue symbol; unconditional because the analytic input is the new mean-square/dual-theta technology of the quasi-RH program rather than unproven spectral hypotheses.
+- **Lesson**: Cubic Gauss sums are the computational heart of the Z[ω] machinery: the same theta coefficients that drive zero-free regions also compute Patterson's main term.
+
+### 024. Asymptotic formula for totients
+- **Finding**: An explicit asymptotic equivalent for V(x) = #{distinct φ(n) ≤ x}, with coefficient a positive bounded phase-dependent factor given by a uniform limit of finite arithmetic data; in particular V(cx)/V(x) → c, answering Erdős–Hall.
+- **Approach**: Refines Ford's tree-like classification of totient preimage chains with precise local densities, then a saddle-point/tauberian analysis; the "phase-dependent factor" is the uniform limit over finite truncations of the preimage tree.
+- **Lesson**: Multiplicative preimage trees admit genuine asymptotics: the limiting object is arithmetically defined and computable in the limit, not closed-form.
+
+### 025. Erdős's short Egyptian fractions
+- **Finding**: Every a/b, 1 ≤ a < b, is a sum of O(log log b) distinct unit fractions (best possible order), with matching lower bound; counts of k-term expansions of 1 and the first missing denominator grow doubly exponentially in k.
+- **Approach**: An explicit inductive reduction algorithm (with a finite exceptional-denominator table) gives the upper bound; the double-exponential growth statements follow from a counting/divisibility analysis of the recursion tree.
+- **Lesson**: Egyptian-fraction length is governed by log log — the same scale as sieve chains — and the constructive algorithm makes the constant explicit.
+
+### 026. Positive lower density of large prime gaps
+- **Finding**: For every fixed C > 0, a positive proportion of consecutive prime gaps exceed C·log p_n in every sufficiently large initial segment (proportion depending on C); consequently the indices where p_n/n increases have positive lower density (Erdős–Prachar).
+- **Approach**: A multi-dimensional sieve with weights selecting intervals with an anomalous deficit of primes relative to the random model; comparison of actual to expected prime counts over a family of intervals shows large gaps occur with positive frequency, not just lim sup.
+- **Lesson**: "Large gaps occur a positive proportion of the time" is a sieve-statistics statement; positive *density* of record indices follows as bookkeeping.
+
+### 027. Integral density on curve character varieties
+- **Finding**: For every smooth connected complex curve and every rank r, integral points are Zariski dense in every component of the SL_r character variety over the full ring of integers of one number field, allowing prescribed quasi-unipotent boundary classes including nonsemisimple ones.
+- **Approach**: The p-adic period (Ellenberg–Lawrence–Venkatesh) method: Frobenius orbits on character-variety fibers are separated by p-adic Hodge-theoretic period maps, with amplification ensuring every component is hit; potential density over one field of definition is upgraded to Zariski density of integral points.
+- **Lesson**: p-adic period maps can prove *density* (not just non-finiteness) on moduli spaces — the same machinery that proves finiteness elsewhere, pointed in the opposite direction.
+
+### 028. Gaussian moat conjecture
+- **Finding**: No infinite walk through distinct Gaussian primes with uniformly bounded steps; stronger, for each bound D the distance-≤D graph on Gaussian primes has uniformly bounded finite component sizes, including primes on the coordinate axes.
+- **Approach**: A finite periodic sieve obstruction: geometric sampling of the prime graph combined with information-theoretic (entropy) estimates showing that within a bounded window the number of reachable distinct primes collapses; the bound is nonexplicit.
+- **Lesson**: Information theory can prove *boundedness of components* — a graph-connectivity statement about primes decided by counting the entropy of local prime configurations.
+
+### 029. Artin's primitive root conjecture: infinitude for every base
+- **Finding**: For every a ≠ −1, square, at least c_a·x/(log x)² primes in every sufficiently large (x, 2x) have a as primitive root.
+- **Approach**: Counts primes via Chebotarev over the Kummer extensions of degree dividing the order of a mod p, using the new quasi-RH zero-free region to control the Chebotarev error unconditionally (previously GRH), plus a lower-bound sieve to confront the parity problem in the ratio-indexed family — the paper names "the two obstructions" explicitly.
+- **Lesson**: The zero-free half-plane is the computational key: fixed-width zero-free regions convert GRH-conditional Chebotarev distribution results into unconditional lower bounds.
+
+### 030. Modularity over imaginary quadratic fields
+- **Finding**: Every elliptic curve over every imaginary quadratic field is modular, with matching local parameters at every place.
+- **Approach**: Potential automorphy technology (multi-variable tensoring tricks producing many potentially automorphic Galois conjugates) combined with 2-adic/pairwise modularity-lifting theorems over CM fields to upgrade potential to actual automorphy over K, with local-global parameter matching at all places.
+- **Lesson**: The last open modularity cases over number fields fell to the same potential-automorphy + lifting pipeline, with the dyadic Fontaine–Mazur results (010) supplying the prime-2 leverage.
+
+### 031. Uchida's conjecture for open Galois homomorphisms
+- **Finding**: Every continuous open homomorphism between Galois groups of (possibly infinite) solvably closed Galois extensions of number fields is induced by a unique equivariant field embedding in the opposite direction, with no kernel or cyclotomic restrictions.
+- **Approach**: Bootstraps Neukirch–Uchida: over solvably closed extensions, the maximal solvable quotient is trivial, so matching of unramified primes/extensions (Chebotarev) becomes rigid enough to force the field embedding without the compatibility hypotheses the classical theorem needs.
+- **Lesson**: Anabelian rigidity improves when you remove the solvable "noise": solvable closure acts as an anabelian amplifier.
+
+## Mathematical logic
+
+### 240. Shelah's eventual categoricity conjecture
+- **Finding**: In ZFC: for each bound on the Löwenheim–Skolem number there is a uniform Hanf-type threshold so that categoricity of an AEC in one cardinal above the threshold implies categoricity in every cardinal in the same tail; under CH a proposed specific threshold can fail.
+- **Approach**: Abstract elementary class technology — Galois types, good λ-frames and categoricity-transfer machinery — yielding a uniform bound; the CH counterexample is a forcing/syntactic construction showing a proposed Hanf number is not absolute.
+- **Lesson**: Categoricity transfer is a theorem of ZFC with a uniform threshold; but *which* threshold works is set-theoretically sensitive.
+
+### 241. Rigidity of the Turing degrees
+- **Finding**: Every order automorphism of the Turing degrees is the identity: no nontrivial relabeling preserves relative computability.
+- **Approach**: Completes the Slaman–Woodin program: every automorphism is shown to be arithmetically definable (via the bi-interpretability of the Turing degrees with second-order arithmetic), and definable degrees are fixed.
+- **Lesson**: The degree structure encodes arithmetic so tightly that its automorphism group is trivial — structural rigidity through coding.
+
+### 242. Single-fold Diophantine representations
+- **Finding**: Every r.e. set of tuples has a Diophantine representation with exactly one auxiliary solution per member and none for nonmembers — the single-fold conjecture, hence finite-fold; Diophantine solvability over N remains undecidable even under an at-most-one-solution promise.
+- **Approach**: A parsimonious strengthening of the DPRM/Matiyasevich encoding: the computation history is encoded so each stage contributes exactly one witness value, using a single-fold exponential Diophantine step and a polynomialization that preserves solution-count uniqueness.
+- **Computability content**: Direct and strong: undecidability survives a promise restricting the number of solutions, sharpening the boundary between search and decision.
+- **Lesson**: Diophantine encoding can be made *information-preserving* (bijective witnesses) — which changes what algorithms can assume about solution spaces.
+
+### 243. Choiceless counting does not capture polynomial time
+- **Finding**: Confirms Blass–Gurevich–Shelah: consistency of a linear system over F₃ defines a P-time query on unordered finite structures not expressible in choiceless polynomial time with counting (CPTime, full hereditarily-finite rank); witnessed symmetric choice strictly increases expressive power.
+- **Approach**: Descriptive-complexity separation: a bijection-invariant rank-type invariant (CFI-style gadgets over F₃) that CPTime's counting/copying mechanism provably cannot detect, in the full formalism; the witnessed-choice upper bound is a simulation theorem.
+- **Computability content**: A genuine complexity-class separation, with consequences for database query languages and logical characterizations of P.
+- **Lesson**: Counting alone cannot simulate linear-algebraic invariants; *choice* (in its logical form) is what buys access to them.
+
+### 244. The partition principle does not imply choice
+- **Finding**: Consistent with ZF: every surjective image of a set injects back into that set (the partition principle), yet choice fails — while choice for ordinal-indexed families holds; from any countable transitive model of ZFC one gets a transitive symmetric extension with no new countable sequences of ground-model reals.
+- **Approach**: Symmetric forcing: a model engineered so that every surjection splits injectively (a "self-injective" universe design) while choice fails for a deliberately chosen family; the no-new-countable-sequences clause preserves the ground model's countable combinatorics.
+- **Lesson**: The oldest open question about AC (PP ⇏ AC) is settled by forcing design: surjection-splitting is strictly weaker than well-ordering.
+
+### 245. The β-Barendregt–Geuvers–Klop conjecture
+- **Finding**: For every pure type system (including nonfunctional rules and open contexts), weak normalization implies strong normalization: if every legal expression has a β-normal form, every β-reduction sequence terminates.
+- **Approach**: A standardization/finiteness-of-developments theorem for PTS: type structure constrains redex creation enough that the existence of normal forms forces all strategies to terminate, with the nonfunctional-rule cases handled by an extended confluence/residual analysis.
+- **Computability content**: Termination of proof assistants' type theories: the theorem underwrites normalization arguments used to justify decidability of type checking.
+- **Lesson**: Weak vs strong normalization collapse for typed systems — a proof-theoretic regularity mirroring confluence, with direct consequences for typechecker termination.
+
+## Cross-subject deep dive: deterministic polynomial factorization over F_p
+
+- **Finding**: A uniform deterministic polynomial-time algorithm (in (deg f + 1)·log p bit operations, p in binary) for complete factorization over prime fields — closing the last gap left by the analytic input: previously, deterministic splitting of split polynomials needed either GRH or expensive randomness.
+- **Approach**: The Berlekamp algebra reduces to splitting a monic square-free F ∈ F_p[x] that is *totally split*; roots are handled simultaneously in the algebra F_p[T]/(F), so any operation with component-dependent outcome yields a factor by a gcd. The missing ingredient is multiplicative structure: a precomputed table of auxiliary primes gives, for each odd q, the field F_p(ζ_q) and a generator of its full q-primary multiplicative subgroup — constructible in increasing q so that the only factorization needed at step q has degree q − 1. For even N, differences of root pairs plus the 2-primary entry orient the complete graph on the roots, and unequal vertex scores give a separator. For odd N with q | N, the heart is geometric: on the superelliptic curve C: Y^q = F(X) over an explicitly constructed field of degree ≤ N(q−1), the map λ = 1 − σ (σ the automorphism (X,Y) ↦ (X,ζ_qY)) is injective on the infinity-lattice but surjective on the Jacobian. Lifting each class [P_i − ∞₀] repeatedly through λ — all lifts rational over k by a filtration argument — and applying label tests forces two ramification points to differ, else a fixed nonzero infinity divisor would acquire one extra λ-power of divisibility than its lattice valuation allows. The λ-division itself is *constructive*: a norm equation in k(C)/k(X), solved via maximal orders in a split cyclic algebra, a rank-one idempotent, and global sections on P¹, with Riemann–Roch reduction and arithmetic circuits controlling divisor sizes; all bounds are uniform in degree and q (an exponent depending on the genus would break the theorem).
+- **Computability content**: Total: this is an algorithm, and its correctness proof *consumes* the uniform Hecke zero-free theorem from the companion paper "Primitive roots for every admissible integer base" (itself downstream of the quasi-RH program, cf. 003/029). A deep analytic theorem about L-function zeros becomes a branch of a deterministic factorization routine.
+- **Lesson**: The purest demonstration in the corpus that zero-free regions are computational objects: analytic uniformity over all characters is exactly the hypothesis needed to make auxiliary-prime tables constructible, and once it exists, deterministic factoring follows from arithmetic geometry done effectively.
+
+## Meta-lessons (Number theory & Logic)
+
+- **The mean-square/dual-iteration engine.** One family of techniques — embed a hard sum in a twist family, prove a mean square, exploit twist-parametric primes (A_{p⁶} ≈ A₁), Poisson-summate into metaplectic theta coefficients, and iterate the dual estimate — powers the quasi-RH (003), the Landau–Siegel exclusion, Patterson's first moment (023), and indirectly Artin (029) and deterministic factorization over F_p. Uniformity over all characters is what makes the outputs *effective*.
+- **The interpolation determinant is the house style for special values.** Catalan (005), µ(π) = 2 (017), and the exclusion of Siegel zeros all run the same contradiction: an integer determinant with forced divisibility ~log U against an interpolation size bound ~(3/4)log U. Design choices differ (Taylor contact to cancel ζ(2); logarithmic curves with center-independent thresholds; Frobenius-conjugate row weights), and nonvanishing is always reduced to a finite, checkable certificate.
+- **Selmer structures and integral determinant comparisons.** The BSD cluster (002, 006) treats the leading-term formula as a lattice-volume identity between Kummer/Selmer cohomology and integral analytic (theta/Siegel) objects, with auxiliary-prime switching to kill divisors; modularity results (010, 030) feed it through Heegner points and level bounds. The pattern: rank statements come from Euler systems/cohomology; exact constants require congruence bookkeeping.
+- **Model theory meets arithmetic geometry.** H10 over Q (004) is proved by compactness + elliptic-curve height ramification rather than a Diophantine definition of Z, with modularity used for the uniform level bound; the single-fold theorem (242) and the PTS termination theorem (245) are purely syntactic; PP ⇏ AC (244) is forcing design. Undecidability results here always carry computability content (promise versions, Turing degrees), and the separations in logic (241, 243) are complexity-theoretic in nature.
+- **Results with direct computational consequences:** quasi-RH (deterministic Tonelli–Shanks, deterministic Miller test, effective class-number bounds, Euler's 65 idoneal numbers complete), deterministic factorization over F_p, Artin-type lower bounds for primitive roots, Jacobsthal's quadratic bound, H10(Q) undecidability and the single-fold/promise undecidability, rigidity of the Turing degrees, the CPTime ⊊ P separation, and PTS normalization (typechecker termination). By contrast, the Diophantine-approximation results (π exponent 2, Catalan) are deliberately non-effective — a conscious trade of effectiveness for qualitative strength.
+- **Meta-lesson about the discovery process.** The same reusable primitives recur across unrelated subjects: the zero-free region → deterministic algorithm pipeline, the divisibility-vs-size determinant template, potential-automorphy plus lifting, and "nonpretentiousness ⇒ cancellation." Several headline theorems (factorization over F_p, Artin, idoneal numbers) are *downstream consumers* of one analytic theorem — evidence that the discovery pipeline optimized for transferable sub-results, not just headline statements.

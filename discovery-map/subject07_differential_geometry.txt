@@ -1,0 +1,88 @@
+# Subject 7: Differential geometry
+
+## 333. Smooth isometric immersions of surfaces into R^4
+Every closed smooth Riemannian surface admits a smooth isometric immersion into R^4, resolving the closed-surface form of the four-dimensional isometric-immersion problem. This includes nonorientable surfaces and metrics of arbitrary Gaussian curvature.
+
+## 334. A smooth surface metric with no local immersion in R^3
+Constructs a smooth positive-definite metric on (-1,1)^2 for which no neighborhood of the origin admits a smooth isometric immersion into R^3. This answers the unrestricted smooth local isometric realization problem for surfaces negatively, even after shrinking the neighborhood.
+
+## 335. Gromov's integral scalar-curvature inequality
+Proves _M( Scal _g^-)^ n/2 \,dV_g a_n M for every closed connected oriented smooth n-manifold, n 3, and every smooth metric, with a_n>0 depending only on dimension. Here Scal _g^-= \ 0,- Scal _g\ and M is real simplicial volume. Also proves rational inessentiality under positive scalar curvature, resolving the Gromov--Lawson conjecture; every nonnegative-scalar-curvature metric on a closed aspherical manifold is flat.
+
+## 336. Spectral scalar curvature and codimension-two width
+Every complete connected smooth boundaryless n-manifold, n 3, satisfying -4 + Scal 1 as a quadratic-form inequality admits a continuous map to a simplicial complex of dimension at most n-2 whose entire fibers have diameter bounded only by n in the original metric. This strengthens Gromov's width conclusion to spectral scalar curvature. Universal covers of closed positive-scalar-curvature manifolds also have continuous macroscopic dimension at most n-2 for every n 2.
+
+## 337. Cartan--Hadamard isoperimetry and CAT(0) fillings
+Proves generalized Cartan--Hadamard isoperimetry in every dimension: in a complete simply connected manifold with sectional curvature at most 0, every finite-volume finite-perimeter set satisfies the sharp comparison with the equal-volume model ball. Bounded positive-volume equality regions for =0 are Euclidean balls. Also proves sharp Euclidean filling bounds for compactly supported integral n-cycles, n 2, in arbitrary proper CAT(0) spaces.
+
+## 338. Yau's uniformization conjecture
+Proves Yau's uniformization conjecture: every complete connected noncompact K\"ahler manifold with strictly positive holomorphic bisectional curvature is biholomorphic to C^n.
+
+## 339. Katok's entropy rigidity conjecture
+Proves Katok's entropy rigidity conjecture for closed connected Riemannian manifolds of dimension at least three with strictly negative sectional curvature: normalized Liouville measure maximizes entropy for the geodesic flow if and only if the metric is locally symmetric.
+
+## 340. A counterexample to the nearby Lagrangian conjecture
+Disproves the unrestricted nearby Lagrangian conjecture. For some sufficiently large even N, constructs a closed exact embedded Lagrangian in T^*(S^9 S^ N-1 ) that is diffeomorphic to the base but not Hamiltonian isotopic to its zero section.
+
+## 341. Donaldson's hypersymplectic deformation conjecture
+Proves Donaldson's hypersymplectic deformation conjecture in a cohomology-preserving form. Every positive triple of smooth closed two-forms on a closed connected oriented four-manifold, normalized by _i _j= _ ij , deforms through positive closed triples to a hyperk\"ahler triple while preserving all three cohomology classes. Any positive triple can first be normalized by a constant linear change.
+
+## 342. Donaldson's tamed-to-compatible conjecture
+Proves Donaldson's tamed-to-compatible conjecture: every smooth almost complex structure on a closed four-manifold that is tamed by a symplectic form admits a compatible symplectic form. The almost complex structure stays fixed; the form's cohomology class may change.
+
+## 343. Sharp symplectic ball-packing criteria in higher dimensions
+Resolves the Siegel--Yao conjecture for arbitrary capacities in every dimension 2n 6. Finitely many closed symplectic balls of capacities R_1, ,R_k embed disjointly into an open ball of capacity R exactly when _iR_i^n<R^n and R_i+R_j<R for every distinct pair i,j.
+
+## 344. The metric Blaschke conjecture
+Proves the metric Blaschke conjecture: every closed connected Riemannian manifold of positive dimension whose injectivity radius equals its diameter is, up to scaling, a standard compact rank-one symmetric space.
+
+## 345. Infinitely many closed geodesics on spheres and three-manifolds
+Proves that every smooth Riemannian metric on S^n, n 2, has infinitely many prime closed geodesics with pairwise distinct images. The same conclusion holds on every closed manifold admitting a finite smooth spherical cover and on every closed three-manifold, without orientability or nondegeneracy restrictions.
+
+## 346. Sharp singular-set bounds for stationary integral varifolds
+Proves that every stationary integral m-varifold in a Euclidean open set has singular set of Hausdorff dimension at most m-1, a sharp bound in every positive dimension and codimension. On round spheres, the family also proves almost-everywhere regularity: the singular set has zero m-dimensional Hausdorff measure.
+
+## 347. Counterexamples to strong forms of Arnold's fixed-point conjecture
+Disproves stable-Morse lower bounds for nondegenerate Hamiltonian fixed points: on simply connected closed K\"ahler manifolds of real dimension 22, the deficit below the stable Morse number is unbounded. A separate Hamiltonian diffeomorphism of the complex quadric threefold has exactly three fixed points, fewer than the four critical points required of every smooth function.
+
+## 348. Nonnegatively curved Einstein four-manifolds and a topological gap
+Classifies closed connected Einstein four-manifolds with positive Einstein constant and nonnegative sectional curvature: up to scaling, their universal Riemannian covers are the round S^4, Fubini--Study CP^2, or a product of equal round two-spheres. A closed simply connected nonnegatively curved four-manifold is diffeomorphic to one of these whenever the scale-invariant L^2 norm of its trace-free Ricci curvature lies below a universal positive constant.
+
+## 349. The Solomon--Yau least-volume conjecture
+Proves the Solomon--Yau least-volume conjecture for minimal hypersurfaces of round spheres. For every m 2, a closed connected minimal immersion into the unit sphere S^ m+1 with non-totally-geodesic image has volume at least that of the smallest minimal Clifford product, counting covering multiplicity.
+
+## 350. Yau's nodal conjecture: surfaces and counterexamples
+Proves the sharp C upper bound for nodal length on every fixed smooth closed surface, completing Yau's conjecture there. The upper bound fails for fixed smooth metrics in dimensions three and four, including metrics on S^3 arbitrarily close to round. In dimension five, nodal measure can grow faster than ^ 1/2+ _0 for some fixed _0>0, ruling out even arbitrarily small power losses.
+
+## 351. Scalar curvature detects four-dimensional Ricci-flow singularities
+Proves that a smooth Ricci flow on a closed four-manifold extends past any finite time at which scalar curvature remains uniformly bounded. A higher-dimensional counterexample has bounded scalar curvature but unbounded full curvature at its finite maximal time, disproving the unrestricted scalar-curvature extension conjecture.
+
+## 352. Finite-time singularity of Calabi flow
+Disproves Chen's smooth long-time existence conjecture for Calabi flow by constructing a smooth U(10)-invariant K\"ahler metric on CP^ 10 whose flow develops a finite-time singularity. The metric lies in the Fubini--Study class, so the failure occurs even in a class containing a constant-scalar-curvature metric.
+
+## 353. The sharp dimension threshold for affine Bernstein rigidity
+Proves that every smooth locally uniformly convex affine-maximal graph of dimension three through nine, complete for its induced Euclidean metric, is an elliptic paraboloid. A smooth entire nonquadratic example in dimension ten makes this range sharp. In dimensions three through nine, the paraboloid classification also holds for connected open locally uniformly convex affine-maximal hypersurfaces complete for the affine Berwald--Blaschke metric.
+
+## 354. Isoperimetric regions in the cubic three-torus
+Determines the isoperimetric profile of the unit cubic flat three-torus and classifies every finite-perimeter minimizer: balls, circular tubes around shortest closed geodesics, coordinate slabs, and their complements. The transition volumes are 4 /81 and 1/ , with exactly the adjacent two types minimizing at each transition.
+
+## 355. Unique tangent flows at the first surface singularity
+Proves the first-singular-time case of tangent-flow uniqueness for smooth compact connected embedded surfaces without boundary in R^3. At every singular point, all fixed-center backward tangent flows agree as area measures at every negative time in the original ambient coordinates, without mean-convexity or a prescribed tangent model.
+
+## 356. Gigli's characterization of Alexandrov curvature
+Proves Gigli's conjecture: in every integer dimension n 2, Alexandrov curvature at least is characterized by the full-support RCD ((n-1) ,n) condition with reference measure H^n and distributional sectional curvature at least in the original global test classes. The RCD condition is unreduced.
+
+## 357. Bi-Lipschitz coordinates at every regular RCD point
+Proves that every regular point of a noncollapsed RCD (K,n) space, for K R and integer n 2, has an open neighborhood bi-Lipschitz to an open subset of R^n. Regularity requires all pointed tangents to be Euclidean, the reference measure is exactly H^n, and the chart compares ambient distances with a point-dependent finite constant.
+
+## 358. A three-manifold with no conjugate points and no nonpositively curved metric
+Constructs a closed connected orientable smooth three-manifold that admits a metric without conjugate points but no metric of nonpositive sectional curvature. This answers negatively, already in dimension three, whether the first metric-existence property implies the second.
+
+## 359. Negative K\"ahler curvature without bounded holomorphic coordinates
+Constructs a contractible domain in C^3 with a complete negatively pinched K\"ahler metric but no bounded holomorphic coordinates, disproving bounded-domain uniformization in this setting. A higher-dimensional example has sectional curvature at most -1 and only constant bounded holomorphic functions; its curvature is not bounded below.
+
+## 360. Villani’s convexity conjecture and regular optimal transport
+On every closed connected Riemannian manifold of dimension at least two satisfying weak Ma--Trudinger--Wang curvature, all tangent injectivity domains are convex, resolving Villani’s conjecture in this setting. For squared-distance transport between measurable probability densities bounded above and away from zero, the optimal map and its inverse are H\"older continuous.
+
+## 361. Counterexamples to Yau's harmonic dimension bound
+Disproves Yau's proposed Euclidean dimension bound for harmonic functions of integer growth on manifolds with nonnegative Ricci curvature. For every sufficiently large integer k, a complete smooth metric on R^3 has at least (k+2)^2 independent harmonic functions of growth at most k, exceeding the Euclidean count (k+1)^2. The metric may depend on k.

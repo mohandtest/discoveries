@@ -1,0 +1,46 @@
+# Subject 8: Convex and metric geometry
+
+## 087. The Mahler conjectures and symplectic width
+Resolves the symmetric and nonsymmetric geometric Mahler conjectures in every dimension, with Hanner polytopes and simplices as the respective volume-product minimizers and all equality cases classified. The corresponding sharp functional Mahler inequalities also hold. For n 2, every symmetric polar product K K^ in dimension 2n has Gromov width 4.
+
+## 088. Petty's projection-volume conjecture and simplex counterexamples
+Proves Petty's projection-volume conjecture in the remaining dimensions n 4: ellipsoids uniquely minimize projection-body volume at fixed body volume. Also establishes the full Lutwak--Petty projection inequalities. In contrast, products of simplices exceed Brannen's proposed simplex maximum for normalized projection-body volume by an exponential factor in every sufficiently large dimension.
+
+## 089. Bounded-distortion L_1 embeddings of planar and bounded-treewidth graphs
+Resolves the planar and bounded-treewidth cases of the Gupta--Newman--Rabinovich--Sinclair conjecture. Shortest-path metrics of finite connected graphs with arbitrary positive edge lengths embed into real L_1 with universal distortion for planar graphs, and distortion depending only on treewidth for bounded-treewidth graphs. The corresponding multicommodity flow--cut gaps are uniformly bounded.
+
+## 090. Universal optimality of the triangular lattice
+Proves that the triangular lattice minimizes the lower limit of energy per particle for every nonnegative completely monotone potential of squared distance among locally finite planar configurations of centered-disk density one. It also minimizes unit-background renormalized Riesz energies for 0<s<2 and Coulomb energy, resolving Sandier--Serfaty and the two-dimensional Brauchart--Hardin--Saff conjecture on the linear term of optimal spherical logarithmic energy.
+
+## 091. The logarithmic Brunn--Minkowski conjecture
+Proves the logarithmic Brunn--Minkowski inequality for origin-symmetric convex bodies in every dimension, and the scalar-dilation B-conjecture for all even log-concave Radon measures. For Lebesgue volume it also proves the additive L_p Brunn--Minkowski inequality for full-dimensional origin-symmetric convex bodies throughout 0<p<1.
+
+## 092. The optimal order of convex-body covering density
+Determines the optimal worst-case covering density as (n n), for both lattice and unrestricted translative coverings. Every convex body in R^n, n 2, admits a lattice covering of density at most Cn n; centrally symmetric examples in every sufficiently large dimension require at least cn n even without the lattice restriction, for absolute c,C>0.
+
+## 093. Dimension-free logarithmic Sobolev inequality for subgaussian log-concave measures
+Proves a dimension-free logarithmic Sobolev inequality for centered log-concave densities with uniformly subgaussian linear marginals, with constant bounded by a universal multiple of the squared linear subgaussian parameter.
+
+## 094. Subpolynomial dimension reduction in L_p
+For every fixed 1<p< and distortion D>1, every n-point subset of real L_p embeds into _p^d with distortion at most D and dimension d=n^ o(1) , answering Naor's sublinear-dimension question for p 2. In contrast, exact embeddings require worst-case dimension (n^2) when p 2.
+
+## 095. Hyperbolicity cones without semidefinite lifts
+Disproves the Projected Lax conjecture: some hyperbolicity cones are not spectrahedral shadows. The examples admit no exact finite affine semidefinite lift, regardless of the number of auxiliary variables or the real coefficients used. This also disproves the generalized Lax conjecture that every hyperbolicity cone is spectrahedral.
+
+## 096. The Gaussian propeller conjecture
+Proves that the sum of squared Gaussian first moments of any finite measurable partition is at most 9/(8 ). In dimension at least two, three planar sectors of angle 2 /3, extended orthogonally, attain the bound. Combined with the separate Unique Games theorem, this proves NP-hardness of improving the loss factor (8 /9)(1-1/k) for identity-target kernel clustering with fixed k 3 on rational centered positive semidefinite inputs.
+
+## 097. The Euclidean Steinitz--Bergstr\"om conjecture
+Proves that any finite sequence in the Euclidean unit ball of R^d admits signs keeping every partial sum within C d, independently of length. Consequently every zero-sum family can be reordered with the same bound on unsigned partial sums. A matching lower bound gives the optimal order S_2(d)= ( d).
+
+## 098. A negative answer to the Lang--Plaut problem
+Every infinite-dimensional real Banach space contains a compact doubling set that admits no bi-Lipschitz embedding into any finite-dimensional normed space. The doubling constant is universal. This answers the Lang--Plaut problem negatively, even for compact subsets of Hilbert space.
+
+## 099. The sharp distortion of edit distance into _1
+Determines the least distortion of embedding edit distance on words of length at most d into real _1: it is ( ( d\, d )). Insertions, deletions and substitutions have unit cost. The constants are uniform over all finite alphabets with at least two symbols, even when the alphabet grows with d; binary words already force the lower bound.
+
+## 100. A counterexample to Bang's cylinder-covering bound
+Covers the entire closed regular tetrahedron by finitely many cylinders with compact triangular perpendicular bases whose total area is less than half its smallest orthogonal projection area. This disproves Bang's half-area cylinder-covering bound and the stronger directionwise normalized conjecture in dimension three.
+
+## 101. The sharp simplex conjecture for isotropic constants
+Proves that simplices uniquely maximize the isotropic constant among convex bodies in every dimension, resolving the strong isotropic constant conjecture. Also establishes the sharp entropy lower bound for log-concave probability densities, with equality precisely for invertible affine images of products of one-sided exponential laws.

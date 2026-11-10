@@ -1,0 +1,10 @@
+# The openai/math checkout (~3.7 GB) is not part of this repo.
+math/
+
+# Python
+__pycache__/
+*.pyc
+
+# Scratch
+*.log
+.DS_Store

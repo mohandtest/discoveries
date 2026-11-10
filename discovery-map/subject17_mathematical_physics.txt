@@ -1,0 +1,76 @@
+# Subject 17: Mathematical physics
+
+## 260. Spacetime Penrose inequalities and rigidity
+Proves the sharp enclosing-area spacetime Penrose inequality for smooth one-ended asymptotically flat initial data in every spatial dimension n 3, under dominant energy, weak future trapping, positive enclosing area, and the stated decay assumptions. It bounds invariant ADM mass below using minimum enclosing area, with equality rigidity under additional horizon hypotheses. Charged upper-area bounds treat dyonic three-dimensional data; the higher-dimensional purely electric extension uses the matched neutral theorem.
+
+## 261. Localization and delocalization in the Anderson model
+Resolves the predicted spectral contrast for the lattice Anderson model with independent uniform site potentials. In dimension two, every positive disorder strength gives almost surely pure-point spectrum. In every fixed dimension d 3, sufficiently weak positive disorder gives purely absolutely continuous spectrum on a fixed open interval with nonzero spectral weight.
+
+## 262. Sharp one-dimensional Lieb--Thirring inequalities
+Proves the sharp one-dimensional Lieb--Thirring inequality for 1/2< <3/2 and arbitrary finite-matrix potentials W 0 with tr (W^ +1/2 )< : the optimal constant is the scalar one-bound-state value, independent of matrix size. All equality cases are direct sums, in one constant unitary basis, of scalar sech ^2 solitons with independent scales and centers, and zero channels.
+
+## 263. The ionization and generalized ionization conjectures
+For the full nonrelativistic Coulomb model with two electron spin states, proves that a molecule with M fixed nuclei of charges at least one and total charge Z strictly binds at most Z+CM electrons. Neutral-atom first ionization energies and radii containing all but an expected half-electron have universal positive upper and lower bounds. The energy cost of removing m electrons has Thomas--Fermi asymptotics as m and Z/m ; neutral-atom outer radii have the corresponding iterated-limit asymptotics, taking Z first.
+
+## 264. Strong cosmic censorship near two-ended Kerr data
+Proves local strong cosmic censorship near each fixed rotating subextremal Kerr bridge. A dense G_ subset of a weighted smooth neighborhood of smooth complete two-ended asymptotically flat vacuum data has full maximal globally hyperbolic developments with no future continuous nondegenerate extension whose weak connection is locally square-integrable. No symmetry is imposed; extensions need not satisfy the vacuum equations.
+
+## 265. The two-dimensional gapped area law
+Proves an entropy area law for unique ground states of finite-range Hamiltonians on arbitrary finite induced square-lattice domains, using only a uniform full-system spectral gap and bounds on the local interactions. On open L L squares, uniformly gapped nearest-neighbor ground states also admit projected entangled-pair state approximations with polynomial bond dimension and global vector error at most L^ -1 .
+
+## 266. Exactly three mutually unbiased bases in dimension six
+Proves N(6)=3, resolving Zauner s dimension-six mutually unbiased bases conjecture: three such bases exist in C^6, but four cannot. The exclusion is a complete certified computation under the stated binary64 arithmetic and compiler conditions. An independent companion proves the Matolcsi--Ruzsa--Weiner Fourier-vanishing conjecture for order-six complex Hadamard matrices outside Tao s cubic equivalence class.
+
+## 267. Positive-temperature Bose--Einstein condensation and quantum depletion
+Proves Bose--Einstein condensation for the exact canonical Gibbs state of the three-dimensional hard-sphere gas: each fixed exclusion distance and sufficiently small fixed density admit a strictly positive temperature, independent of volume, with positive condensate fraction in the thermodynamic limit. At zero temperature, proves the Bogoliubov leading quantum-depletion law for hard spheres and fixed bounded nonnegative radial finite-range potentials of positive scattering length, taking the thermodynamic limit before the dilute limit.
+
+## 268. The spin-one Haldane gap
+Proves the spin-one Haldane gap conjecture for the pure antiferromagnetic Heisenberg chain on even periodic rings: the spectral gap stays uniformly positive as the chain grows. A companion establishes a gap for odd open chains with endpoint field h=3/5 and gives boundary-selected infinite-volume states with topological index -1.
+
+## 269. The Laughlin gap and stability under scalar disorder
+Proves the fermionic Laughlin spectral-gap conjecture for the full V_1 interaction at filling 1/3 on the round sphere. The unique ground state remains uniformly gapped under sufficiently weak bounded real scalar one-body potentials projected to the lowest Landau level. Both the gap and disorder threshold are uniform over all sufficiently large particle numbers and all normalized potential profiles.
+
+## 270. Threshold and positive-energy bound states of the BFSS model
+Proves that the undeformed relative SU (N) BFSS model has exactly one normalizable zero-energy state for every finite N 2, resolving the threshold-bound-state conjecture. For SU (2), a companion proves infinitely many normalizable positive-energy eigenstates with unbounded energies, contradicting the original BFSS paper s exclusion of additional bound states at N=2.
+
+## 271. Bloch's law and spontaneous ferromagnetic order
+Proves Bloch's T^ 3/2 law with its exact coefficient for three-dimensional quantum Heisenberg ferromagnets at every positive quantum spin, allowing nonnegative symmetric finite-range couplings whose support generates Z^3. The thermodynamic limit precedes the zero-field derivative and low-temperature limit. The family also proves spontaneous magnetization for nearest-neighbor models in every dimension d 3 and determines the first lattice correction for three-dimensional nearest-neighbor couplings.
+
+## 272. Entanglement without secret key and the PPT-square conjecture
+Constructs an entangled state on C^ 10 C^ 10 with zero distillable secret key for the specified local-instrument protocols that complete almost surely. These allow joint local processing and authenticated two-way public communication, with no other shared private resource and an eavesdropper holding the input purification and public record. A trace-preserving PPT channel on M_ 21 ( C) whose square is not entanglement breaking disproves Christandl s PPT-square conjecture.
+
+## 273. The entropy photon-number inequality
+Proves the entropy photon-number inequality for beam-splitter mixing of two independent finite-energy bosonic inputs in any finite number of modes: the output s entropy photon number is at least the transmissivity-weighted average of the inputs . Arbitrary entanglement within each input is allowed, and product thermal inputs attain equality even when their entropies differ.
+
+## 274. Moore's parity conjecture for QAC ^0
+Resolves Moore's parity conjecture in the measured-output model: constant-depth quantum circuits with arbitrary one-qubit gates, unbounded-arity Toffoli gates and polynomially many total qubits cannot compute parity with any fixed positive worst-case advantage. Ancillas start in zero, one output qubit is measured, and all other registers may be discarded. Xu--Li's reductions give the same bounded-error obstruction for strict majority.
+
+## 275. QMA-hardness of continuum Coulomb energy
+Proves QMA-hardness of approximating the electronic Coulomb energy infimum in three dimensions, minimizing over the full spinful fermionic continuum space. Deterministic polynomial-time reductions work even with only unit-charge nuclei at distinct rational positions, polynomially many electrons and an energy-threshold separation of at least one.
+
+## 276. The classical capacity of generalized amplitude damping
+Determines the unassisted classical capacity of every qubit generalized amplitude-damping channel, including all damping and thermal parameters. An explicit one-variable optimization gives the capacity, attained by independent two-state signal ensembles with collective decoding. Holevo capacity, minimum output entropy and regularized classical capacity are additive when tensoring with any finite-dimensional quantum channel.
+
+## 277. Threshold repetition for entangled games
+Proves exponential threshold repetition for every finite two-player one-round game: if its entangled value is v<1, the probability of winning at least a fraction v+ of k independent repetitions decays exponentially in k, for 0< <1-v. Arbitrary joint finite-dimensional entangled strategies and correlated question distributions are allowed.
+
+## 278. Failure of Kohn--Sham ensemble representation
+Constructs a three-electron Coulomb molecule with two equal positive-integer-charge nuclei whose absolute ground-state density has no noninteracting ground-state ensemble representation by a single real spin-independent local potential in L^ 3/2 ( R^3)+L^ ( R^3). This disproves Kohn--Sham ensemble representability for that potential class; the required nuclear charge is specified nonnumerically.
+
+## 279. Exact quantum factoring over a fixed finite gate set
+Gives a polynomial-time uniform quantum circuit family that outputs the complete prime factorization of every integer with probability one. Both gate count and qubit count are polynomial in the input length, and one fixed finite gate set suffices.
+
+## 280. Strong locality for strongly rational unitary vertex operator algebras
+Proves the strongly rational case of the strong-locality conjecture: every simple unitary strongly rational complex vertex operator algebra generates a completely rational conformal net. Its simple modules are unitarizable, and its representation category agrees with the net’s finite-index sectors as a braided unitary tensor category.
+
+## 281. QAOA optimality for the SK model
+Proves that QAOA approaches the ground-state energy of the Gaussian zero-field Sherrington--Kirkpatrick model when system size tends to infinity before circuit depth. For every accuracy, finite depth and deterministic angles independent of size and disorder achieve the required limiting expected energy per spin. This also yields leading-order optimal expected MaxCut values on large-degree random regular graphs, with size tending to infinity before degree.
+
+## 282. Scale-to-conformal enhancement in four-dimensional QFT
+Under the stated bounded-local-net and field-reconstruction hypotheses, proves that scale symmetry implies local conformal symmetry for four-dimensional unitary positive-energy theories with a discrete bounded-below scaling spectrum of finite multiplicity, finite scaling support and a physical local scale current. The stress tensor has a traceless improvement with unchanged spacetime charges. The conclusion concerns local Ward identities, not a global conformal action on the whole net.
+
+## 283. Polynomial-time, constant-error unitary synthesis from a Boolean oracle
+Solves the constant-error Aaronson--Kuperberg unitary synthesis problem: a uniform polynomial-size quantum oracle circuit approximates every n-qubit unitary channel within diamond-norm error 1/2, after a suitable Boolean oracle is chosen. Gates, qubits, oracle calls and query length are polynomially bounded. The target-dependent oracle may have an unrestricted truth table; its efficient classical construction is not asserted.
+
+## 284. The optimal randomized--quantum query exponent
+Shows that the universal bound R(f)=O((1+Q(f))^4) for total Boolean functions is sharp in its exponent, ruling out every smaller power and disproving the conjectured cubic relation. Here R and Q are randomized and quantum worst-case bit-query complexities with error at most 1/3; computation between queries is unrestricted.

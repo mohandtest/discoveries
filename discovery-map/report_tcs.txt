@@ -1,0 +1,221 @@
+# Subject 14: Theoretical Computer Science — Full Report
+
+41 result families. Deep-dive entries (marked ★) are based on reading the Introduction/Technique-overview of the matching preprint under `math/preprints/`.
+
+---
+
+## 102 ★. The Unique Games Theorem
+**Finding:** Proves Khot's Unique Games Conjecture: for every ε, δ ∈ (0,1/2) a deterministic polynomial-time reduction from 3SAT to explicit *unweighted* Unique Games over a fixed finite alphabet (F₂^s, translation constraints), completeness 1−ε, soundness δ. Direct reductions then give optimal NP-hardness for Max-Cut beyond Goemans–Williamson, Vertex Cover below 2, and constant-factor hardness for Min-UnCut/directed FVS.
+**Approach:** A "latent alphabet gadget" replaces Håstad's long-code layer with blocks independent on two tensor legs; a Fourier/"inverse shortcode" extraction recovers row advice from accepting proof tables, and a permutation test plus classical projection-game repetition converts near-satisfiability into a matrix-game gap. The central obstacle was retaining completeness near 1 when each label admits exactly one reply; the paper's Section 1.3 discusses how Grassmann expansion fails at this and how the quadratic-block gadget fixes it. Constants are finite and depend only on (ε, δ), but no competitive finite instance sizes are claimed — this is a reduction, effectively implementable but with unanalyzed blowup.
+**Lesson:** Long-standing "hardness-landscape" conjectures can fall to careful re-engineering of the verifier gadget rather than a wholly new framework.
+
+## 103 ★. L = RL = BPL
+**Finding:** Deterministic logarithmic space simulates every polynomial-time randomized log-space machine with one- or two-sided bounded error, with an effective compiler turning machine descriptions into explicit deterministic deciders with proven time/space bounds.
+**Approach:** Not a PRG. The paper exactly approximates the acceptance probability p_M(x) to accuracy 2^−q in space O(log n + q) by working on the time-layered configuration graph: a "correction and copy hierarchy" maintains a finite inverse of the stochastic transition matrix, with conditional averaging in a shared environment, additive row estimation compressed within budget blocks, and adaptive fingerprints. This builds on (and completes the program of) AKS–Nisan–Saks–Zhou–Hoza weighted-pseudorandomness and exact-inverse random-walk techniques. Fully implementable with explicit polynomial time bounds; the estimator library is concrete.
+**Lesson:** Sometimes the right move is to compute the probabilistic quantity itself to finite precision rather than to find a seed that fools the test.
+
+## 104. Quasipolynomial mean-payoff, stochastic and parity games
+**Finding:** Deterministic 2^{O((log L+2)²)}-bit-operation algorithms computing exact values and optimal positional strategies for mean-payoff games and two extensions (turn-based stochastic nonnegative liminf values; liminf-mean-payoff-with-parity winning sets), on binary-encoded inputs.
+**Approach:** Extends the quasipolynomial progress-measure/value-iteration machinery for parity games (Calude et al. / Lehtinen-style ordinal measures) to reward-based objectives.
+**Lesson:** Once a combinatorial game admits a small "universal witness" of strategies, its whole value theory becomes quasipolynomially tractable.
+
+## 105. 2-to-1 Games with perfect completeness
+**Finding:** NP-hard, on explicit unweighted instances, to distinguish satisfiable 2-to-1 games from those of value ≤ δ, with the alphabet depending only on δ and every right label having exactly two preimages.
+**Approach:** Gadget/refinement of the Unique Games Theorem (102), enforcing the two-to-one constraint structure at no completeness cost.
+**Lesson:** Once a master hardness theorem is proved, its constrained variants often follow by local alphabet surgery.
+
+## 106. Hardness of coloring 3-colorable graphs
+**Finding:** NP-hard to color a 3-colorable graph with any fixed number of colors; stronger, for every η < 1/3, 3SAT reduces deterministically to graphs that are 3-colorable in the yes case and have independence number < n^η otherwise.
+**Approach:** PCP/Label-Cover composition with amplification of the no-case independent set (Khot-style covering-complexity gadgets), made deterministic and unweighted.
+**Lesson:** The gap between "3 colors" and "any constant" is purely a PCP soundness phenomenon.
+
+## 107 ★. Matrix multiplication exponent ≤ 9/4
+**Finding:** ω ≤ 9/4 over C; also ω < 2.258 outside finitely many characteristics, < 2.37105 over every fixed field, and n^{2+o(1)} rectangular multiplication when some inner dimension exponent exceeds 0.465.
+**Approach:** Strassen's asymptotic-spectrum/character method, not the Coppersmith–Winograd laser pipeline: normalized numerical invariants (characters) that add on direct sums, multiply on tensor products, are monotone under restriction. A degeneration with total weight = squared label mismatch uses a finite Fourier projection to *separate* blocks sharing only one leg into full direct-summands carrying auxiliary dot products. Applying the resulting inequality to polynomial multiplication — via a determinant filtration and a three-sector decomposition giving P(a, 3h+a−1) ≥ 3P(a,h) — forces the character profile P(a,a) ≥ a^{4/3}, hence t ≤ 3/4 and ω ≤ 3t = 9/4. Purely asymptotic: the paper states no competitive finite matrix size where it beats classical multiplication.
+**Lesson:** Monotone semiring invariants can replace combinatorial laser extraction; and "separate shared legs first, then count" is a reusable tensor tactic.
+
+## 108. Cubic permanent–determinant lower bound
+**Finding:** Border determinantal complexity of the n×n permanent over C is ≥ c·n³ — even coefficientwise limits of determinants of affine-linear matrices need size ≥ cn³.
+**Approach:** Algebraic-geometry analysis of the iterated matrix-multiplication / permanent boundary, degeneration and flattening arguments in the style of the geometric complexity theory toolkit (pushforwards of dual varieties, conormal geometry).
+**Lesson:** Border relaxations are powerful for *lower* bounds exactly where they frustrate upper bounds.
+
+## 109 ★. Integer multiplication below n log n
+**Finding:** Exact multiplication of n-bit integers in O(n(log n)^{1−κ}) worst-case time with κ = 2^{−182}, on one fixed finite-alphabet multitape Turing machine, at every input length — disproving the Schönhage–Strassen n log n optimality conjecture in the bit model.
+**Approach:** Builds on Harvey–van der Hoeven's Gaussian-resampling reduction of multiplication to multidimensional transforms, but replaces the RAM's free transposition/indexing (which hides n log n work on tapes) with the paper's own contribution: fixed *linear networks* on tape roles whose endpoint operators are address shears and simultaneous butterfly layers. A finite construction with 3-element subsets attaches nested subspaces to gates so that a recursive call at parameter m·f costs s < W·m calls at f on streams of volume V/W — the strict inequality s/W < m is exactly the source of the log-power saving. Everything else (CRT layout, Bluestein chirps, polynomial-ring convolution C[y]/(y^r+1), exact error < 1/2 recovery) is accounted at tape level. The constant κ = 2^{−182} is explicit but astronomically small: implementable in principle, useless in practice.
+**Lesson:** Big hidden costs often live in data movement, not arithmetic; restructuring address permutation recursively is where the exponent hides.
+
+## 110. Optimal-order randomized k-server
+**Finding:** Randomized competitive ratio O(log²(k+1)) for k-server on *every* metric space, matching the lower bound's order, against oblivious adversaries including on infinite unbounded metrics; on finite rational metrics there is a uniform implementation with polynomial preprocessing and per-request bit cost.
+**Approach:** Distribution-over-deterministic-policies design in the Bubeck–Cesa–Bianchi–Kakade / memory-parsimonious work-space framework, with Gaussian/squared-logarithmic potential arguments.
+**Lesson:** Randomization against an oblivious adversary converts a competitive-ratio problem into a metric-embedding problem.
+
+## 111. Matroid prophet inequalities vs. an almighty adversary
+**Finding:** For every finite matroid known in advance, a distribution-independent online rule with one sample per element achieves a universal constant fraction of the expected offline optimum — even when the arrival-order adversary sees all samples, values, and the rule's seed. No polynomial-time implementation asserted.
+**Approach:** Sample-based prophet-inequality LP duality (single-sample thresholds in the Kleinberg–Weinberg lineage) hardened against an adaptive adversary by making the rule's randomness part of the revealed information.
+**Lesson:** Robustness against full-information adversaries is sometimes free when the guarantee is distribution-independent anyway.
+
+## 112. Beyond the square-root threshold for depth-3 circuits
+**Finding:** An explicit language in P whose n-bit membership needs 2^{Ω(√n)} gates at every large n in unbounded-fan-in OR–AND–OR circuits, crossing the √n barrier for explicit depth-3 lower bounds.
+**Approach:** Circuit lower bound via an explicit hard function whose analysis (restriction/switching-progment style with an optimized middle-layer counting) pushes the exponent past √n.
+**Lesson:** Depth-3 lower bounds are still governed by middle-gate counting; explicit gains come from sharper instances, not new axioms.
+
+## 113. FPRAS for perfect matchings + entropy conjecture
+**Finding:** A fully polynomial randomized approximation scheme for counting perfect matchings in arbitrary graphs with exact zero detection, plus the Anari–Oveis Gharan–Vinzant perfect-matching entropy conjecture at all feasible edge-marginals, including boundary points.
+**Approach:** (Deep-dive available in the preprint "A-Fully-Polynomial-Randomized-Approximation-Scheme-for-Perfect-Matchings-in-General-Graphs".) Entropic/Lorentzian machinery: the strong log-concavity of the matching generating polynomial underpins both the entropy statement and a rapidly mixing Markov process on matchings.
+**Lesson:** Proving the "wrong" analytic statement (an entropy bound) can be exactly what a counting algorithm needs.
+
+## 114. FPRAS for common integer polymatroid bases
+**Finding:** FPRAS for counting common bases of two integral polymatroids of equal rank via rank oracles with binary-encoded capacities; for matroid independence oracles, also common independent sets of prescribed/unrestricted/maximum cardinality even with differing ranks.
+**Approach:** Markov-chain or simulated-annealing count reduction over the basis-exchange graph, whose connectivity/expansion follows from matroid union theory.
+**Lesson:** Base-exchange connectivity is the universal engine for matroid sampling.
+
+## 115. Contingency tables with arbitrary margins
+**Finding:** Exact uniform sampling in expected polynomial bit time and almost-uniform sampling in worst-case polynomial bit time for nonnegative integer matrices with prescribed margins; FPRAS for counting tables with cell bounds and structural zeros.
+**Approach:** The Diaconis–Gangolli/Salas–Sutton Markov basis (2×2 switches) analyzed at bit level, with binary-encoded margins handled via a separate self-reducibility counting scheme.
+**Lesson:** A Markov basis plus self-reducibility turns "almost uniform" into "approximately counted."
+
+## 116. Uniform identity testing for noncommutative formulas
+**Finding:** For each characteristic, deterministic polynomial-time construction of polynomial-dimensional matrix tuples that hit every nonzero division-free noncommutative formula; rational formulas over Q also get polynomial-size hitting lists when they have a defined rational-matrix evaluation.
+**Approach:** Amitsur–Levitzki-style matrix algebra certificates made constructive: explicit tuples over finite/infinite fields realizing the standard polynomial identity, derandomizing PIT for this class.
+**Lesson:** Noncommutativity, usually the enemy, here supplies the dimension reduction that makes hitting sets small.
+
+## 117. Uniform sparsest cut: hardness and SDP gaps
+**Finding:** Constant-factor approximation of Uniform Sparsest Cut is NP-hard even with unit demands; the Goemans–Linial SDP has integrality gap ≥ n^{Ω(1)}/(log n)³, approaching the √log upper bound.
+**Approach:** Unique-Games-based reduction plus an explicit vector solution (negative-type metric embedding analysis, in the Chawla–Krauthgamer–Kumar–Rabani–Sivakumar lineage) exhibiting the gap.
+**Lesson:** Hardness and SDP gaps are two sides of the same instance family — build one construction, read off both.
+
+## 118. Bin packing: integer round-up conjecture false
+**Finding:** The modified integer round-up conjecture of Scheithauer–Terno is false: the integral bin-packing optimum can exceed the configuration-LP value by an arbitrarily large additive constant; approximating within any fixed additive constant is NP-hard even when every item exceeds 1/6 and bins hold ≤ 5 items.
+**Approach:** Explicit combinatorial counterexample construction (configuration families whose LP fractionalization compounds additively), plus a reduction for hardness.
+**Lesson:** Additive-constant conjectures die by unbounded gadget chains, not by a single bad instance.
+
+## 119. Courtade–Kumar and Hellinger conjectures
+**Finding:** Among Boolean functions of independent uniform bits under independent bit-flip noise, a single coordinate maximizes retained mutual information (the "most informative bit" conjecture); a stronger theorem covers randomized binary summaries at fixed initial information, and the Hellinger conjecture holds for all Boolean biases and noise correlations.
+**Approach:** Fourier/heat-kernel analysis of the noise operator with hypercontractivity-style extremal arguments (following Samorodnitsky and Eldan's Gaussian-analog methods).
+**Lesson:** Extremal information questions often reduce to a familiar functional inequality after Fourier diagonalization.
+
+## 120 ★. Almost-linear exact matching in general graphs
+**Finding:** One uniform randomized algorithm finds an explicit maximum-cardinality matching in any simple undirected graph in (n+m)^{1+o(1)} word-RAM time on *every* computation path, success ≥ 2/3; the same guarantee covers f-factors (prescribed vertex degrees) via an explicit reduction.
+**Approach:** Not matrix multiplication: a carefully engineered Edmonds-style augmenting framework. A persistent "matching state" with exact ledgers and priced logarithmic steps implements blossom contraction/expansion with amortized costs; a resource-preserving static routing sparsifier — cut-matching structure (Khandekar–Rao–Vazirani) with recursive virtual graphs following Ghaffari–Kuhn–Su hierarchical random-walk embeddings — supplies the expander overlay, while factor-critical contraction and Hall-based reassignment of exposed vertices handle odd blocks. Deterministic exact integral flow (Chen et al./van den Brand et al.) is used through a static interface. The running-time bound includes every random outcome, all finite-precision work, and I/O: this is written as an implementable single finite program, though the o(1) envelope hides large constants.
+**Lesson:** The bipartite almost-linear flow revolution extends to general graphs if you can pay for odd-set control with a sparsifier rather than with matrix multiplication.
+
+## 121 ★. (1+ε)-approximate edit distance in N^{1+o(1)}
+**Finding:** For every fixed rational ε ∈ (0,1), a uniform randomized (1+ε)-approximation to unit-cost edit distance in worst-case expected N^{1+o(1)} time, success ≥ 2/3, polynomial alphabets, deterministic zero on equal strings — the first fixed-accuracy scheme at near-linear time.
+**Approach:** A tree of intervals over the first string defines "states" (source interval, target interval) with charged actions assigning targets to children. Coarse seeds use the shift tree and precision sampling of Andoni–Krauthgamer–Onak; refinement predicts where the optimal alignment's *shift* (target − source position) should evolve as prefix cost accumulates, restricting targets to narrow bands. Analysis fixes a comparison tree from a rounded optimal alignment; a cost-weighted variance telescopes, an entropy inequality with fixed block masses bounds the regret where predictions fail, and the entropy-regularized prediction rule (Rakhlin–Sridharan framework) is optimized by a finite Frank–Wolfe procedure. Expected-work and accuracy use deliberately different probability statements (private random streams per entry, charged at first exposure). Asymptotic guarantee; constants implicit and super-exponential in ε.
+**Lesson:** Predict-then-refine with an entropy-regularized prediction rule is a general recipe for beating a quadratic dynamic program approximately.
+
+## 122. Trace reconstruction from deletion traces
+**Finding:** At any fixed deletion probability, reconstructing a length-n binary string needs n^{Ω(log n)} independent traces (superpolynomial), while a uniform decoder achieves quasipolynomial sample/time bounds for known rational retention probabilities; both become polynomial when deletion probability ≤ n^{−ε}.
+**Approach:** Sharper information-theoretic lower bounds on what one trace reveals about high-entropy strings (following Nazarov–Peres / De–O'Donnell–Servedio), matched by a reconstruction algorithm with explicit dual/statistical queries.
+**Lesson:** Matching upper and lower bounds both come from identifying the string's entropy as the real currency.
+
+## 124. Three-machine unit-job scheduling
+**Finding:** A deterministic polynomial-time algorithm minimizes makespan for nonpreemptive unit-length jobs with arbitrary precedence constraints on three identical machines (Garey–Johnson, 1979), deciding deadline feasibility and constructing schedules.
+**Approach:** Structural characterization of feasible three-processor partial orders (level/cut analysis of the precedence DAG reducing to a bounded-width combinatorial case analysis).
+**Lesson:** "Open since Garey–Johnson" problems in P can survive for 47 years because the case analysis is genuinely hard, not because the answer is deep.
+
+## 125. Metric k-median threshold 1 + 2/e
+**Finding:** Deterministic polynomial-time (1+2/e+ε)-approximation for metric k-median with candidate facilities; assuming P ≠ NP, 1+2/e is the exact optimal infimum factor.
+**Approach:** LP rounding (Jain–Mahdian–Saberi/Swamy-style primal-dual with dependent rounding) matched to a hardness reduction built on the proved UG machinery.
+**Lesson:** The flag is planted when an upper bound algorithm and a lower bound reduction meet at the same constant.
+
+## 126. Exponential SDP lifts for perfect matching
+**Finding:** Every exact semidefinite lift of the perfect matching polytope has exponential size, answering Rothvoss's question negatively; the bound holds for the PSD rank of the odd-cut slack matrix after any fixed shift ε ∈ (0,1).
+**Approach:** PSD-rank lower bounds via entropy/fooling-set and rank-of-matrix arguments on the slack matrix (the preprint "Exponential-PSD-rank-of-positively-shifted-matching-matrices" confirms the shifted-matrix entropy technique).
+**Lesson:** Odd-set constraints are exponentially far from any PSD factorization — the TSP polytope's difficulty is representational, not just algorithmic.
+
+## 127. Asymptotic Gotsman–Linial conjecture
+**Finding:** A degree-d polynomial threshold function on {0,1}^n has average sensitivity at most 8d√n, for all 1 ≤ d ≤ n, establishing the asymptotic Gotsman–Linial conjecture (polynomial zeros with sign(0)=1 allowed).
+**Approach:** Analytic PTF machinery — noise stability, moment bounds, and anticoncentration for polynomials on the cube (Kane/Meka–Nguyen–Vu style), averaged over the slice decomposition.
+**Lesson:** Average sensitivity of a function tracks the degree-to-√n tradeoff almost canonically.
+
+## 128. Factor-2 approximation for shortest common superstring
+**Finding:** Deterministic polynomial-time construction of a common superstring of length ≤ 2·OPT for every explicit finite string family.
+**Approach:** Refinement of the classical greedy/overlap-cycle approach (the preprint "A-Polynomial-Time-2-Approximation-for-Shortest-Common-Superstring" indicates a max-overlap cycle cover with sharper charging) — the previous best was 2½ (Mucha) and 3.425 (Gawrychowski), with 2 being the natural barrier.
+**Lesson:** The 25-year-old "factor 2 is achievable" folklore belief finally cashes out through a cleaner charging argument.
+
+## 129. Exponential state costs for two-way automata
+**Finding:** Exponential lower bounds for complementing 2NFAs and for simulating NFAs by 2DFAs, resolving the Sakoda–Sipser succinctness conjecture over growing alphabets and ruling out polynomial state bounds independent of alphabet size.
+**Approach:** Communication-complexity / probabilistic-decoupling lower bounds on crossing sequences (in the lineage of Hromkovič–Schnitger), with a hard function family whose alphabet grows with the instance.
+**Lesson:** The open "fixed alphabet" version remains the real frontier — the conjecture is resolved where the alphabet is allowed to breathe.
+
+## 130. Discrete Fourier transform below n log n
+**Finding:** Deterministic exact length-n DFT in O(n(log n)^{1−ε}) operations for every n, with explicit ε = 10^{−13}, exact complex arithmetic, counting scalar preparation and index arithmetic.
+**Approach:** The companion application of the synthetic-transform/tape-network machinery of result 109: butterfly layers implemented with recursive subspace savings, chirp conversion to convolution, permutations retained inside the transform identity.
+**Lesson:** The same exponent improvement typically applies to the whole transform family once data movement is the bottleneck.
+
+## 131. Polynomial mixing of degree-preserving edge switches
+**Finding:** The lazy edge-switch chain on simple undirected graphs with a fixed labeled degree sequence mixes in O(n⁸) steps, resolving the Kannan–Tetali–Vempala conjecture; exact uniform sampling also available via an almost-surely-terminating expected-polynomial algorithm.
+**Approach:** Canonical-path/multicommodity-flow congestion bounds on the switch graph (Morris–Sinclair-style), specialized to the simple-graph constraint with improved compression of the flow.
+**Lesson:** Single-edge-swap Markov chains keep yielding; the battle is always the congestion bound.
+
+## 132. Counterexample to the quadratic sensitivity conjecture
+**Finding:** Total Boolean functions with bs(f) ≥ s(f)^β for a fixed β > 2, disproving the quadratic strengthening of the Sensitivity Conjecture (the linear Huang-strengthened version with exponent 2 survives).
+**Approach:** Explicit construction — a family of total functions built so block sensitivity compounds multiplicatively across independent blocks while individual sensitivities stay flat (block-product amplification).
+**Lesson:** Huang's theorem settled the linear version, but the *right* exponent between 2 and ∞ was a construction question all along.
+
+## 133. Complexity of Weisfeiler–Leman refinement
+**Finding:** Unconditional n^{Ω(k)} deterministic time lower bounds for k-WL equivalence testing in sequential adjacency-matrix models for large fixed k; with dimension as input, joint equivalence is EXPTIME-complete even on subcubic graphs, as is deciding whether refinement identifies a graph.
+**Approach:** Direct model-of-computation lower bounds against the WL algorithm's fixed instruction pattern (simulating computations inside graph isomorphism-invariant combinatorics).
+**Lesson:** WL's practical success has a hard ceiling baked into the algorithm's sequential access pattern.
+
+## 134. Generalized star height ≤ 3
+**Finding:** Every regular language over a finite alphabet has a generalized regular expression with at most three nested Kleene stars (union, concatenation, complement allowed), resolving the uniform-boundedness version of the generalized star-height problem.
+**Approach:** Algebraic automata theory — Eilenberg/Pin variety analysis of the syntactic monoid showing three levels of star nesting suffice to express the hierarchy's closure structure.
+**Lesson:** A 60-year-old problem falls to the right algebraic invariant (the weak recognition hierarchy), not to automaton constructions.
+
+## 135. Depth-five lower bound for iterated matrix multiplication
+**Finding:** Over every characteristic-zero field, the (1,1) entry of a product of n independent n×n variable matrices requires n^{Ω(log n)} gates in homogeneous depth-5 sum–product circuits, with shared gates and arbitrary bottom linear forms.
+**Approach:** Weighted-degree/shifted-partial derivative measures (the Kayal–Saha / Kumar–Saraf line), tightened to the sharp bound by controlling the bottom fan-in.
+**Lesson:** Iterated matrix multiplication remains the canonical *hard* polynomials for shallow arithmetic circuits.
+
+## 136. Quasilinear PCP for PPAD
+**Finding:** End-of-Line instances of length N reduce to numerical circuit constraints of total length N·(log N)^{O(1)} such that any assignment satisfying all but a fixed fraction to fixed accuracy yields an endpoint solution — robust, local, quasilinear-size verification for PPAD.
+**Approach:** Error-correcting/arithmeticizing the End-of-Line pointer structure (PCP composition for the PPAD analogue of the PCP theorem), with self-correcting local checks tolerant of constant-fraction errors.
+**Lesson:** Robustness, not just soundness, is the property that makes a PCP transfer into fine-grained hardness.
+
+## 137. One-tape simulation in T^{2/5} space
+**Finding:** Halting and finite-control outcome of a fixed deterministic one-writable-tape machine up to time T decided in O(T^{2/5} log^C T) space, improving the T^{1/2} Hopcroft–Paul–Valiant-type exponent; multi-head read-only inputs allowed.
+**Approach:** Block-decomposition of the single tape's crossing-sequence structure with a recursive divide-and-conquer over time intervals (refining the geometric-block reconstruction of one-tape computations).
+**Lesson:** One-tape complexity still hides a rich geometry; exponents fall by partitioning time more cleverly, not space.
+
+## 138 ★. Subset Sum in O(2^{0.49n})
+**Finding:** A uniform randomized classical word-RAM algorithm deciding Subset Sum (with repetitions, polynomial-bit integers, single finite program, no advice) in worst-case O(2^{0.49n}) time on every execution, success ≥ 2/3 — the first *constant-factor* reduction of the exponential rate below the meet-in-the-middle 1/2.
+**Approach:** Three layers: (i) Mulmuley–Vazirani–Vazirani isolation via random tie-breaking weights reduces to polynomially many targets each having at most one solution; a preliminary meet-in-the-middle test handles blocks with small partial-sum support. (ii) The core is a *checksum without a full Fourier transform*: with random residues φ_i mod a random prime P, the phase sum V_{t'} = Σ χ(I) over subsets summing to t' is computed by estimating a modular character sum via Fourier inversion over a *sampled* set of frequencies — too few residues exist to scan, so the sum is approximated to small *absolute* (not relative) error. (iii) Aliases (subsets matching the target mod P but not over Z) are subtracted from an explicitly enumerated list. The strict slack between 0.489995 and 0.49 absorbs all polynomial factors. Asymptotic in intent — the constant is explicit but the polynomial factors are enormous.
+**Lesson:** When the Fourier domain is too big to visit, estimate the character sum pointwise and handle the wraparound aliases exactly.
+
+## 139. Subpolynomial queries for log-concave sampling
+**Finding:** Sampling C² log-concave distributions (minimizer supplied, ∇²V ≤ 2I) within TV 1/10 needs only C_ε d^ε value-and-gradient queries for every fixed ε > 0, with a matching logarithmic lower bound — the optimal exponent in this oracle model is zero.
+**Approach:** Metropolized ball walk with a dimension-free warm-start analysis plus a fine-grained oracle lower bound (in the Lee–Vempala / Chewi lineage of log-smooth sampling).
+**Lesson:** Sampling complexity in high dimension is governed by the *log* of the dimension once smoothness is granted.
+
+## 140. Memory–sample lower bounds for Gaussian regression
+**Finding:** A one-pass learner with A·d² persistent bits needs Ω_A(d·log(1/ε)) noiseless Gaussian samples to recover a unit vector to angular error ε with probability 2/3 — a near-tight memory/sample tradeoff uniform in accuracy.
+**Approach:** Direct-sum/conditioning information arguments on the transcript (following Steinke–Weed–Raz and the subrole method; a companion preprint "Subsphere-methods-for-memory-sample-lower-bounds" confirms the subsphere-based decorrelation), valid even with randomized updates and unrestricted computation.
+**Lesson:** Memory constraints force sample costs through a funnel that computation cannot tunnel around.
+
+## 141. ETR in the counting hierarchy
+**Finding:** The existential theory of the reals sits in the counting hierarchy; more generally existential–universal real sentences with arithmetic-circuit-specified integer polynomials are decidable at one fixed CH level.
+**Approach:** Numerical quantifier elimination with bit-precision bookkeeping moved into counting-class machinery (Renegar/Basu–Pollack–Roy roadmap methods composed with CH-complete counting of feasible cells).
+**Lesson:** Real-algebraic decision problems have a natural home above PH, and circuit-described inputs fit the same home.
+
+## 142. Deterministic polynomial factorization over prime fields
+**Finding:** Uniform deterministic complete factorization (with multiplicities) of dense degree-n polynomials over F_p in bit complexity poly(log n, log p), with no randomness, no integer-factorization or primitive-root oracle, and no GRH assumption.
+**Approach:** Derandomized root finding: deterministic construction of elements whose norm/trace equations split the polynomial (evgeny-shoup/ SHOUP-style assumption-free certificates, with the random element replaced by an exhaustive-but-short certificate search).
+**Lesson:** Unconditional derandomization succeeds precisely where the object's algebra (the multiplicative group of F_p) hands you enough structure to enumerate.
+
+## 378 ★. The Exponential Time Hypothesis is False
+**Finding:** For every fixed k ≥ 2, a deterministic algorithm counts the satisfying assignments of a k-CNF with n variables and m clauses in (n+m)^{O_k(1)}·2^{n/(√log n)^{1+o(1)}} time (2^{O_k(n/√log n)} for m ≤ Dn) and polynomial space — refuting ETH. Consequences: 2^{o(v)} counting of q-colorings and independent sets, 2^{o(v+e)} counting of perfect matchings, subexponential (1−ε)-opt Max-k-SAT, and superlinear circuit lower bounds for a language in E^NP on infinitely many lengths.
+**Approach:** For 3-occurrence 3-CNFs, the count is the sum over {0,1}^n of the product of clause polynomials Φ_e (degree ≤ 3n — the linear degree bound is what 3-occurrence buys). Rather than partition the variables into independent groups (impossible in general), the algorithm *replaces* each variable occurrence X_v in clause e by a parametrized linear form ⟨P_{e,v}(T), X⟩: at T=0 the identity, at Q selected nonzero points a low-degree polynomial interpolation lets different groups of variables interact *only through a small set of shared linear summaries*, whose values are fixed and conditioned on. Summing within groups becomes independent; rational-function interpolation over the points T recovers the exact count from polynomially many cheap evaluations. Disjoint sparsification and variable copying then reduce arbitrary k-CNFs to bounded-occurrence form with only 2^{o(n)} overhead; Appendix D re-derives both bounds by tensor contraction. Deterministic, exact, polynomial space; the algorithm is real (explicit coefficients, exact arithmetic appendix) but the exponential-in-O_k(1) factors are unanalyzed — asymptotic only.
+**Lesson:** Replacing variables by linear forms with an interpolation parameter is a powerfully general way to make a hard counting problem conditionally decomposable — and the refutation of a 25-year-old hardness axiom came not from a new machine model but from a smarter exact-sum decomposition.
+
+---
+
+## Meta-lessons (TCS)
+
+- **Algebraic substitution + interpolation is the workhorse of the "impossible" algorithmic breakthroughs.** Results 378 (ETH), 109/130 (multiplication/DFT), and 107 (ω ≤ 9/4) all replace variables or tensor legs by parametrized linear forms and then interpolate or count characters over the parameter. The trick converts a globally coupled sum/product into conditionally independent pieces whose coupling cost is paid once, at interpolation points.
+- **Derandomization by deterministic simulation of the probabilistic quantity.** Result 103 (L=RL=BPL) and 142 (deterministic factoring) do not build PRGs; they compute the acceptance probability / root certificate itself to finite precision in the restricted resource. Result 138's random-phase checksum is the dual move: keep the randomness, but make the estimator work on a sampled Fourier domain. When the guarantee is statistical, estimate the statistic.
+- **Hardness and algorithms now come from the same constructions.** 102/105 (Unique Games, 2-to-1) supply the gadget source for 106 (3-colorable coloring), 117 (sparsest cut gaps), and 125 (k-median threshold); 118 shows the same duality for counterexamples. The dominant reduction pattern is: PCP/Label-Cover outer verifier → alphabet gadget → unweighting, with the *completeness* side being the hard part in every case.
+- **Practically implementable vs. asymptote-only.** Implementable in spirit with finite constants: 103 (explicit compiler), 104 (quasipolynomial games), 113/114/115 (FPRAS family), 120 (matching, a single finite program with all costs charged), 110, 128, 124, 142. Asymptote-only — explicit but useless constants or unanalyzed O(1) exponents: 378 (ETH), 109 (κ = 2^{−182}), 130 (ε = 10^{−13}), 138 (polynomial factors absorbed by slack), 107 (no finite crossover size stated), 121 (constants super-exponential in ε), 102 (unanalyzed reduction blowup). The pattern: counting and approximation-scheme results tend to be genuinely runnable; the algebraic-complexity and exact-exponential results are existence proofs of algorithms.
+- **Counterexamples beat theories when the conjectured exponent is wrong, not the direction.** 132 (block-sensitivity), 118 (round-up), 126 (PSD lifts), 108 (permanent) all resolved by constructing a family whose extremal behavior compounds across independent blocks or gadget chains — one parameterized construction, not a new framework.
+- **Data movement and access patterns are the new frontier.** 109/130 win on a Turing machine where RAM algorithms hid transposition costs; 133's lower bound is about sequential adjacency-matrix access; 122's bounds hinge on what a deletion trace physically preserves. Several "pure complexity" results here are really about the cost of moving information between representations.

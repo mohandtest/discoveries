@@ -1,0 +1,286 @@
+# Report: Topology (Subject 04), Group Theory (Subject 05), Operator Algebras (Subject 16)
+
+Sources: /tmp/opencode/map/subject{04,05,16}*.txt; deep dives from pdftotext on preprints under /home/thor/projects/math-discovery/math/preprints/.
+
+---
+
+## Subject 04: Topology (18 families)
+
+### 304. Hilbert–Smith conjecture in every dimension
+- **Finding**: Every locally compact second-countable Hausdorff group acting faithfully and jointly continuously on a connected finite-dimensional topological manifold is a Lie group, in all finite dimensions.
+- **Approach**: Excludes non-Lie locally compact groups (whose only possible obstacle is a p-adic action) from acting on manifolds of every dimension, removing the remaining cases beyond the classical dimensions 2, 3.
+- **Lesson**: A conjecture settled piecemeal by dimension can fall to a uniform argument once the right structural dichotomy of the acting group is in place.
+
+### 305. Counterexamples to disk embedding and Wall's manifold conjecture
+- **Finding**: The unrestricted 4D disk-embedding conjecture fails — framed algebraic dual spheres need not give disjoint locally flat spanning disks, and F_2 is not "good" in the Freedman–Quinn sense; also a finite 4D Poincaré duality group with finite classifying space is not the fundamental group of a closed aspherical topological 4-manifold, disproving Wall's conjecture.
+- **Approach**: Novel 4-dimensional constructions that break the free-group "good group" machinery underlying Freedman's disk embedding technology.
+- **Lesson**: The standard toolkit of 4-manifold topology (good groups, dual spheres) has hard limits; dimension four remains a genuine exception.
+
+### 306. Purely cosmetic surgery conjecture
+- **Finding**: Distinct Dehn surgery slopes on a nontrivial knot in S^3 never yield orientation-preservingly homeomorphic manifolds, including the meridional slope.
+- **Approach**: Invariant separation of surgery slopes via 3-manifold invariants sensitive enough to detect the meridian case.
+- **Lesson**: Knot-theoretic invariants can now separate all surgery slopes, turning a folk symmetry question into a theorem.
+
+### 307. Failure of rational injectivity for maximal coarse assembly
+- **Finding**: A uniformly discrete bounded-geometry space (coarse disjoint union of finite graphs of uniformly bounded degree) has a maximal coarse assembly map with infinite-order kernel class in rational K-theory; the companion disproves rational injectivity for reduced coarse assembly.
+- **Approach**: Expander-like coarse geometry: build a sequence of finite graphs whose coarse union carries a cohomological class invisible to assembly, detected by an operator with spectral gap.
+- **Lesson**: The same expander/spectral-gap obstruction machinery that killed coarse Baum–Connes also kills rational coarse assembly — geometry "at infinity" of sequences of finite graphs is the fertile source of counterexamples.
+
+### 308. Smith–Toda complexes at every height with varying primes
+- **Finding**: For every n ≥ 0 there is a finite Smith–Toda spectrum V(n) = BP_*/(p, v_1, …, v_n) at a prime p depending on n; V(4) is realized at p = 1009.
+- **Approach**: Chromatic homotopy theory: search over primes with nilpotence/thick-subcategory techniques, using the freedom to let p grow with n.
+- **Lesson**: Removing a fixed-prime constraint converts an existence problem into a search that succeeds; "large enough prime" is often all you need.
+
+### 309. Kervaire invariant problem at the prime three (deep dive)
+- **Finding**: In the mod-three Adams spectral sequence, exactly the standard Kervaire classes b_j with j ∈ {0, 2, 3} survive — stems 10, 106, 322 — and each surviving detection coset contains an element of exact additive order three (an order-three Kervaire element in stem 322). Unstable consequences: ΩS^{163}{3} ≃ T^{163}(3) × ΩT^{487}(3), and the Anick H-spaces T^{2n+1}(3) are homotopy-associative exactly for n ∈ {3, 27, 81}.
+- **Approach**: Combines the mod-3 Adams spectral sequence machinery (Ext over the Steenrod algebra A_3) with detection and killing arguments: permanence/differentials determine survival of the b_j, while Morava E-theory at height n and Moore-spectrum constructions prove the order-three representative exists — carefully separating the associated-graded question (which classes survive) from the homotopy-extension question (what their true order is). The paper explicitly treats both as distinct problems, using different coefficient rings for each.
+- **Lesson**: The odd-primary Adams-family strategy (differentials + periodicity detection) extends the prime-2 resolution, and "survival" and "order" must be resolved with separate tools — a two-stage obstruction framework worth imitating.
+
+### 310. Quillen's conjecture in rational homology
+- **Finding**: If a finite group G has O_p(G) = 1, the poset of nontrivial elementary abelian p-subgroups has nonzero reduced rational homology (hence is not contractible), for every G and p.
+- **Approach**: Equivariant homology / Brown–Posen-type machinery applied uniformly to the Quillen complex.
+- **Lesson**: Homological versions of subgroup-complex conjectures are often strictly easier targets that still imply contractibility statements.
+
+### 311. Chai's invariant-ideal conjecture
+- **Finding**: Chai's conjecture holds for Lubin–Tate deformation rings over finite residue fields at all primes and heights; via Barthel–Heard–Naumann this yields the Hovey–Strickland conjecture: dualizable K(n)-local spectra have exactly n + 2 thick tensor ideals, with Balmer spectrum a chain of n + 1 points.
+- **Approach**: Galois/height-theoretic analysis of the invariant ideal in the deformation ring's power series structure.
+- **Lesson**: Commutative-algebra statements about formal deformation rings translate, through established bridges, into complete classification results for local spectra.
+
+### 312. Grothendieck homotopy hypothesis
+- **Finding**: ∞-groupoids associated with every Grothendieck coherator (Ara–Henry convention) recover the homotopy theory of spaces.
+- **Approach**: (Deep-dive preprint: "The Grothendieck homotopy hypothesis via elementary expansions.") Strictification-style combinatorial argument — elementary expansions transform algebraic ∞-groupoid structures into Kan-compatible ones, yielding a Quillen equivalence.
+- **Lesson**: Coherence problems in higher category theory can be reduced to explicit combinatorial rewriting systems.
+
+### 313. Finite generation for the K(n)-local sphere
+- **Finding**: Every homotopy group of the K(n)-local sphere is a finitely generated Z_p-module, for all primes, positive heights and degrees; same after K(n)-localizing any finite p-local spectrum.
+- **Approach**: Galois/duality methods in K(n)-local stable homotopy, converting the finiteness question into a statement about the Galois group action and profinite duality.
+- **Lesson**: Lurie-height Galois cohomology is now powerful enough to answer classical finiteness questions outright.
+
+### 314. Chromatic Smith fixed-point problem for finite p-groups
+- **Finding**: The chromatic loss from H-fixed to G-fixed geometric fixed points of a finite p-group spectrum equals the shortest subnormal-chain length from H to G with cyclic quotients, at every height; sharpness witnessed by finite spectra.
+- **Approach**: Combines the classical cyclic-Smith fixed-point theory with chromatic layering, counting each cyclic quotient once.
+- **Lesson**: Classical Smith theory and chromatic homotopy compose multiplicatively; the answer is a purely group-theoretic invariant.
+
+### 315. Four-dimensional Singer conjecture
+- **Finding**: L^2-Betti numbers of the universal cover of every closed aspherical topological 4-manifold vanish outside degree two — also for all finite aspherical integral Poincaré complexes of formal dimension four.
+- **Approach**: L^2-cohomological methods tuned to dimension four, leveraging Poincaré duality to reduce to the middle degree.
+- **Lesson**: The low-dimensional L^2-vanishing statements are within reach even where the general Singer conjecture stays open.
+
+### 316. Curtis's conjecture
+- **Finding**: The positive-degree mod-2 stable Hurewicz image of the sphere is spanned by Hopf-invariant-one and Kervaire-invariant-one classes.
+- **Approach**: (Deep-dive companion "The Stable Hurewicz Image of the Sphere at Two".) Adams spectral sequence bookkeeping plus explicit spanning constructions.
+- **Lesson**: The exceptional families (Hopf and Kervaire classes) really are the entire story of the sphere's mod-2 footprint.
+
+### 317. Thomason model structures in every strict higher dimension
+- **Finding**: For all n ≥ 1 and n = ∞, small strict globular n-categories admit proper combinatorial Thomason model structures Quillen equivalent to simplicial sets, resolving the Ara–Maltsiniotis conjecture.
+- **Approach**: Transfers the Thomason model structure along a chain of adjunctions, handling strictness obstructions dimension by dimension.
+- **Lesson**: Strict higher categories are nonetheless "homotopically correct" — every strictness deficiency is technically surmountable.
+
+### 318. Chromatic splitting: counterexamples and filtrations
+- **Finding**: Strong chromatic splitting fails at height 3 for p ≥ 5, weak splitting fails for the derived p-completed sphere at heights p (p ≥ 5) and p+1 (p ≥ 7); yet for n ≥ 1, p > n+1, the overlap L_{n−1}L_{K(n)}S_p has a 2^n-stage filtration by the predicted localized-sphere pieces — and at height 3, prime 3, even finite assembly fails in E(2)-local modules.
+- **Approach**: Explicit filtration/attachment analysis of the chromatic overlap (deep-dive preprints "The height three chromatic overlap…", "A rational obstruction to strong chromatic splitting at height three").
+- **Lesson**: Chromatic splitting conjectures are false in strong form but partially true via bounded-length filtrations; partial assembly theorems are the correct replacement.
+
+### 319. Counterexamples to the Hahn–Wilson conjecture at height two
+- **Finding**: For all large primes p there are connective p-complete spectra of exact fp-type two not constructible from completed BP⟨2⟩ by finite sums, shifts, cones and retracts — while satisfying finite and telescopic localization comparisons.
+- **Approach**:fp-type spectra engineered to evade the finite BP⟨2⟩-cell hull, detected by invariant obstructions.
+- **Lesson**: The chromatic blueprint à la Ravenel is not finitely realizable at height two: finite buildability is strictly stronger than fp-type membership.
+
+### 320. Four-dimensional counterexample to Borel rigidity
+- **Finding**: Closed aspherical topological 4-manifolds that are homotopy equivalent but not homeomorphic, sharing a word-hyperbolic fundamental group — disproving the homeomorphism-existence form of the Borel conjecture in dimension four.
+- **Approach**: Construction (deep-dive "Nonhomeomorphic-closed-aspherical-four-manifolds…") combining controlled topology with hyperbolic group input.
+- **Lesson**: The Borel conjecture is genuinely false in dimension 4: hyperbolic fundamental groups do not rescue rigidity there.
+
+### 321. Counterexample to Wall's finite D(2) conjecture
+- **Finding**: A finite 3-dimensional CW complex with universal cover having no homology above degree 2 and H^3(−; M) = 0 for all local coefficient modules, yet with no finite 2-dimensional homotopy model — with infinite fundamental group.
+- **Approach**: Algebraic-topological obstruction theory built on a carefully chosen infinite group.
+- **Lesson**: Cohomological vanishing with all local coefficients still does not force geometric dimension to drop — the D(2) problem's algebraic hypotheses are insufficient.
+
+---
+
+## Subject 05: Group Theory (14 families)
+
+### 246. Cannon's conjecture
+- **Finding**: Every word-hyperbolic group with S^2 boundary acts properly cocompactly isometrically on H^3 with finite kernel; torsion-free such groups are fundamental groups of closed hyperbolic 3-manifolds.
+- **Approach**: Convergence-group dynamics on the 2-sphere plus the geometrization toolkit, upgrading boundary dynamics to a lattice action.
+- **Lesson**: Cannon's conjecture was the last "geometrization from the boundary" statement; the combination of discrete Heisenberg analysis and 3-manifold topology suffices.
+
+### 247. Infinite finitely presented residually finite 2-group (deep dive)
+- **Finding**: There is an infinite, ordinarily finitely presented, residually finite group in which every element has finite 2-power order (orders unbounded). Corollaries: a finitely presented infinite-dimensional nil associative F_2-algebra and a negative answer to the corresponding Kurosh-type question.
+- **Approach**: Starts from a companion construction: a graded F_2-algebra R = F_2 ⊕ I in which every matrix over the positive-degree ideal I is nilpotent, with a finite local-rule hierarchy giving word phases σ(w), τ(w). Taking the Steinberg group St_12(R) (finitely presented by the Krstić–McCool mechanism), the paper proves residual finiteness: degree truncations R/R_{≥d} are finite rings detecting matrices, and the hard part — detecting the Steinberg kernel K(R) = ker(St(R) → E(R)) — uses a cyclic substitution t ↦ shift-matrix C_L realizing a graded transfer W_z(C_L) = 1 for large L, plus phase-matching to move long-word roots to coordinates labeled by start/end phases. Reduction mod St_12(F_2) gives the 2-power torsion finite-index subgroup G. Zel'manov's restricted Burnside theorem then forces unbounded exponent.
+- **Lesson**: Steinberg groups over engineered graded rings are a factory for finitely presented pathological groups; gradings + transfer maps + phase combinatorics can buy residual finiteness for essentially free.
+
+### 248. Thompson's group F is nonamenable (deep dive)
+- **Finding**: Thompson's group F — dyadic PL homeomorphisms of [0,1] — is not amenable, resolving Geoghegan's 1979 conjecture. Consequences for uniformly bounded representations and percolation are recorded.
+- **Approach**: A finite-averaging Følner-contradiction built from Hilbert-space geometry. Fix a Benyamini–Sternfeld Lipschitz map f on a Hilbert ball with ∥f(x) − x∥ ≥ δ > 0 everywhere (constructed explicitly on L^2([0,1]; R^2) with δ = 1/2). Given a hypothetical Følner set A ⊂ F, color basic dyadic partitions recursively by f: parent colors X_i are f applied to descendant means z_i, so m = mean(X_i) = mean(f(z_i)). F's 2-transitivity on separated interval pairs lets a fixed finite set S of transports compare all correlations; exact covariance of normalized restrictions makes all averaged scalar correlations of separated-interval colors differ from one common value by at most η (the Følner boundary ratio). Expanding the average of ∥z_i − m∥² over A, the common correlation cancels and nested/diagonal pairs cost only O(1/D), giving ∥m − f(m)∥² ≲ L²(D^{−1} + η) — contradicting the uniform δ² lower bound for D large and η small. The key is that only the partition fineness, not S, depends on A.
+- **Lesson**: Nonamenability proofs need not exhibit free subgroups or padders — a fixed-point-free Lipschitz map on a Hilbert ball, fed through dyadic self-similarity of F, suffices; the recursive-coloring/correlation-cancellation technique is a new reusable weapon.
+
+### 249. Finitely generated counterexample to Eilenberg–Ganea
+- **Finding**: A finitely generated residually finite group with cohomological dimension 2 and geometric dimension 3, with no 2-dimensional classifying space even with infinitely many cells — disproving the Eilenberg–Ganea conjecture.
+- **Approach**: Bestvina–Brady-style Morse theory on a carefully chosen finite complex/CAT(0) input, with residual finiteness from an explicit finite-sheeted analysis.
+- **Lesson**: The cd = gd gap is real and detectable by Morse-theoretic methods; finiteness of the group does not force finiteness of the model.
+
+### 250. Boone–Higman conjecture and higher finiteness (deep dive)
+- **Finding**: A finitely generated group has decidable word problem iff it embeds in a finitely presented simple group — the Boone–Higman conjecture. Strengthenings: the simple overgroup can be type F_∞, and a single type F_∞ group contains every finitely presented group.
+- **Approach**: Two engines. (1) A finitely presented affine group over a computable coefficient ring is built with a finite relative presentation; conjugation tricks ("unused index", corner interchange) annihilate the Steinberg kernel, and a mapping-torus construction yields a finitely presented group Γ with a faithful two-transitive action on a countable set with finitely generated point stabilizers — exactly the hypothesis Zaremsky's twisted Brin–Thompson theorem needs to embed Γ in a finitely presented simple group. (2) For the F_∞ strengthening, a "bounded compiler" simulates an arbitrary Turing machine by finite rule tables with decreasing dependency bound, reaching a fixed point by length induction, and an algebraic construction (simple algebra inside a finitely presented algebra, two equivalent subcorners, separating tensor vector) packages the monoid embedding.
+- **Lesson**: Computability (deciders) converts into group finiteness properties (finite presentation of simple overgroups) through Thompson-like machinery: two-transitivity of the action is the precise hinge between decidability and finite presentation of the twisted Brin–Thompson simple group.
+
+### 251. Amenability, unitarizability, and Ulam stability
+- **Finding**: For all discrete groups, amenability ⟺ every uniformly bounded representation is similar to a unitary one (Dixmier's unitarizability problem); for countable groups, amenability ⟺ strong Ulam stability of unitary representations in operator norm, even on infinite-dimensional Hilbert spaces.
+- **Approach**: (Deep dives "Unitarizability-Implies-Amenability…" and "Strong-Ulam-Stability-Characterizes-Amenability".) The nonamenable side constructs uniformly bounded but non-unitarizable (or non-stabilizable) representations from an action with spectral gap / expansion-type behavior.
+- **Lesson**: Dixmier's problem and Ulam stability are amenability in disguise — nonamenability gives concrete analytic obstructions.
+
+### 252. Non-residually-finite torsion-free hyperbolic group
+- **Finding**: A torsion-free word-hyperbolic group that is not residually finite; a fixed nonidentity element dies in every finite-dimensional linear representation over every field, so the group is not linear.
+- **Approach**: (Deep dive "a-torsion-free-hyperbolic-group-that-is-not-residually-finite".) Combination/pendant construction with a "killer" element trapped by the geometry so finite quotients and representations cannot separate it.
+- **Lesson**: The residual-finiteness question for hyperbolic groups is answered negatively — hyperbolicity imposes no linearity or residual finiteness.
+
+### 253. Infinite finitely presented simple amenable group
+- **Finding**: An infinite, finitely presented, simple, amenable group exists — the first simultaneous realization of all four properties.
+- **Approach**: (Deep dive "An-Infinite-Finitely-Presented-Simple-Amenable-Group".) Inductive limit/assembly of finite presentability data with an amenability-preserving simple closure operation, controlling finite presentation through the limit.
+- **Lesson**: Simplicity, amenability, and finite presentation are mutually compatible; the barrier was engineering, not logic.
+
+### 254. Classifying spaces and geometric obstructions for Artin groups
+- **Finding**: The Salvetti complex of every finite-rank Artin group is aspherical (K(π,1) conjecture); parabolic intersections are parabolic; and an explicit Artin group admits no proper cocompact isometric action on any nonempty proper CAT(0) space.
+- **Approach**: (Deep dives "Parabolic-intersections-in-Artin-groups", "An-Artin-group-with-no-geometric-CAT-0-action".) Asphericity via a hierarchical/induction-on-complexes argument over the Salvetti structure; the CAT(0) counterexample via a boundary/fixed-point obstruction.
+- **Lesson**: The K(π,1) conjecture — open since the 1970s — falls to a structural induction, while CAT(0)-ness of Artin groups is independently false.
+
+### 255. Quasi-isometric rigidity of virtually polycyclic groups
+- **Finding**: Every finitely generated group quasi-isometric to a finitely generated virtually polycyclic group is virtually polycyclic (Eskin–Fisher–Whyte conjecture); equivalently for lattices in connected simply connected solvable Lie groups.
+- **Approach**: (Deep dive "quasi-isometric-recognition-of-virtually-polycyclic-groups".) Coarse-geometric invariants of solvable groups — splitting arguments along the polycyclic filtration, mimicry of the EFW lamplighter/lattice machinery at full generality.
+- **Lesson**: Solvable Lie group lattices are QI-rigid; recognition from geometry alone now works across the entire solvable hierarchy.
+
+### 256. Howie's conjecture on equations over groups
+- **Finding**: Every finite system of equations over an arbitrary group whose exponent-sum matrix has full row rank over Q has a simultaneous solution in an overgroup (with coefficient group embedding); companion proves Kervaire's conjecture (adjoining one generator and one relation cannot kill a nontrivial group).
+- **Approach**: (Deep dive "Nonsingular-systems-of-equations-over-arbitrary-groups".) Local induction on the equation system — Wiegold/liberal extension techniques generalizing Kervaire–Howie–Gersten one-variable arguments to systems.
+- **Lesson**: The one-variable Kervaire mechanism scales to full-rank systems; "nonsingularity over Q" is exactly the hypothesis induction needs.
+
+### 257. Hyperbolic group with no geometric CAT(0) action
+- **Finding**: A word-hyperbolic group with a finite classifying space admitting no proper cocompact isometric action on any proper complete CAT(0) space, in any dimension — the hyperbolic ⇒ CAT(0) question is answered negatively.
+- **Approach**: Obstruction via boundary/BF-theory: an invariant of the group that every geometric CAT(0) action would have to satisfy but which the constructed hyperbolic group violates.
+- **Lesson**: Even finite-type hyperbolic groups need not be CAT(0); boundary analysis can certify non-CAT(0)-ness in all dimensions simultaneously.
+
+### 258. Gersten's conjecture for one-relator groups
+- **Finding**: Every finitely generated one-relator group with no Baumslag–Solitar subgroup BS(m, n) (m, n ≥ 1, m, n ≠ 0 convention per statement) is word-hyperbolic; every word-hyperbolic one-relator group is virtually compact special.
+- **Approach**: (Deep dives "Baumslag-Solitar-free-one-relator-groups-are-hyperbolic", "Virtual-compact-specialness-of-hyperbolic-one-relator-groups".) Combines the Wise–Agol special-cube-complex pipeline with a combinatorial analysis of one-relator presentations excluding BS-subgroups.
+- **Lesson**: For one-relator groups, "no Baumslag–Solitar" ⟺ hyperbolicity — the classical subgroup criterion is both necessary and sufficient, and specialness comes for free.
+
+### 259. A group without fixed price
+- **Finding**: A finitely generated group with two essentially free p.m.p. actions of different costs — the fixed-price problem answered negatively; Bernoulli cost > 1 while costs of finite-height extensions tend to 1.
+- **Approach**: Measured group theory: cost computation for the Bernoulli action via treeing analysis, and a sequence of finite-height extensions engineered with cost strictly decreasing to 1.
+- **Lesson**: Fixed price fails even for finitely generated groups; cost depends on the action, not just the group.
+
+---
+
+## Subject 16: Operator Algebras (19 families)
+
+### 285. Counterexamples to Baum–Connes and Kadison–Kaplansky (deep dive: reduced BC)
+- **Finding**: A finitely generated torsion-free group whose reduced group C*-algebra contains a projection with irrational canonical trace — its K_0-class lies outside the image of coefficient-free reduced Baum–Connes assembly, disproving it for countable discrete groups. A separate torsion-free group has a nontrivial projection in C*_r, disproving Kadison–Kaplansky.
+- **Approach**: The paper builds G_sur from graphical presentations: labelled expander graphs whose finite cycle spaces carry error-correcting codes; a module extension and a uniformly spectral-gapped operator produce a projection b_0 ∈ C*_r(G_sur) whose canonical trace is an explicitly irrational real number. The obstruction is Lück's trace theorem: the canonical trace is rational on every degree-zero assembly class (domain K_0(EG) has no torsion contribution for torsion-free G), so an irrational-trace projection cannot be assembled — a clean, numerically certified failure of surjectivity, distinct from the Higson–Lafforgue–Skandalis expander exactness failures which need coefficients.
+- **Lesson**: Trace arithmetic (Lück's rationality theorem) plus a hand-built projection is a complete disproof strategy; the coefficient-free conjecture dies from surjectivity, not injectivity/exactness.
+
+### 286. Arithmetic rigidity of lattice von Neumann algebras
+- **Finding**: Classifies all finite-index bimodules between scalar-twisted group factors of ICC groups commensurable with property-(T) lattices over characteristic-zero local fields and arbitrary ICC group factors: every bimodule is a summand of finite sums of finite-index subgroup/cohomology models; the group, cocycle and amplification scale are recovered.
+- **Approach**: Popa's deformation/rigidity theory: property (T) pins down the bimodule structure via intertwining-by-bimodules, and arithmetic (commensurator) arguments classify the finite-index pieces.
+- **Lesson**: Property (T) plus commensurator arithmetic yields W*-superrigidity-type classifications against arbitrary target factors.
+
+### 287. All nonabelian free group factors are isomorphic (deep dive)
+- **Finding**: L(F_2) ≅ L(F_3) as tracial von Neumann algebras; hence by the classical dichotomy all interpolated free group factors, including L(F_∞), are isomorphic, with fundamental group R_{>0}. Corollary: Voiculescu's free-entropy dimensions δ, δ_0, δ*, δ⋆ all fail generator-invariance — each attains every integer value ≥ 2 on generating tuples of L(F_2).
+- **Approach**: A constructive free-probability "transport by automorphisms" argument. Fix n ≥ 3 and a freely generating Haar tuple (A_1, …, A_n, C) ⊂ L(F_{n+1}); set S = arg(C) via bounded Borel functional calculus. Conjugates A_g S A*_g drive a polynomial differential equation on the *-algebra; a formal trace identity plus analyticity of actual solutions' moments gives trace-preserving one-parameter automorphism groups β_t. The velocity coefficients are finitely supported vectors h_j ∈ ℓ²(F_n) extended by the Fox-calculus cocycle rule D_{gb} = D_g + λ(g)D_b. Small coefficients give ∥β_1(A_j) − A_j∥ ≤ 3π∥h_j∥ and ∥β_1(A_w) − C A_w∥ ≲ ∥D_w − δ_e∥: the automorphisms move the generators arbitrarily little while pulling a word toward C·(word). Lemma 4.1 solves the coefficient problem: for a word w_m with m freely independent prefixes, D_{w_m} = T_m h_1 with T_m = 1 + Σλ(p_j); Catalan moment counting shows the spectral measure of T_m* T_m/m stays bounded away from 0, so a truncated inverse yields finitely supported h_1 with T_m h_1 ≈ δ_e. Iterating with adaptively chosen error budgets makes the first n coordinates converge (joint Haar distribution persists) while the last coordinate absorbs C; L²-density of the word algebra plus the trace-preserving conditional expectation proves the limit tuple generates the whole factor. This differs from Guionnet–Shlyakhtenko free monotone transport (fixed tuple size, semicircular perturbations) and from Shlyakhtenko's Fuchsian announcement: here the tuple size itself changes, via small automorphisms and adaptive budgets.
+- **Lesson**: Voiculescu's cyclomorphy idea, executed on Haar unitaries with Fox-calculus cocycle coefficients and a Catalan spectral-gap estimate, can change the number of free generators — the decades-old isomorphism problem was an iteration/bookkeeping problem in disguise, and free entropy dimensions are genuinely generator-dependent.
+
+### 288. Kadison's similarity conjecture
+- **Finding**: Every bounded unital complex-linear homomorphism from a unital C*-algebra into B(H) becomes a *-homomorphism after conjugation by a bounded invertible operator.
+- **Approach**: (Deep dive "Kadisons-similarity-theorem-through-uniform-derivation-estimates".) Uniform derivation estimates: control of the derivation ad_u implemented by the homomorphism gives a Pisier-style similarity constant uniformly, then conjugation.
+- **Lesson**: Similarity to *-homomorphisms is a derivation-boundedness phenomenon fully solved in the unital C*-domain case.
+
+### 289. The strong Kadison–Kastler conjecture
+- **Finding**: Sufficiently close unital von Neumann algebras on the same Hilbert space are unitarily conjugate by a unitary arbitrarily close to I, with universal tolerance on the norm distance between unit balls; counterexamples delimit one-sided near-inclusion and separable C* versions.
+- **Approach**: (Deep dive "Universal-strong-Kadison-Kastler-stability".) Perturbation theory of nets of matrix units / grid approximations, propagating near-inclusions to a global unitary.
+- **Lesson**: Kadison–Kastler stability holds in the strong two-sided form; its failure modes are all one-sided or non-selfadjoint.
+
+### 290. Connes' bicentralizer conjecture and relative bicentralizers (deep dive)
+- **Finding**: Connes' bicentralizer conjecture holds for every type III_1 factor with separable predual and every faithful normal state; more generally every expected inclusion N ⊂ M of von Neumann algebras with separable preduals contains an expected amenable subalgebra P ⊂ N with P′ ∩ c(M) = N′ ∩ c(M) — Marrakchi's relative bicentralizer conjecture.
+- **Approach**: Works in the continuous core c(M) = M ⋊_σ^ψ R and reduces the relative statement to Marrakchi's equivalence (relative bicentralizer flow ⟺ existence of such P). The construction of P uses Marrakchi's flow-ergodicity theorem, Houdayer–Isono structure results, and the binormal-state / zero-shift completely positive map techniques of Marrakchi's Theorem B (which preserves N′ ∩ M); the new step is lifting commutant preservation from M to the core, where the modular unitaries must also be beaten — via a relative tensor argument and a multiplication-defect/spectral-resonance comparison (in the companion "Bounded recovery for modular spectral averages"). Section 3 gives an alternative proof of the separable-predual instance of the absolute triviality of the bicentralizer, complementing the announced Houdayer–Marrakchi theorem.
+- **Lesson**: Bicentralizer theory is now a relative, core-based calculus: once commutants are controlled inside the continuous core, both Connes' conjecture and its relative form follow from a single amenable-subalgebra construction.
+
+### 291. Toms–Winter and equivariant Jiang–Su stability
+- **Finding**: Equivariant Jiang–Su stability for actions of every countable discrete amenable group on simple separable unital stably finite nuclear Jiang–Su-stable C*-algebras, with no trace-dynamics restrictions (Szabó's conjecture in this case); the family also proves the unital Toms–Winter conjecture (strict comparison ⟺ finite nuclear dimension ⟺ Z-stability).
+- **Approach**: (Deep dive "Equivariant-Jiang-Su-Stability-for-Amenable-Actions-in-the-Unital-Stably-Finite-Case", with "Cuntz-comparison-and-Jiang-Su-absorption" and "Nuclear-dimension-and-Jiang-Su-stability-without-elementary-subquotients".) Cuntz-comparison first: strict comparison upgraded to absorption, then equivariantization via Følner/averaging in the crossed product.
+- **Lesson**: The Toms–Winter regularity equivalence is now a theorem in the stably finite setting, and it equivariantizes for all amenable actions regardless of trace dynamics.
+
+### 292. Counterexample to Kirchberg's norm-ultrapower embedding problem
+- **Finding**: An explicit separable unital full group C*-algebra that embeds unitally into no norm ultrapower of any fixed nonzero unital nuclear C*-algebra (for any free ultrafilter); taking the target O_2 answers Kirchberg's problem negatively.
+- **Approach**: (Deep dive "An-explicit-obstruction-to-nuclear-norm-ultrapower-embeddings".) An invariant present in the group C*-algebra but absent from every nuclear ultrapower obstructs embeddings.
+- **Lesson**: Nuclear ultrapowers cannot swallow everything: full group C*-algebras of suitable groups are embeddability-obstructions.
+
+### 293. Counterexample to the hyperinvariant-subspace problem
+- **Finding**: On every infinite-dimensional separable complex Hilbert space there is a nonzero norm-quasinilpotent operator with no nonzero proper closed subspace invariant under every commuting operator; also operators in the hyperfinite II_1 factor with no nontrivial invariant projection.
+- **Approach**: (Deep-dive family includes "Backward-intertwiners-and-a-transitive-commutant".) Construct quasinilpotent operators with transitive commutant via backward-intertwiner limiting arguments.
+- **Lesson**: The hyperinvariant subspace problem in its quasinilpotent form is false — transitive commutants exist at the edge of nilpotence.
+
+### 294. Counterexample to Kaplansky's quasitrace conjecture
+- **Finding**: A separable unital C*-algebra with normalized 2-quasitraces, all nonadditive; consequently two unital simple stably finite C*-algebras can have a properly infinite minimal tensor product (one factor C*_r(F_2)).
+- **Approach**: Engineering a C*-algebra where quasitrace additivity fails at the 2-quasitrace level, using a group C*-algebra input to get the tensor-product pathology.
+- **Lesson**: Quasitraces need not be traces; the Haagerup–Blackadar–Handelman reduction does not terminate in additivity in general.
+
+### 295. Kadison–Ringrose cohomology conjecture
+- **Finding**: Every bounded Hochschild cocycle of degree ≥ 2 on a complex von Neumann algebra with coefficients in itself has a bounded primitive; all higher bounded Hochschild cohomology vanishes.
+- **Approach**: (Deep dive "Vanishing-of-higher-bounded-Hochschild-cohomology".) Iterated derivation estimates / perturbation-series averaging in von Neumann algebras.
+- **Lesson**: Von Neumann algebras are Hochschild-cohomologically trivial in degrees ≥ 2 — the conjectured vanishing is uniform across all types.
+
+### 296. Generator problem for finite factors
+- **Finding**: Every type II_1 factor with separable predual is singly generated (equivalently by two self-adjoints); more strongly, for every irreducible inclusion P ⊂ M, the unitaries u with M = W*(P, u) form a dense G_δ in trace-2-norm.
+- **Approach**: (Deep dive "Relative-generation-and-the-generator-problem-for-finite-factors".) Genericity/Baire-category generation arguments relative to an irreducible subfactor, made possible by constructing irreducible inclusions in any II_1 factor.
+- **Lesson**: Generation in II_1 factors is not just generic but prevalent relative to any irreducible positioning — the generator problem is a Baire-category theorem after the right embedding.
+
+### 297. ZFC counterexample to Naimark's problem
+- **Finding**: A (ZFC-constructed) C*-algebra with exactly one irreducible representation up to unitary equivalence, generated by its state space, yet not commutative — refuting Naimark's conjecture without set-theoretic hypotheses.
+- **Approach**: Catalogue entry is truncated ("Gives an alternative to arXiv:2609.26930v1"); a direct model-theoretic/dilatation construction replacing prior independence results.
+- **Lesson**: Naimark's problem does not need diamond-style axioms — a ZFC counterexample exists.
+
+### 298. Counterexample to Voiculescu's free-entropy equality conjecture
+- **Finding**: A bounded self-adjoint tuple in a tracial von Neumann algebra with χ̄ < χ̄* < δ* < δ (microstates and nonmicrostates entropies differ, all finite).
+- **Approach**: A tuple built in a free-group-factor setting where microstate approximations and Fisher information diverge in opposite directions (consistent with 287's generator-dependence of the δ's).
+- **Lesson**: Microstates and nonmicrostates free entropy are genuinely inequivalent invariants, even at finite values.
+
+### 299. Kirchberg–Rørdam character criterion
+- **Finding**: A nonzero unital separable C*-algebra is Jiang–Su-stable iff its norm central-sequence algebra has no characters (any free ultrafilter); also the infinite minimal tensor power of every such algebra is Z-stable (Dadarlat–Toms question).
+- **Approach**: (Deep dive "The-Kirchberg-Rordam-character-criterion".) Kirchberg-Phillips-type absorption machinery plus central-sequence analysis connecting characters to non-absorption.
+- **Lesson**: Characters in the central sequence algebra are the sole obstruction to Z-stability in the non-simple world.
+
+### 300. Popa–Vaes quadratic strong-operator paving
+- **Finding**: Every self-adjoint in a von Neumann algebra admits strong-operator paving relative to any MASA with O(ε^{−2}) blocks, after compressing by a strongly-close projection.
+- **Approach**: (Deep dive "Quadratic-Strong-Operator-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras", plus "Approximation-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras".) Averaging/partition arguments over matrix-algebra filtrations relative to the MASA, upgrading Akemann–Anderson pedersen-type paving to the SOT.
+- **Lesson**: Kadison–Singer-type paving holds universally in von Neumann algebras at quadratic block count — the MASA-relative SOT formulation is the right one.
+
+### 301. Classification by trace cones after Razak–Jacelon stabilization
+- **Finding**: Separable nuclear C*-algebras are classified after tensoring with the Razak–Jacelon algebra and compacts by their full cones of extended lower-semicontinuous tracial weights — answering Robert's trace-cone question, including arbitrary ideal structure and mixed finite/infinite subquotients.
+- **Approach**: (Deep dive "The-trace-cone-classifies-Razak-Jacelon-stabilizations".) Elliott-style classification with the trace cone as invariant, using recent non-simple Z-stable-type classification theorems.
+- **Lesson**: The classification program extends beyond stably finite/infinite dichotomies: tracial weights after RJ-stabilization are a complete invariant even with arbitrary ideal lattices.
+
+### 302. Phillips–Toms formula for minimal integer actions
+- **Finding**: For every minimal homeomorphism h of an infinite compact metrizable X, the radius of comparison of C(X) ⋊_h Z equals ½·mdim(X, h) (including ∞); zero mean dimension ⟺ small boundary property ⟺ Z-stability ⟺ finite nuclear dimension (≤ 1).
+- **Approach**: (Deep dive "Radius-of-comparison-equals-half-the-mean-dimension".) Rokhlin-tower/Cuntz-comparison arguments transferring mean dimension to radius of comparison, plus the Toms–Winter machinery of 291.
+- **Lesson**: Dynamical dimension (mean dimension) is exactly half the C*-regularity invariant (radius of comparison) — dynamical and C*-regularity classifications coincide at the boundary.
+
+### 303. From ordinary to strong pure infiniteness
+- **Finding**: For exact C*-algebras, proper infiniteness of one fixed finite amplification of every positive element suffices for strong pure infiniteness; hence every separable nuclear algebra with this property absorbs O_∞, with no unitality or simplicity assumptions.
+- **Approach**: (Deep dive "Weak-pure-infiniteness-and-O-infinity-absorption".) Kirchberg–Rørdam element-splitting lemmas iterated through an exactness argument to upgrade weak to strong PI and to absorption.
+- **Lesson**: The ordinary-to-strong pure infiniteness gap collapses under exactness; weak PI is a criterion, not a weaker property, in the nuclear realm.
+
+---
+
+## Meta-lessons (Topology, Groups & Operator Algebras)
+
+- **Combinatorial group theory + computability is a construction engine.** The Boone–Higman proof (250) turns word-problem deciders into finitely presented simple type-F_∞ overgroups via a bounded compiler and twisted Brin–Thompson machinery; the residually finite 2-group (247) engineers a graded F_2-algebra with finite local rules and reads off residual finiteness of its Steinberg group; the periodic group (253) and the non-RF hyperbolic group (252) follow the same pattern: finite presentations with algorithmic content produce pathological groups. Explicit finite presentations and machine-simulation arguments dominate the negative answers in group theory.
+
+- **Trace, spectral, and averaging methods decide amenability-type questions.** Thompson's group F nonamenability (248) is a correlation-cancellation estimate over finite Følner averages against a Hilbert-ball Lipschitz map — no free subgroup used; unitarizability and Ulam stability (251) reduce to amenability by spectral-gap constructions; and in operator algebras, Lück's rationality theorem plus one irrational-trace projection kills reduced Baum–Connes (285), while Kadison–Kaplansky falls to the same style of projection construction.
+
+- **Free probability + transport/iteration solves the hardest II_1-factor problems.** The free group factor isomorphism (287) uses cyclomorphy-style polynomial flows, Fox differential calculus cocycle coefficients, a Catalan spectral estimate, and adaptive error budgets to change the number of free generators — implying free entropy dimensions are generator-dependent (298). Bicentralizer theory (290) and the generator problem (296) are likewise settled by core-based relative arguments and Baire genericity, completing the classification-theoretic arc (291, 299, 301, 302).
+
+- **Homotopy-theoretic obstruction theory is dominated by spectral sequences plus finite witnesses.** Kervaire at prime 3 (309) and Curtis's conjecture (316) use Adams spectral sequence permanence/detection with explicit finite spectra; chromatic splitting (318), Hahn–Wilson (319), and the K(n)-local finiteness (313) results replace false conjectures with precise filtration/Thick-ideal statements; Smith–Toda existence (308) exploits prime variability.
+
+- **Dimension four and coarse geometry are the two great counterexample factories in topology.** Disk embedding/Wall (305), Borel rigidity (320), and finite D(2) (321) all break conjectures via explicit 4-dimensional constructions, while coarse assembly (307) and reduced Baum–Connes (285) both die on expander-like sequences of finite graphs with spectral gaps.
+
+- **Computer-verified and explicitly coded constructions appear throughout**: the bounded compiler and finite rule tables in Boone–Higman (250), the finite local-rule hierarchy and phase computations in the residually finite 2-group (247), the explicitly computed spectral measures in the free group factor proof (287), and the fully explicit coefficient rings in the Baum–Connes counterexample (285) — in contrast to the purely abstract averaging arguments of 248 and 290.
