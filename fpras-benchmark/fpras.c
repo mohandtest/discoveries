@@ -105,6 +105,9 @@ static u128 exact_rec(uint64_t S) {
     slot *hit = tget_slot(S);
     if (hit) return join128(hit->lo, hit->hi);
     states_visited++;
+    if ((states_visited & 0xFFFFF) == 0 && getenv("FPRAS_DEBUG"))
+        fprintf(stderr, "states=%llu tsize=%zu tcap=%zu depth_note\n",
+                (unsigned long long)states_visited, tsize, tcap);
     int low = __builtin_ctzll(S);
     uint64_t rest = S ^ (1ULL << low);
     uint64_t m = adj[low] & rest;
