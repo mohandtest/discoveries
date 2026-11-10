@@ -52,6 +52,8 @@ typedef struct { uint64_t key; uint64_t lo; uint64_t hi; } slot;
 static slot *table;
 static size_t tcap, tsize;
 static uint64_t states_visited;
+static uint64_t dbg_probes, dbg_hits;
+static int dbg_depth, dbg_maxdepth;
 
 static u128 join128(uint64_t lo, uint64_t hi) {
     return ((u128)hi << 64) | lo;
@@ -64,8 +66,20 @@ static void u128_to_dec(u128 v, char *buf) {
     buf[j] = 0;
 }
 
+static inline size_t hash_key(uint64_t key, size_t cap) {
+    /* splitmix64-style finalizer: the DP's keys are highly structured
+     * (DFS removes lowest vertices first, so deep states have cleared low
+     * bits and key mod 2^k collapses). Multiplying by PHI and masking low
+     * bits clustered ~4M keys onto one linear-probe chain at n=44
+     * (~10^13 probes). This destroys all bit structure. */
+    uint64_t x = (key ^ (key >> 33)) * 0xFF51AFD7ED558CCDULL;
+    x = (x ^ (x >> 33)) * 0xC4CEB9FE1A85EC53ULL;
+    x ^= x >> 33;
+    return (size_t)x & (cap - 1);
+}
+
 static void tput_raw(slot *tbl, size_t cap, uint64_t key, u128 val) {
-    size_t i = (size_t)(key * 0x9E3779B97F4A7C15ULL) & (cap - 1);
+    size_t i = hash_key(key, cap);
     while (tbl[i].key) {
         if (tbl[i].key == key) { tbl[i].lo = (uint64_t)val; tbl[i].hi = (uint64_t)(val >> 64); return; }
         i = (i + 1) & (cap - 1);
@@ -87,11 +101,13 @@ static void tgrow(void) {
     table = nt; tcap = ncap;
 }
 static slot *tget_slot(uint64_t key) {
-    size_t i = (size_t)(key * 0x9E3779B97F4A7C15ULL) & (tcap - 1);
+    size_t i = hash_key(key, tcap);
     while (table[i].key) {
-        if (table[i].key == key) return &table[i];
+        dbg_probes++;
+        if (table[i].key == key) { dbg_hits++; return &table[i]; }
         i = (i + 1) & (tcap - 1);
     }
+    dbg_probes++;
     return NULL;
 }
 static void tput(uint64_t key, u128 val) {
@@ -105,9 +121,17 @@ static u128 exact_rec(uint64_t S) {
     slot *hit = tget_slot(S);
     if (hit) return join128(hit->lo, hit->hi);
     states_visited++;
-    if ((states_visited & 0xFFFFF) == 0 && getenv("FPRAS_DEBUG"))
-        fprintf(stderr, "states=%llu tsize=%zu tcap=%zu depth_note\n",
-                (unsigned long long)states_visited, tsize, tcap);
+    dbg_depth++;
+    if (dbg_depth > dbg_maxdepth) dbg_maxdepth = dbg_depth;
+    if ((states_visited & 0xFFFF) == 0 && getenv("FPRAS_DEBUG"))
+        fprintf(stderr, "t=%.1f states=%llu probes=%llu hits=%llu "
+                "ratio=%.1f depth=%d maxd=%d\n",
+                (double)clock() / CLOCKS_PER_SEC,
+                (unsigned long long)states_visited,
+                (unsigned long long)dbg_probes,
+                (unsigned long long)dbg_hits,
+                (double)dbg_probes / states_visited,
+                dbg_depth, dbg_maxdepth);
     int low = __builtin_ctzll(S);
     uint64_t rest = S ^ (1ULL << low);
     uint64_t m = adj[low] & rest;
@@ -117,6 +141,7 @@ static u128 exact_rec(uint64_t S) {
         tot += exact_rec(S ^ (1ULL << low) ^ j);
         m ^= j;
     }
+    dbg_depth--;
     tput(S, tot);
     return tot;
 }

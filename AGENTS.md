@@ -133,14 +133,3 @@ README.md          — root: explains the whole effort
 - Community context: openai/math is heavily discussed (HN, MathOverflow);
   OpenAI funds vetting workshops; three Hodge papers were withdrawn in-repo
   for a sign error — treat unformalized claims cautiously and credit audits.
-
-## Immediate next steps (if picking this up fresh)
-
-1. Check campaign results on the server (`~/overnight/`); run `analyze.py`;
-   commit `results.csv`, `status.json`, `summary.csv`; update both READMEs
-   with the measured coverage table.
-2. Write the standalone constants report (arXiv-note shape).
-3. Open an issue on openai/math linking the implementation; notify the
-   simplified-proof authors (Liu & Meng, arXiv:2610.26803).
-4. Draft the networkx PR (`count_perfect_matchings` — reachable-state DP).
-5. Start algorithm #2 (near-linear matching) with the same 8-step protocol.
