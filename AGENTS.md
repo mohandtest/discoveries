@@ -25,6 +25,12 @@ gitignored — clone separately if needed.
   `benchmarks/overnight/campaign{1,2}/`.
 - **Algorithm #2 (degree-preserving graph sampling, result family #131)**
   — in progress: `graph-sampling/` (docs, code, results).
+- **The algorithm factory** — the protocol formalized as an
+  autonomous, sequential loop: spec `factory/README.md`, live state
+  `factory/STATE.md`, journal `factory/JOURNAL.md`, phase runbooks
+  `factory/phases/`, structured memory `factory/memory/` (SQLite +
+  FTS5; observations ≠ hypotheses ≠ conclusions). Dispatch skills:
+  `.opencode/skills/factory-*` + `server-ops`.
 - Status, plan, sequencing, and the publication policy live in
   **`ROADMAP.md`** — not here. Perishable benchmark numbers live in the
   per-algorithm result docs — also not here.
@@ -75,6 +81,14 @@ README.md          — root: explains the whole effort
    armor, not guidance).
 8. **Commit everything** (code, configs, saved graphs, results; never large
    binaries or the math/ checkout).
+
+This protocol now runs as the **algorithm factory** — an autonomous,
+sequential loop with structured memory (spec: `factory/README.md`;
+load the `factory-loop` skill to run or resume a pass). Hard
+guarantees: independent verification with rejection authority; a
+benchmark gate before expensive campaigns; explicit novelty axes;
+negative terminal states (NO_ADVANTAGE / INCORRECT / INCONCLUSIVE)
+are legitimate outcomes. Standing pick criterion: **novelty first**.
 
 ## Key findings so far (qualitative — numbers live in the per-algorithm docs)
 

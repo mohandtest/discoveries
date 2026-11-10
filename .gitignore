@@ -8,3 +8,9 @@ __pycache__/
 # Scratch
 *.log
 .DS_Store
+
+# Compiled binaries
+graph-sampling/switch_exact
+
+# Factory operational memory (regenerate: memory.py init && python3 seed.py)
+factory/memory/factory.db

@@ -14,6 +14,14 @@ Protocol per result: map → research incumbents → pick → implement +
 unit-verify → benchmark against exact truth → invite adversarial
 audits → write the report → commit everything.
 
+The protocol is formalized as the **algorithm factory** — an
+autonomous, sequential loop (`factory/README.md`; live state
+`factory/STATE.md`, phase runbooks `factory/phases/`, structured
+memory `factory/memory/`, dispatch skills `.opencode/skills/`).
+Pass #3 (near-linear matching, candidate 1 below) pilots the formal
+loop. **Standing pick criterion: novelty first** (user priority);
+market × implementability are gates.
+
 ## Publication policy (as of 2026-11-10) — READ FIRST
 
 **This is private work. No public artifacts without an explicit go.**
