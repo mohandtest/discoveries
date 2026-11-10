@@ -70,6 +70,8 @@ class PairedChain:
 
     def _two_edge_switch(self):
         n, M1, W, rng = self.n, self.M1, self.W, self.rng
+        if n < 4:
+            return  # no two distinct edges exist; treat as hold (issue #1)
         a = rng.randrange(n)
         c = rng.randrange(n)
         # c must define a *different* edge than (a, M1[a]):
@@ -190,6 +192,8 @@ class ReplicatedChain:
 
     def _switch(self, M):
         n, W, rng = self.n, self.W, self.rng
+        if n < 4:
+            return  # no two distinct edges exist; treat as hold (issue #1)
         a = rng.randrange(n)
         c = rng.randrange(n)
         while c == a or c == M[a]:

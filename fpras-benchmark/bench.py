@@ -71,7 +71,8 @@ def main():
     for m in (4, 6, 8):
         cases.append((f"Ladder_2x{m}", graph_ladder(m), 2 * m, ladder_count(m)))
     cases.append(("Barbell_K6+K6", graph_barbell(6), 12,
-                  double_factorial(6) ** 2 + 1))
+                  double_factorial(6) ** 2))  # 225: bridge edge is never usable
+                # (using it leaves 5 odd vertices in each clique) — issue #1
     for (n, p) in ((8, 0.3), (12, 0.3), (12, 0.5), (16, 0.3), (16, 0.5), (20, 0.5)):
         seed = 100 * n + int(100 * p)
         edges = graph_random(n, p, seed)

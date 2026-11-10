@@ -92,9 +92,50 @@ def test_exchange_preserves_product():
     print("cycle exchanges preserve w(M1)*w(M2) exactly over 200 steps")
 
 
+def test_barbell_225():
+    """Regression (issue #1): barbell ground truth is 225, not 226.
+    The single bridge edge cannot belong to any perfect matching (it leaves
+    5 odd vertices in each clique)."""
+    half = 6
+    L = list(range(half)); R = list(range(half, 2 * half))
+    edges = []
+    for s in (L, R):
+        for i in range(len(s)):
+            for j in range(i + 1, len(s)):
+                edges.append((s[i], s[j]))
+    edges.append((L[0], R[0]))
+    adj = bits_to_adj(edges, 2 * half)
+    assert count_perfect_matchings(adj, 12) == 225
+    print("barbell ground truth = 225 (regression for issue #1)")
+
+
+def test_n2_no_hang():
+    """Regression (issue #1): n=2 must not hang the switch proposal.
+    With 2 vertices there is no valid switch partner; the move must be a hold."""
+    import signal
+
+    def handler(signum, frame):
+        raise TimeoutError("chain.step() hung at n=2")
+
+    from chain import PairedChain
+    W = [[0.0, 1.0], [1.0, 0.0]]
+    ch = PairedChain(2, W, random.Random(0))
+    signal.signal(signal.SIGALRM, handler)
+    signal.alarm(5)
+    try:
+        for _ in range(100):
+            ch.step()
+    finally:
+        signal.alarm(0)
+    assert ch.M1 == [1, 0] and ch.M2 == [1, 0]
+    print("n=2 chain steps are holds, no hang (regression for issue #1)")
+
+
 if __name__ == "__main__":
     test_dp_closed_forms()
     test_stationarity_tiny()
     test_cycle_exchange_C6()
     test_exchange_preserves_product()
+    test_barbell_225()
+    test_n2_no_hang()
     print("ALL TESTS PASSED")

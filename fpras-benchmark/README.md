@@ -1,90 +1,104 @@
 # FPRAS Benchmark — Perfect Matching Counting in General Graphs
 
-First implementation worldwide of the FPRAS for counting perfect matchings in
-general graphs (OpenAI, Sept 2026; simplified proof: Liu & Meng, arXiv:2610.26803,
-Oct 2026). Question investigated: **is the proof's machinery a practical
-algorithm or an asymptote trophy?**
+First implementation of the FPRAS for counting perfect matchings in general
+graphs (OpenAI, Sept 2026; simplified proof: Liu & Meng, arXiv:2610.26803,
+Oct 2026), benchmarked against an optimized exact counter **on identical
+saved graphs and the same machine**.
+
+**Status note (post-audit, issue #1):** an external review correctly
+identified that our original README overstated exact-DP infeasibility
+(the 2^n state bound is not what a memoized recursion visits) and that the
+barbell fixture's ground truth was 225, not 226. All corrections are folded
+in below; regression tests added. What remains is an **empirical** study of a
+**heuristic adaptation** of the paper's sampler — the paper's formal FPRAS
+guarantee does not transfer to the reduced parameters used here.
 
 ## What was implemented
 
-1. **The paper's kernel K, verbatim** (`chain.py`): paired chain (M1, M2) on
-   perfect matchings of K_n — two-edge switches (Metropolis), holds, and cycle
-   exchanges on discrepancy cycles (always accepted).
-   Verified: stationarity on weighted K_4 (TV = 0.0014 vs exact law);
-   irreducibility on the chordless C_6 (the paper's own motivating obstruction);
-   exact preservation of w(M1)·w(M2) under exchanges.
+1. **The paper's kernel K** (`chain.py`, ported to C in `fpras.c`): paired
+   chain (M1, M2) on perfect matchings of K_n — two-edge switches
+   (Metropolis), holds, and cycle exchanges on discrepancy cycles (always
+   accepted). Verified empirically: stationary-law agreement on weighted K_4
+   (TV = 0.0014 over 180k samples — an empirical check, not a proof);
+   a successful cycle exchange on the chordless C_6 (not a full
+   irreducibility proof); exact preservation of w(M1)·w(M2) under exchanges.
 2. **Plain annealing counter** (`anneal.py`): the paper's outer schedule
-   (nonedge weight b^{-j}, b = 1+1/n), ratio observables, product estimator
-   Ẑ = (n-1)!! · Π R̂_j — with *practical* parameters instead of proof parameters.
-3. **Three structural variants testing the paper's replication machinery**
-   (`chain.py: ReplicatedChain`, `windowed.py`, `hierarchy.py`): same-weight
-   replica exchanges, sliding-window cross-level chain, static full-hierarchy
-   chain.
+   (nonedge weight b^{-j}, b = 1+1/n) with practical parameters. This is a
+   heuristic adaptation; accuracy/confidence claims below are empirical.
+3. **Exact counter** (`exact.py` full-table DP; `exact2.py` + `fpras.c`
+   memoized reachable-state DP): visits only states reachable by repeatedly
+   removing the lowest unmatched vertex and a partner — e.g. 61,233 states
+   for G(24,0.5) vs 8.4M even subsets.
+4. **Structural variants** (`ReplicatedChain`, `windowed.py`, `hierarchy.py`):
+   faithful practical versions of the paper's replication machinery
+   (documented negative results).
 
-## Headline results (single-pair annealing, pure Python, laptop)
+## Head-to-head on identical saved graphs (C, same machine)
 
-| instance | exact | estimate | rel. err | wall time |
-|---|---|---|---|---|
-| K_8, K_12 | 105 / 10395 | exact | 0.000 | < 1 s |
-| G(8,0.3) — Z=1 | 1 | 1.08 | 0.08 | 0.2 s |
-| G(16,0.3) — Z=4 | 4 | 4.04 | 0.01 | 1.1 s |
-| G(20,0.25) — Z=16 | 16 | 15.45 ± 2.0 | 0.03 | 12 s |
-| C_18 (chordless, Z=2) | 2 | 2.05 ± 0.25 | 0.02 | 4 s |
-| C_20 (chordless, Z=2) | 2 | 2.01 ± 0.10 | 0.004 | 5 s |
-| C_24 (chordless, Z=2) | 2 | 2.00 ± 0.23 | 0.000 | 22 s |
-| Ladder 2×12 (Z=233) | 233 | 255 ± 36 | 0.095 (<1σ) | 20 s |
-| G(24,0.5) | > 2²⁴ states | 26.3M ± 2.0M | run-spread 0.19 | 50 s |
-| C_30 / C_40 | 2 | 1.47±0.44 / 2.30±1.05 | noisy | 41 / 105 s |
+Graphs saved in `graphs/` (seed 42, p=0.5; cross-validated against an
+independent reviewer's implementation). 8 replicas, 1024 samples/stage,
+1024-step burn-in.
 
-Envelope: **excellent through n ≈ 24** on all graph families including the
-theory's pathological instances; degradation begins ~n ≈ 30 on adversarial
-(chordless-cycle) instances at ~100 s budgets. Exact DP is already infeasible
-at n = 24+ (2²⁴ subset states), so the sampler operates where no exact method
-exists.
+| n | exact | exact time | DP states | FPRAS est. | rel. err | z | FPRAS time |
+|---|---|---|---|---|---|---|---|
+| 24 | 77,137,026 | 0.21 s | 61,233 | 78.1M ± 3.2M | 0.013 | +0.3 | 0.64 s |
+| 28 | 8,698,633,677 | 1.25 s | 495,866 | 8.28B ± 0.56B | 0.048 | −0.8 | 0.95 s |
+| 30 | 175,250,798,667 | 1.09 s | 1,295,709 | 167.0B ± 8.2B | 0.047 | −1.0 | 1.16 s |
+| 32 | 1,835,224,024,020 | 1.76 s | 3,467,417 | 1.815T ± 0.067T | 0.011 | −0.3 | 1.37 s |
+
+Honest reading: **at these sizes the optimized exact counter beats the FPRAS
+on both speed and precision.** The reachable-state count grows
+super-exponentially (61k → 3.5M from n=24→32, ×57 per +8 vertices), so the
+exact method's cost explodes eventually; the FPRAS's cost grows smoothly
+(stages ∝ n² log n). The FPRAS's value case is beyond the exact method's
+reachable-state explosion, not at n=24.
+
+**Known failure mode:** a Python-implementation run on
+G(24,0.5) seed 4711 (true count 26,118,833, confirmed by two independent
+exact implementations) returned 21.3M ± 0.4M — biased low by 5σ — while an
+independent run of the same configuration was accurate (26.3M ± 2.0M).
+Replica-based standard errors therefore **understate** true error;
+seed-dependent annealing bias exists at these budgets and should be quantified
+with many independent runs before any accuracy claim.
+
+## Earlier single-pair annealing results (Python, pre-audit, empirical)
+
+Correct count through n ≈ 24 on all tested families (dense, sparse, chordless
+cycles, ladders) at 1–100 s cost; degradation ~n ≈ 30 on adversarial
+instances. Ladder/barbell/complete-graph closed forms now regression-tested
+(barbell = 225; the bridge edge is never usable — issue #1).
 
 ## The proof's parameters vs. practice
 
-The worst-case guarantee requires q = 32·(10n)^80·(D+1)^9 ≈ **10⁷³·n¹¹⁶**
-replicas per level (D = 10⁸(n+1)⁴), ~2n·log(2D·4^Q) ≈ 17,000 levels for n=18,
-and chain lengths ∝ J·(Λ + log(1/ξ)). None of this is needed in practice on
-tested instances: **q = 2 and ~10³–10⁵ total steps suffice**. The proof
-structure is worst-case armor, not engineering guidance.
+The worst-case guarantee requires q = 32·(10n)^80·(D+1)^9 ≈ 10⁷³·n¹¹⁶
+replicas per level and ~2n·log(2D·4^Q) levels. None of this is needed
+empirically on tested instances (q = 2 and ~10³–10⁵ steps suffice) — but that
+is an observation, **not** a theorem: the reduced-parameter sampler carries no
+formal guarantee, and its observed seed-dependent bias (above) is consistent
+with that.
 
 ## Negative results (why the naive simplifications fail)
 
-1. **Same-weight replica exchanges destroy the estimate.** With q replicas
-   exchanging with each other at equal weights, the ensemble homogenizes and
-   freezes (all replicas identical → exchanges no-op, switches rejected at late
-   stages): q=8 underestimates ~10×, q=32 returns literally 0.
-2. **Sliding-window cross-level chains underperform**: the window must
-   re-equilibrate after every slide; per-level compute dilutes below the
-   relaxation needs (empirically ~10 stages of lag vs 1 stage of schedule).
-3. **Static full hierarchy** (paper structure, q=2, 1.5M steps) still gives
-   ~300 update visits per level — three orders of magnitude too few; per-stage
-   ratio means are healthy (0.65–0.72) but the product amplifies the residual
-   lag into underflow. The theory compensates with 17k levels × astronomic q.
+1. Same-weight replica exchanges homogenize and freeze the ensemble
+   (q=8 underestimates ~10×, q=32 returns 0).
+2. Sliding-window cross-level chains: per-level compute dilution; window
+   re-equilibration lags the schedule by ~10 stages.
+3. Static full hierarchy at 1.5M steps: ~300 visits per level — orders of
+   magnitude below the theory's prescription; per-stage ratio means look
+   healthy but the product amplifies residual lag into underflow.
 
-**Lesson:** the paper's *kernel and outer schedule* are the practical artifact;
-its *replication architecture* exists to make the mixing proof close in the
-worst case. Stripping the armor is not just safe on tested instances — it is
-the only way to run at all.
-
-## Meta-finding for the discovery-map thesis
-
-This was the cleanest test of "are the repo's runnable-looking results
-runnable?" Verdict: **yes, with surgery**. The result is not an asymptote
-trophy — its core moves (cycle-exchange kernel, annealing schedule, telescoping
-ratio observables) transfer directly to code and perform at n where exact
-methods die. But nothing in the paper tells you which parts are load-bearing:
-that required implementation + ablation (this repo). "Proof-to-production"
-needs a constants-extraction stage that no current pipeline performs.
+Lesson: the kernel and outer schedule are the practical artifact; the
+replication architecture exists to close the worst-case mixing proof.
 
 ## Files
 
-- `exact.py` — subset-DP exact counter + closed forms (validated)
-- `chain.py` — paired kernel K (verified) + replicated variant
-- `anneal.py` — plain annealing counter (the practical winner)
+- `exact.py`, `exact2.py` — exact counters (full-table and reachable-state DP)
+- `chain.py`, `fpras.c` — paired kernel K (C port: exact + FPRAS in one binary)
+- `anneal.py` — plain annealing counter (practical winner, heuristic)
 - `windowed.py`, `awindow.py`, `hierarchy.py` — structural variants (negative)
-- `test_chain.py` — unit tests (all pass)
-- `bench.py` … `bench7.py` — experiment sequence
-- `results.csv` — main benchmark table
+- `test_chain.py` — unit + regression tests (all pass, incl. issue #1 fixes)
+- `bench.py` … `bench8.py` — experiment sequence; `graphs/` saved inputs
+- `results.csv`, `results_head_to_head.csv` — benchmark tables
+
+Rebuild C: `gcc -O2 -o fpras fpras.c -lm`; run:
+`./fpras --edges graphs/g32_p50_s42.edges --mode both`.
