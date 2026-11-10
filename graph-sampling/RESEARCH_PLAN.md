@@ -26,4 +26,9 @@ Save input provenance, versions, seeds, attempted and accepted moves, runtime, r
 - Hobson et al., [A guide to choosing and implementing reference models for social network analysis](https://doi.org/10.1111/brv.12775), Biological Reviews, 2021.
 - [NetworKit randomization tutorial](https://networkit.github.io/dev-docs/notebooks/Randomization.html), an existing implementation and baseline to investigate.
 
-The current sampler uses uniform vertex quadruples and is not established to be the chain covered by OpenAI/math result 131. No claimed polynomial mixing bound is inherited here.
+The current sampler uses uniform vertex quadruples — the kernel
+established (from the preprint text) to be the one analyzed by
+OpenAI/math result 131: lazy, uniform four-vertex proposals, q =
+12·C(n,4), TV(1/4) mixing bound 2n⁸. Finite-state audits here measure
+that chain directly. No polynomial mixing bound is claimed or
+re-proved for these measurements.

@@ -9,7 +9,19 @@ Research starter for sampling **labeled simple undirected graphs with a fixed de
 - Exhaustive connectivity and transition-reversibility checks for small instances.
 - An **exact finite-state probability propagation** benchmark computing total-variation (TV) distance to the uniform distribution from a fixed initial graph. Unlike sampled histogram TV, this isolates actual convergence of the kernel.
 
-The implementation intentionally uses *uniformly chosen vertex quadruples*, not the usual uniformly selected **edge pairs** of a standard double-edge-swap implementation. The result-family #131 polynomial mixing theorem must **not** be assumed to apply unchanged to this specific proposal distribution without a comparison proof. The code demonstrates finite-state behavior, not a general mixing-time guarantee.
+The implementation uses *uniformly chosen vertex quadruples* — which is
+the kernel the #131 preprint actually analyzes: *"a lazy chain that
+proposes switches uniformly on four vertices"* with per-move
+probability q⁻¹ = (12·{n choose 4})⁻¹ (the same q appears verbatim in
+the paper's exact-sampling parameters). `degree_switch_probe.py` and
+`exact_mixing.py` therefore measure the **proven chain itself**, whose
+TV(1/4) mixing time is bounded by 2n⁸. That bound is *not* re-proved
+here: what the code does is verify reversibility and connectivity
+exhaustively on small instances and measure exact finite-time TV —
+the practical-cost question the bound does not answer. `network_null.py`
+by contrast uses the standard uniform-edge-pair kernel (practitioner
+convention), a *different* chain; comparisons between the two are
+explicit, not inherited.
 
 ## Run
 
@@ -42,4 +54,12 @@ The empirical TV estimate from a single correlated sample histogram additionally
 
 ## Sources and scope
 
-Motivated by **result family 131** in the [OpenAI/math](https://github.com/openai/math) catalog. This is an independent exploratory implementation, **not** a verified reproduction of the paper's exact transition kernel or its stated polynomial mixing bound. No performance or novelty claims are made.
+Motivated by **result family 131** in the [OpenAI/math](https://github.com/openai/math)
+catalog — *Polynomial mixing of the switch chain for every graphical
+degree sequence* (Sept 25, 2026), resolving the Kannan–Tetali–Vempala
+conjecture. The uniform-quadruple lazy kernel here matches the chain the
+paper analyzes (established from the preprint text: uniform four-vertex
+proposals, q = 12·C(n,4); verified locally for reversibility, symmetry
+and connectivity on small instances). The 2n⁸ bound and the paper's
+exact-sampler construction are not reproduced or claimed; the
+measurements below are finite-state empirics on top of that correspondence.
