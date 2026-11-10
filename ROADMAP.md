@@ -55,27 +55,41 @@ audits → write the report → commit everything.
 - Living constants report: `fpras-benchmark/README.md`. Raw campaign
   data: `benchmarks/overnight/campaign1/`, `campaign2/`.
 
-### Algorithm #1.5 — degree-preserving graph sampling (#131) (owned, planned)
+### Algorithm #2 — degree-preserving graph sampling (#131) (in progress)
 
-- Foundation built and verified (Nov 10): exhaustive small-graph
-  enumeration by degree sequence, exact TV mixing curves, jump-chain
-  bias audit, karate-club triangle-null prototype, 11 passing tests.
-  Docs corrected: the uniform-quadruple lazy kernel is **the chain the
-  #131 preprint analyzes** (TV(1/4) ≤ 2n⁸) — see `graph-sampling/`.
-- Planned pass-2 measurement campaign (not yet run):
-  1. Exact enumeration ground truth to n≈10–12 (sparse regular +
-     heterogeneous sequences); exact TV curves across n, degree,
-     heterogeneity → the first *measured* mixing curve for the
-     KTV-resolution chain: 2n⁸ vs reality.
-  2. Two-kernel comparison (paper's quadruple chain vs practitioner
-     edge-pair chain, both in the codebase) + NetworkX
-     `double_edge_swap` as incumbent, matched workloads.
-  3. Karate demo upgraded to a calibrated claim with measured
-     burn-in constants; adversarial audit; report.
-- Paper reading: the #131 exact sampler is a rare-residual-mixture
-  construction (t = O(n⁸) chain steps + a bias-correction branch with
-  probability 2^−O(n²)) — expected-polynomial on paper, pure armor in
-  practice. The practical content is the finite-time law; measure it.
+One workstream, two phases: the **#131 mixing-curve campaign is the
+remaining measurement phase of this same study**, not a separate effort.
+The paper (*Polynomial mixing of the switch chain for every graphical
+degree sequence*, the Kannan–Tetali–Vempala resolution) analyzes exactly
+the uniform-quadruple lazy kernel in the codebase (TV(1/4) ≤ 2n⁸).
+
+- Phase A — foundation (done, verified): exhaustive small-graph
+  enumeration, exact TV machinery, jump-chain bias audit, 16 passing
+  tests, kernel↔paper correspondence established.
+- Phase B — validation study (done, merged from
+  `codex/graph-sampling-validation`, commit `3355993`): exact rational
+  transition-matrix audits (6 sequences, 133 states), 1,800-trial
+  calibration showing the R-hat gate gives **false reassurance and poor
+  power** (never reliable on heterogeneous cases; 95% t-intervals cover
+  truth only 82–99/100), NetworkX baseline comparison, and three real
+  networks — karate (45 triangles vs null 39.3–39.6, tail ~0.11:
+  degrees explain the clustering), florentine (tail ~0.5), **dolphins
+  (95 vs null 34.0–34.2, zero upper-tail hits in 800 draws — strong
+  descriptive contrast, tail unresolved)**.
+- Phase C — the measurement campaign (remaining; real-world-implication
+  oriented):
+  1. **Practitioner burn-in constants**: exact TV(1/4) mixing times
+     from worst start, by enumeration + exact propagation, at n≈8–12
+     across degree sequences (regular, heterogeneous) → the measured
+     "2n⁸ vs reality" table and a burn-in rule of practice.
+  2. **Dolphins tail quantified**: the unresolved zero-hit tail →
+     high-draw server runs + distributional bound, turning "95 vs 34"
+     into a calibrated statement for animal-association structure.
+  3. **Burn vs spacing isolation** on the real networks (the study
+     flagged that its budgets moved both together).
+  4. Wall-clock kernel throughput (the study punted on speed due to
+     tracing overhead).
+  Then: adversarial audit → in-repo constants report (private).
 
 ## Current writing task (scoped down)
 
