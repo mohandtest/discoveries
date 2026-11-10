@@ -13,8 +13,8 @@ autonomously; after each P5 it continues to the next queue item.
 
 1. [pass #3] near-linear general-graph matching (ROADMAP candidate #1 —
    the approved pilot)
-2. [task] constants report, algorithm #1 (ROADMAP "Current writing
-   task" — **parked on user hold**; needs their explicit go)
+2. [done 2026-11-10] constants report, algorithm #1 — drafted at
+   `reports/algo1-fpras-constants-DRAFT.md` (user go received)
 3. [pass #4+] deterministic F_p factorization; mean-payoff games
    (ROADMAP candidates #2–3)
 4. [task] factory improvements queued by retrospectives (none yet)
@@ -29,6 +29,8 @@ autonomously; after each P5 it continues to the next queue item.
   gates; novelty decides. (standing)
 - Publication policy as in ROADMAP: private work, no external
   artifacts without explicit go. (standing)
+- 2026-11-10 — go for the algorithm-#1 constants report draft
+  (previously parked on user hold); executed same day.
 
 ## Next actions (on pass-#3 start)
 

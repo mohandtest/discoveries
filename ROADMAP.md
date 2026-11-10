@@ -104,12 +104,13 @@ the uniform-quadruple lazy kernel in the codebase (TV(1/4) ≤ 2n⁸).
      bottleneck at social-network scale.
   Then: adversarial audit → in-repo constants report (private).
 
-## Current writing task (scoped down)
+## Current writing task
 
-**Constants report (algorithm #1):** for now, a **simple draft only**,
-living in this repo — the standalone arXiv-note narrative of what we
-measured. No submission anywhere. Suggested home: `reports/` when
-written; `fpras-benchmark/README.md` remains the living report.
+**Constants report (algorithm #1): DRAFTED 2026-11-10** (user go) —
+`reports/algo1-fpras-constants-DRAFT.md`: the standalone narrative of
+what we measured, arXiv-note-shaped but private (no submission without
+explicit go). `fpras-benchmark/README.md` remains the living report and
+the canonical source for every number in the draft.
 
 ## Where we could contribute (recorded only — do NOT act yet)
 
