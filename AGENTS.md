@@ -1,4 +1,4 @@
-# AGENT.md — Project Guide for Agents
+# AGENTS.md — Project Guide for Agents
 
 ## What this project is
 
@@ -18,19 +18,16 @@ Deliverables live in **https://github.com/mohandtest/discoveries** (this
 directory is that repo's working copy). The `math/` checkout (~3.7 GB) is
 gitignored — clone separately if needed.
 
-## Current state (latest first)
+## Current state
 
-- **Overnight benchmark campaign RUNNING** on the remote server (`test`, 24
-  cores / 360 GB LXC / Alpine) in a tmux session `overnight`, launched via
-  `benchmarks/overnight/run.sh`. Phases: 0 regression gate → 1 reliability
-  (200 independent FPRAS runs on g36/g40) → 2 exact n=44 ground truth
-  (128-bit, 5.5 h budget) → 3 validation (200 runs on n=44) → 4 scaling
-  (n=48–64, two densities + ladders). 8 h hard deadline; RAM ceiling 280 GB,
-  kill 330 GB; results in `~/overnight/{results.csv,status.json,runner.log}`
-  on the server. When it finishes: run `analyze.py`, commit
-  results/status/summary, update READMEs.
-- All campaign code audited by an adversarial subagent pass (15 findings,
-  all fixed — see git log `5ddb0d2`); pipeline smoke-tested end-to-end.
+- **Algorithm #1 (perfect-matching FPRAS)** — complete: constants report
+  in `fpras-benchmark/README.md`; raw campaign data in
+  `benchmarks/overnight/campaign{1,2}/`.
+- **Algorithm #2 (degree-preserving graph sampling, result family #131)**
+  — in progress: `graph-sampling/` (docs, code, results).
+- Status, plan, sequencing, and the publication policy live in
+  **`ROADMAP.md`** — not here. Perishable benchmark numbers live in the
+  per-algorithm result docs — also not here.
 
 ## Repository layout
 
@@ -79,26 +76,28 @@ README.md          — root: explains the whole effort
 8. **Commit everything** (code, configs, saved graphs, results; never large
    binaries or the math/ checkout).
 
-## Key findings so far (the substance an agent should know)
+## Key findings so far (qualitative — numbers live in the per-algorithm docs)
 
-- The FPRAS kernel + outer annealing schedule transfer to code and work:
-  0–3% error through n≈24 (Python), seconds; C version: n=24–32 head-to-head
-  within 1σ of exact truth; exact DP beats FPRAS ≤ n=32; FPRAS ~1,100× faster
-  at n=40 (46.6 min exact vs 2.5 s).
-- The paper's replication architecture (q=32·(10n)^80(D+1)^9 replicas,
-  ~17,000 levels) is worst-case armor: q=2 and 10³–10⁵ steps suffice on all
-  tested instances — but naive simplifications genuinely fail (equal-weight
-  replica exchanges homogenize and freeze: q=32 returns literally 0).
-- Replica-SEs understate error: one 8-replica run was 5σ low vs exact truth;
-  hence the 200-independent-run coverage studies in the overnight campaign.
-- Exact reachable-state DP is practical far beyond the naive 2^n bound
-  (61k states at n=24, 165M at n=40) — arguably a more practical discovery
-  than the FPRAS itself; candidate for a networkx contribution
-  (`count_perfect_matchings`).
-- From the map: next algorithm candidates ranked — near-linear general-graph
-  matching (market leader, "single finite program" paper), deterministic
-  F_p factorization (chains off Quasi-RH, verifiable vs FLINT), mean-payoff
-  games (verification tooling).
+- The FPRAS kernel + outer annealing schedule transfer to code and work at
+  practical parameters, and the exact reachable-state DP is practical far
+  beyond the naive 2^n bound. Measured curves, crossovers, and the n=44
+  ground truth: `fpras-benchmark/README.md` — see its **correction
+  section**: early exact-timing claims there were inflated by a hash bug
+  and are superseded; trust only the corrected curve.
+- The paper's replication architecture is worst-case armor: tiny replica
+  counts and short chains suffice on all tested instances — but naive
+  simplifications genuinely fail (equal-weight replica exchanges
+  homogenize and freeze; q=32 returns literally 0). Proof parameters
+  ~10^73 are armor, not guidance.
+- Replica-based standard errors understate true error — accuracy claims
+  need many genuinely independent runs (the campaign's 200-run coverage
+  studies exist for this reason).
+- The switch chain of result family #131 mixes in a few passes over its
+  proposal space in practice — measured constants and real-network
+  results: `graph-sampling/results/MIXING_RESULTS.md`.
+- From the map: next algorithm candidates are ranked in `ROADMAP.md` —
+  near-linear general-graph matching, deterministic F_p factorization,
+  mean-payoff games.
 
 ## Environment & operations (hard-won specifics)
 
