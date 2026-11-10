@@ -1,0 +1,31 @@
+test_karate_fixture (test_network_null.NetworkNullTests.test_karate_fixture) ... ok
+test_known_triangle_tail (test_network_null.NetworkNullTests.test_known_triangle_tail) ... ok
+test_preserves_simple_graph_and_degrees (test_network_null.NetworkNullTests.test_preserves_simple_graph_and_degrees) ... ok
+test_rejects_malformed_and_keeps_isolates (test_network_null.NetworkNullTests.test_rejects_malformed_and_keeps_isolates) ... ok
+test_empty_and_impossible (test_null_audits.NullAuditTests.test_empty_and_impossible) ... ok
+test_heterogeneous_exact_graphs (test_null_audits.NullAuditTests.test_heterogeneous_exact_graphs) ... ok
+test_triangle_null_probabilities (test_null_audits.NullAuditTests.test_triangle_null_probabilities) ... ok
+test_diagnostics_constants_and_dependence (test_research.ResearchTests.test_diagnostics_constants_and_dependence) ... ok
+test_nx_budget_and_exact_histogram (test_research.ResearchTests.test_nx_budget_and_exact_histogram) ... ok
+test_nx_exact_proposal_probabilities (test_research.ResearchTests.test_nx_exact_proposal_probabilities)
+Enumerate actual NX proposals, including early-continue holds. ... ok
+test_observables_known_graphs (test_research.ResearchTests.test_observables_known_graphs) ... ok
+test_production_exact_matches_independent_edge_subsets (test_research.ResearchTests.test_production_exact_matches_independent_edge_subsets) ... ok
+test_degree_invariant (test_sampling.DegreeSwitchTests.test_degree_invariant) ... ok
+test_exact_tv_decreases (test_sampling.DegreeSwitchTests.test_exact_tv_decreases) ... ok
+test_reversible_and_connected_small (test_sampling.DegreeSwitchTests.test_reversible_and_connected_small) ... ok
+test_small_known_counts (test_sampling.DegreeSwitchTests.test_small_known_counts) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 8.314s
+
+OK
+
+Additional checks completed:
+- production_exact.json rerun matched byte-for-byte.
+- calibration summary.json and raw.csv rerun matched byte-for-byte.
+- Public samples.csv rerun matched byte-for-byte; summary JSON matched after excluding runtime fields.
+- Core suite without optional NetworkX: 16 tests, 2 skipped, no failures.
+- Dolphin CLI completed using standard-library Python and emitted JSON plus CSV.
+- git diff --check passed.
+- Independent adversarial audit confirmed the exact NetworkX transition relation. Interpretation concerns were incorporated in STUDY_REPORT.md.

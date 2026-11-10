@@ -32,3 +32,13 @@ OpenAI/math result 131: lazy, uniform four-vertex proposals, q =
 12·C(n,4), TV(1/4) mixing bound 2n⁸. Finite-state audits here measure
 that chain directly. No polynomial mixing bound is claimed or
 re-proved for these measurements.
+
+## Implemented iteration (2026-11-10)
+
+[STUDY_REPORT.md](STUDY_REPORT.md) records the completed production-kernel audit,
+three-sequence repeated calibration, actual NetworkX proposal-loop comparison,
+and three public-data examples. These address the initial research sequence on
+small cases; they do not resolve general convergence, rare tails or domain
+constraints. The diagnostic gate produced both false reassurance and poor power.
+Further studies should compare established convergence methods, separate burn
+from spacing changes, and specify domain constraints before extending graph type.
