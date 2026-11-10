@@ -1,0 +1,50 @@
+{
+ "started": "2026-11-10 03:39:13",
+ "phases": {
+  "0_prep": {
+   "status": "completed"
+  },
+  "1_reliability": {
+   "status": "completed",
+   "started": "2026-11-10 03:42:51",
+   "g36_p50_mean_rel_err": 0.1197,
+   "g36_p50_worst_rel_err": 0.4361,
+   "g36_p50_coverage_eps": 0.915,
+   "g40_p50_mean_rel_err": 0.1234,
+   "g40_p50_worst_rel_err": 0.8551,
+   "g40_p50_coverage_eps": 0.935,
+   "ended": "2026-11-10 03:43:06",
+   "trials_completed": 400,
+   "trials_failed": 0
+  },
+  "2_ground_truth": {
+   "status": "completed",
+   "started": "2026-11-10 03:43:06",
+   "exact_g44_p50": "FAILED",
+   "ended": "2026-11-10 04:08:04",
+   "trials_completed": 0,
+   "trials_failed": 1
+  },
+  "3_validation": {
+   "status": "completed",
+   "started": "2026-11-10 04:08:04",
+   "ended": "2026-11-10 04:08:14",
+   "trials_completed": 200,
+   "trials_failed": 0
+  },
+  "4_scaling": {
+   "status": "completed",
+   "started": "2026-11-10 04:08:14",
+   "ladder24_mean_rel_err": 0.562,
+   "ladder24_worst_rel_err": 2.4026,
+   "ladder24_coverage_eps": 0.1562,
+   "ladder28_mean_rel_err": 0.5516,
+   "ladder28_worst_rel_err": 2.9398,
+   "ladder28_coverage_eps": 0.25,
+   "ended": "2026-11-10 04:08:49",
+   "trials_completed": 320,
+   "trials_failed": 0
+  }
+ },
+ "updated": "2026-11-10 04:08:49"
+}
