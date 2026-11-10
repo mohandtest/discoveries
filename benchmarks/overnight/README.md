@@ -6,6 +6,29 @@ server. Built after an external review identified (a) a uint64 overflow in the
 exact counter (n≥44 counts exceed 1.8e19) and (b) the need for genuine
 coverage statistics — independent complete estimator runs, not chain samples.
 
+## Campaign results (2026-11-10) — completed, zero failed trials
+
+Two unattended runs; raw data in `campaign1/` (phases 1–4, 920 trials)
+and `campaign2/` (phase 2/3 rerun with the hash-fixed binary, 200
+trials + exact). Summary:
+
+- **Phase 1** (400 runs): G(36,.5) coverage **91.5%** at ε=0.25,
+  G(40,.5) **93.5%**; mean |rel err| ≈ 0.12; zero failures
+- **Phase 2** (ground truth): **G(44,.5) s42 has 38,960,201,918,564,595,040
+  perfect matchings**, exact DP in **1217.5 s** (~48 GiB) — the first
+  128-bit-safe exact count at n=44. (Campaign 1's attempt stalled on the
+  pre-fix hash-clustering bug — see `fpras-benchmark/README.md` — and was
+  killed to protect the budget; the fixed binary re-ran it cleanly.)
+  The g40 truth also re-verified identically in **123 s** (was 46.6 min
+  pre-fix; the bug inflated every exact timing above n≈32).
+- **Phase 3** (200 runs vs fresh truth): coverage **84.0%**, mean
+  |rel err| 0.136, worst 0.57, **z = +0.48** (unbiased)
+- **Phase 4** (320 runs): n=48–64 dense graphs 1.2–2.8 s/run, zero
+  failures; ladders confirm the sparse-variance warning (coverage 16%/25%)
+
+Interpretation and corrected timing curves live in
+`../../fpras-benchmark/README.md`.
+
 ## What runs tonight
 
 | Phase | Experiment | Policy |

@@ -1,0 +1,2 @@
+phase,graph,trials_total,trials_ok,failed,mean_rel_err,worst_rel_err,coverage_eps25,z_mean,mean_runtime_s,exact
+3_validation,g44_p50,200,200,0,0.1357,0.568,0.84,0.48,0.96,38960201918564595040

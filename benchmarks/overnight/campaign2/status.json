@@ -1,0 +1,36 @@
+{
+ "started": "2026-11-10 04:23:55",
+ "phases": {
+  "0_prep": {
+   "status": "completed"
+  },
+  "1_reliability": {
+   "status": "not_in_config"
+  },
+  "2_ground_truth": {
+   "status": "completed",
+   "started": "2026-11-10 04:24:12",
+   "exact_g40_p50": "179249264420609805",
+   "exact_g40_p50_seconds": 123.231,
+   "exact_g44_p50": "38960201918564595040",
+   "exact_g44_p50_seconds": 1217.536,
+   "ended": "2026-11-10 04:46:36",
+   "trials_completed": 2,
+   "trials_failed": 0
+  },
+  "3_validation": {
+   "status": "completed",
+   "started": "2026-11-10 04:46:36",
+   "g44_p50_mean_rel_err": 0.1357,
+   "g44_p50_worst_rel_err": 0.568,
+   "g44_p50_coverage_eps": 0.84,
+   "ended": "2026-11-10 04:46:46",
+   "trials_completed": 200,
+   "trials_failed": 0
+  },
+  "4_scaling": {
+   "status": "not_in_config"
+  }
+ },
+ "updated": "2026-11-10 04:46:46"
+}

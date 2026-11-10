@@ -35,6 +35,10 @@ guarantee does not transfer to the reduced parameters used here.
 
 ## Head-to-head on identical saved graphs (C, same machine)
 
+*Timings in this table are pre-2026-11-10 and superseded: the
+exact-time column was inflated by a hash bug (see the correction
+below). The FPRAS estimate / z columns are unaffected.*
+
 Graphs saved in `graphs/` (seed 42, p=0.5; cross-validated against an
 independent reviewer's implementation). 8 replicas, 1024 samples/stage,
 1024-step burn-in.
@@ -48,24 +52,70 @@ independent reviewer's implementation). 8 replicas, 1024 samples/stage,
 | 36 | 592,998,646,745,549 | 25.6 s | 23,972,066 | 5.364e14 ± 3.96e13 | 0.096 | −1.4 | 2.07 s |
 | 40 | 179,249,264,420,609,805 | 2798.7 s (46.6 min) | 164,793,195 | 1.724e17 ± 1.017e16 | 0.038 | −0.7 | 2.52 s |
 
-Honest reading: **n=36 is where the FPRAS pulls ahead, n=40 is the blowout.**
-Up to n=32 the exact counter is faster and exact. At n=36 exact needs 25.6 s
-vs 2.1 s (FPRAS within ~1.5σ but 7.4% SE). At n=40 the exact counter needs
-**46.6 minutes** and a ~4 GB hash table (165M reachable states), while the
-FPRAS answers in **2.5 seconds within 1σ of truth** — a ~1,100× speed gap.
-Reachable states grow super-exponentially (61k → 3.5M → 24M → 165M across
-n = 24 → 32 → 36 → 40); the FPRAS's cost grows smoothly (stages ∝ n² log n,
-seconds at every size tested). All timings same-machine; the exact n=36/40
-runs coincided with background load, so ratios are conservative in the
-FPRAS's favor on a loaded box and large regardless.
+Honest reading of the *corrected* numbers (below): the exact DP is
+practical much further than this table claimed, and the crossover sits
+between n=44 and n=48, not between n=36 and n=40.
+
+### Correction (2026-11-10): the exact-time column above was inflated by a hash bug
+
+The DP's hash used the low bits of `key × φ`, but the DP's keys are
+highly structured: DFS always removes the *lowest* remaining vertex,
+so deep states have their low bits cleared — at n=44 about 4M states
+hashed to a **single slot**, and linear-probe chains grew without bound
+(measured: ~20,000 probes per lookup and rising). Every exact timing
+above n≈32 in the table above — including the old "46.6 min at n=40"
+headline and the "~1,100× speed gap" built on it — was an artifact of
+that clustering. A splitmix64-style finalizer fixed it; all four
+regression truths reproduce bit-identically and the n=40 exact count
+re-verified equal (179,249,264,420,609,805), so the bug was
+performance-only — but our crossover claims were built on it.
+
+Corrected single-process exact timings (fixed binary, 24-core server,
+2026-11-10): **n=24 0.2 s · n=28 0.2 s · n=32 1.3 s · n=36 14.2 s ·
+n=40 123 s · n=44 1217.5 s** (20.3 min, ~48 GiB hash table).
+
+**First exact ground truth at n=44:** G(44, 0.5), seed 42 has
+**38,960,201,918,564,595,040 ≈ 3.90×10¹⁹ perfect matchings** — beyond
+uint64 (1.8×10¹⁹), hence the 128-bit arithmetic. FPRAS is ~160× faster
+than exact at n=40 and ~1,270× at n=44 (0.96 s per independent run).
+At n=48 the extrapolated ~8B reachable states need >400 GiB — beyond
+this server — so **n=44 is the practical exact ceiling on this
+hardware, and the FPRAS is necessary beyond it.**
+
+### 200-independent-run validation (unattended campaign, 2026-11-10)
+
+One process per run, sha256-derived seeds, 20-way concurrency,
+ε = 0.25, samples/burn = 1024. Raw data: `../benchmarks/overnight/campaign1/`
+and `campaign2/`; platform: `../benchmarks/overnight/`.
+
+| graph | trials | mean \|rel err\| | worst | cov ±25% | z-mean | mean s |
+|---|---|---|---|---|---|---|
+| G(36,.5) | 200 | 0.120 | 0.44 | 91.5% | −2.36 | 0.59 |
+| G(40,.5) | 200 | 0.123 | 0.86 | 93.5% | +0.10 | 0.77 |
+| G(44,.5) | 200 | 0.136 | 0.57 | 84.0% | +0.48 | 0.96 |
+| ladder24 | 32 | 0.562 | 2.40 | 15.6% | −2.40 | 0.78 |
+| ladder28 | 32 | 0.552 | 2.94 | 25.0% | −1.92 | 1.11 |
+
+Reading: across 600 independent dense-graph runs the estimator's mean
+is statistically unbiased at n=40 (+0.10) and n=44 (+0.48) — the
+earlier single 5σ-low run (below) was seed luck, not systematic bias —
+with a mild low bias at n=36 (−2.36). Per-run error at this budget is
+real and occasionally large (worst 57% at n=44), so single-run
+±replica-SE claims remain untrustworthy. Sparse structured graphs are
+a different regime entirely: ladders sit far outside ±25% (coverage
+16–25%, biased low) — the guarantee shape does not transfer to sparse
+instances at practical sample sizes. Dense scaling (n=48–64, FPRAS
+only, 32 runs each) completes in 1.2–2.8 s per run with zero failures.
 
 **Known failure mode:** a Python-implementation run on
 G(24,0.5) seed 4711 (true count 26,118,833, confirmed by two independent
 exact implementations) returned 21.3M ± 0.4M — biased low by 5σ — while an
 independent run of the same configuration was accurate (26.3M ± 2.0M).
 Replica-based standard errors therefore **understate** true error;
-seed-dependent annealing bias exists at these budgets and should be quantified
-with many independent runs before any accuracy claim.
+seed-dependent annealing bias exists at these budgets. The campaign table
+above is that warning quantified: 600 independent runs show unbiased
+means (z within ±2.4) but per-run errors up to 57% with replica SEs of
+only a few percent.
 
 ## Earlier single-pair annealing results (Python, pre-audit, empirical)
 
@@ -106,6 +156,10 @@ replication architecture exists to close the worst-case mixing proof.
 - `test_chain.py` — unit + regression tests (all pass, incl. issue #1 fixes)
 - `bench.py` … `bench8.py` — experiment sequence; `graphs/` saved inputs
 - `results.csv`, `results_head_to_head.csv` — benchmark tables
+- `../benchmarks/overnight/` — the unattended campaign platform:
+  `campaign1/` (phases 1–4, 920 runs) and `campaign2/` (phase 2/3 rerun
+  with the hash-fixed binary: n=44 truth + 200 scored runs), raw CSVs,
+  status, and logs
 
 Rebuild C: `gcc -O2 -o fpras fpras.c -lm`; run:
 `./fpras --edges graphs/g32_p50_s42.edges --mode both`.

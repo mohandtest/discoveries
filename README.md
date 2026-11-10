@@ -60,8 +60,11 @@ implementation anywhere**. We implemented it and benchmarked it.
 
 Headline numbers (pure Python, laptop): correct to 0–3% relative error through
 n ≈ 24 on every graph family tested — including the theory's pathological
-chordless cycles — in seconds, where exact dynamic programming is already
-infeasible (2²⁴ states). Three scientific findings: (1) the proof's worst-case
+chordless cycles — in seconds, where the naive subset DP (2ⁿ states) is
+already out of reach. (The reachable-state DP later reclaimed exact counting
+up to **n=44 in 20 minutes** — see the FPRAS README's correction section for
+the measured curve and the first n=44 exact ground truth.) Three scientific
+findings: (1) the proof's worst-case
 constants (~10⁷³ replicas, ~17,000 levels) are pure armor — q = 2 and ~10³–10⁵
 steps suffice in practice; (2) the naive simplifications genuinely fail
 (same-weight replica exchanges homogenize and freeze the ensemble, returning
