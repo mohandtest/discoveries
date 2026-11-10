@@ -1,0 +1,1 @@
+n=10 degrees=3,3,3,3,3,3,3,3,3,3 states=11180820 quads=210 avg_state_deg=100.0 connected=yes

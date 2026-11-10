@@ -1,0 +1,9 @@
+n=8 states=19355
+canonical t=1 tv=0.996228
+canonical t=2 tv=0.991943
+canonical t=5 tv=0.959043
+canonical t=10 tv=0.913566
+canonical t=25 tv=0.804098
+canonical t=50 tv=0.552942
+canonical t=100 tv=0.248426
+canonical t=250 tv=0.025672

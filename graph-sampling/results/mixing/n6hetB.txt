@@ -1,0 +1,30 @@
+n=6 degrees=4,3,3,2,2,2 states=27 quads=15 avg_state_deg=9.1 connected=yes
+start=0 t25=50 t05=100
+start=3 t25=50 t05=100
+start=4 t25=50 t05=100
+start=21 t25=50 t05=100
+start=24 t25=50 t05=100
+start=4 t25=50 t05=100
+start=10 t25=50 t05=100
+start=10 t25=50 t05=100
+start=4 t25=50 t05=100
+start=13 t25=50 t05=100
+start=24 t25=50 t05=100
+start=15 t25=50 t05=100
+start=13 t25=50 t05=100
+start=25 t25=50 t05=100
+start=25 t25=50 t05=100
+start=8 t25=50 t05=100
+start=19 t25=50 t05=100
+start=8 t25=50 t05=100
+start=25 t25=50 t05=100
+start=26 t25=50 t05=100
+start=3 t25=50 t05=100
+start=22 t25=50 t05=100
+start=20 t25=50 t05=100
+start=10 t25=50 t05=100
+start=19 t25=50 t05=100
+start=2 t25=50 t05=100
+start=20 t25=50 t05=100
+WORST t_mix(0.25)=50 t_mix(0.05)=100 [max over 27 sampled starts, 22 cores]
+proven_2n8=3359232 overprovision=67184.6x

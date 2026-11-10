@@ -1,0 +1,10 @@
+n=9 states=30016
+canonical t=1 tv=0.998168
+canonical t=2 tv=0.997176
+canonical t=5 tv=0.988883
+canonical t=10 tv=0.964378
+canonical t=25 tv=0.935920
+canonical t=50 tv=0.822667
+canonical t=100 tv=0.591187
+canonical t=250 tv=0.183185
+canonical t=500 tv=0.020866

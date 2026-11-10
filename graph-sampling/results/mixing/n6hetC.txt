@@ -1,0 +1,18 @@
+n=6 degrees=3,2,2,1,1,1 states=15 quads=15 avg_state_deg=6.8 connected=yes
+start=0 t25=50 t05=250
+start=9 t25=50 t05=250
+start=1 t25=50 t05=250
+start=6 t25=50 t05=250
+start=0 t25=50 t05=250
+start=13 t25=50 t05=250
+start=1 t25=50 t05=250
+start=7 t25=50 t05=250
+start=13 t25=50 t05=250
+start=10 t25=50 t05=250
+start=0 t25=50 t05=250
+start=3 t25=50 t05=250
+start=7 t25=50 t05=250
+start=13 t25=50 t05=250
+start=1 t25=50 t05=250
+WORST t_mix(0.25)=50 t_mix(0.05)=250 [max over 15 sampled starts, 15 cores]
+proven_2n8=3359232 overprovision=67184.6x

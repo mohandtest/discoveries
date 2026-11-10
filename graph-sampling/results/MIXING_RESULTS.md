@@ -31,16 +31,35 @@ t = 250/250).
 | n=8 d=3 ≡ d=4 | 19,355 | 250 | 250 | 3.36e7 | 134,218× |
 | n=9 d=2 | 30,016 | 250 | 500 | 8.61e7 | 344,374× |
 | n=9 d=4 (self-compl. class) | 1,024,380 | 250 | 500 | 8.61e7 | 344,374× |
-| n=10 d=2 | 286,884 | 500 | 1,000 | 2.0e8 | 399,008× |
-| (n=10–12 rows: in flight — table finalized when the ladder completes) | | | | | |
+| n=10 d=2 | 286,884 | 500 | 1,000 | 2.0e8 | 400,000× |
+| (n=10 d=3/d=4, n=11, n=12, heavy-tail rows: in flight — table finalized when the ladder completes) | | | | | |
+
+**The sweep law.** Normalizing by C(n,4) — the number of quadruples the
+kernel proposes from, i.e. the proposal-space size — collapses the
+measurements (t(1/4)/C(n,4)):
+
+| | n=6 | n=8 | n=9 | n=10 |
+|---|---|---|---|---|
+| d=2 | 3.33 | 3.57 | 1.98 | 2.38 |
+| d=3 / d=4 | — | 3.57 | 1.98 (d=4) | in flight |
+| heterogeneous | 3.33 | in flight | | |
+
+**t_mix(1/4) ≈ 2–4 passes over the proposal space, uniformly** across
+every completed case — all densities, heterogeneous anchors included.
+The practitioner unit is therefore "quadruple sweeps," not raw attempt
+counts: a handful of sweeps reaches TV ≤ 1/4 on all tested sequences,
+versus the folklore "10·m edge swaps" and the proven 2n⁸ (which in sweep
+units is ~n⁴/3 — an over-provision growing like n⁴). Heterogeneous
+sequences share t(1/4) with regular ones but converge slower in the tail
+(t(0.05) up to 16.7 sweeps at n=6) — small lumpy state spaces.
 
 Early shape: t(1/4) grows slowly — 50 (n=6) → 250 (n=8–9) → 500 (n=10) —
-roughly ×2 per +1 n, **not** the n⁸ of the bound. Heterogeneous sequences
-mix no slower than regular ones at these sizes (n=6 anchors: identical
-t(1/4), slower t(0.05)). If the shape holds to n=12, the practical reading
-is: *hundreds to low thousands of attempted switches bring the chain to
-TV ≤ 1/4 on all tested sequences — the proven 2n⁸ is armor against
-adversarial degree sequences, not guidance for burn-in.*
+tracking C(n,4), **not** n⁸. If the sweep law holds to n=12
+(C(12,4)=495), the prediction is t(1/4) ≈ 1,000–2,000 — the in-flight
+frontier rows test this directly. The practical reading: *a few hundred
+to a few thousand attempted switches bring the chain to TV ≤ 1/4 on all
+tested sequences — the proven 2n⁸ is armor against adversarial degree
+sequences, not guidance for burn-in.*
 
 ## 2. Dolphins tail quantified (results/dolphins_tail.json)
 
