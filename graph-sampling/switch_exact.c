@@ -116,6 +116,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--t25only")) t25_only = 1;
         else { fprintf(stderr, "unknown arg %s\n", argv[i]); return 1; }
     }
+    if (nstarts <= 0) { fprintf(stderr, "bad --starts\n"); return 1; }
     if (n < 4 || n > 16) { fprintf(stderr, "need 4 <= n <= 16\n"); return 1; }
     if (degs) {
         char *s = degs; int i = 0;
@@ -151,7 +152,9 @@ int main(int argc, char **argv) {
     for (int i = 0; i < n; i++) remaining[i] = degrees[i];
     visit(0, 0);
     fprintf(stderr, "n=%d states=%llu\n", n, (unsigned long long)nstates);
-    if (!nstates) { printf("states=0\n"); return 0; }
+    if (!nstates) { printf("states=0\n");
+        fprintf(stderr, "infeasible: no labeled graphs realize this sequence\n");
+        return 1; }
 
     hcap = 4; while (hcap < nstates * 4) hcap <<= 1;
     hk1 = malloc(hcap * 8); hk2 = malloc(hcap * 8);
@@ -289,8 +292,8 @@ int main(int argc, char **argv) {
     }
     printf("WORST t_mix(0.25)=%d t_mix(0.05)=%d [max over %d sampled starts, %d cores]\n",
            worst_t25, worst_t05, max_starts, nworkers);
-    int bound = 2 * (int)pow((double)n, 8.0);
-    printf("proven_2n8=%d overprovision=%.1fx\n", bound,
+    long long bound = 2 * (long long)pow((double)n, 8.0);
+    printf("proven_2n8=%lld overprovision=%.1fx\n", bound,
            worst_t25 > 0 ? (double)bound / worst_t25 : -1.0);
     return 0;
 }

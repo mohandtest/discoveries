@@ -3,7 +3,7 @@
   "dolphins": 34.0,
   "karate": 39.4
  },
- "note": "reference means from the long dolphins_tail runs; bias = cell mean - reference",
+ "note": "reference means 34.0/39.4 are from the Phase-B validation study; the long dolphins_tail runs measured 34.28/39.34. MIXING_RESULTS.md section 3 restates bias against the long-run means; the difference is within MCSEs and no conclusion changes. bias = cell mean - reference",
  "cells": [
   {
    "dataset": "dolphins",

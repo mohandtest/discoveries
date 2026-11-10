@@ -17,9 +17,13 @@ n=6/8/9/10); the n=6 triangle-study (a third implementation) agrees; and
 the complement symmetry d↔n−1−d is observed exactly (n8d3 ≡ n8d4:
 19,355 states, identical mixing times).
 Campaign run on the 24-core server, 22 cores per case, canonical + 32 random
-starts (8 at the n=12 frontier). "t(1/4)" = first attempt count at which
-TV-to-uniform ≤ 1/4, maximized over sampled starts (not all starts — the
-proven bound is worst-case over everything).
+starts in-ladder (8 for capped-case reruns, 4 at the n=12 frontier).
+"t(1/4)" = the first measurement checkpoint at which TV-to-uniform
+≤ 1/4 (checkpoints at t = 1, 2, 5, 10, 25, 50, 100, …), maximized over
+sampled starts — an upper bound on the true hitting time with up to
+×2–2.5 grid granularity; the pre-registered bands below are in these
+same checkpoint units. Not all starts are sampled — the proven bound is
+worst-case over everything.
 
 ## 1. Exact mixing constants (ladder results/mixing/)
 
@@ -39,26 +43,29 @@ t = 250/250).
 | n=9 d=2 | 30,016 | 250 | 500 | 8.61e7 | 344,374× |
 | n=9 d=4 (self-compl. class) | 1,024,380 | 250 | 500 | 8.61e7 | 344,374× |
 | n=10 d=2 | 286,884 | 500 | 1,000 | 2.0e8 | 400,000× |
-| (n=10 d=3/d=4, n=11, n=12, heavy-tail rows: in flight — table finalized when the ladder completes) | | | | | |
+| n=11 d=2 | 3,026,655 | 1,000 | 1,000 | 4.29e8 | 428,718× |
+| (n=10 d=3/d=4, n=12, heavy-tail rows: in flight — table finalized when the ladder completes) | | | | | |
 
 **The sweep law.** Normalizing by C(n,4) — the number of quadruples the
 kernel proposes from, i.e. the proposal-space size — collapses the
 measurements (t(1/4)/C(n,4)):
 
-| | n=6 | n=8 | n=9 | n=10 |
-|---|---|---|---|---|
-| d=2 | 3.33 | 3.57 | 1.98 | 2.38 |
-| d=3 / d=4 | — | 3.57 | 1.98 (d=4) | in flight |
-| heterogeneous | 3.33 | in flight | | |
+| | n=6 | n=8 | n=9 | n=10 | n=11 |
+|---|---|---:|---:|---:|---:|
+| d=2 | 3.33 | 3.57 | 1.98 | 2.38 | 3.03 |
+| d=3 / d=4 | — | 3.57 | 1.98 (d=4) | in flight | |
+| heterogeneous | 3.33 | in flight | | | |
 
-**t_mix(1/4) ≈ 2–4 passes over the proposal space, uniformly** across
-every completed case — all densities, heterogeneous anchors included.
+**t_mix(1/4) ≈ 1.5–4 passes over the proposal space** across every
+completed case — all densities, heterogeneous anchors included (each
+value a checkpoint-grid upper bound; see the definition note above).
 The practitioner unit is therefore "quadruple sweeps," not raw attempt
 counts: a handful of sweeps reaches TV ≤ 1/4 on all tested sequences,
-versus the folklore "10·m edge swaps" and the proven 2n⁸ (which in sweep
-units is ~n⁴/3 — an over-provision growing like n⁴). Heterogeneous
-sequences share t(1/4) with regular ones but converge slower in the tail
-(t(0.05) up to 16.7 sweeps at n=6) — small lumpy state spaces.
+versus the folklore "10·m edge swaps" and the proven 2n⁸ (≈ 48n⁴
+sweeps asymptotically — 9.5×10⁵ sweeps at n=10 — an over-provision
+growing like n⁴). Heterogeneous sequences share t(1/4) with regular
+ones but converge slower in the tail (t(0.05) up to 16.7 sweeps at
+n=6) — small lumpy state spaces.
 
 **Pre-registered predictions** (t(1/4) = 2–4 × C(n,4); t(0.05) ≈ 2×
 t(1/4) for dense classes, up to ~5× for heterogeneous ones), stated
@@ -72,6 +79,12 @@ before the in-flight rows land:
 | n=8 het (hub d=6) | 70 | 140–280 | 300–1,400 |
 | n=10–12 het (heavy tail) | 210–495 | 420–1,980 | 800–10,000 |
 
+**First outcome vs prediction** — n=11 d=2 (completed 12:06 UTC):
+measured t(1/4) = 1,000 — **in band** (predicted 660–1,320; sweep ratio
+3.03). Its t(0.05) = 1,000 landed *below* the secondary band
+(1,300–2,600): a faster tail than predicted. The core t(1/4) law is
+what the pre-registration stakes; the t(0.05) miss is reported as such.
+
 **Evidence-based cap for the giant rows** (decided 11:20–11:35 UTC,
 before any of their outcomes): exact propagation is memory-bandwidth-bound
 — n10d3's canonical start measured ~7.6 s/step at ~12M states, and n10d4
@@ -84,8 +97,8 @@ d=2 (4 starts) land inside the 4 h rerun bound. t(0.05) for these rows
 is documented by the sweep-law extrapolation (t(0.05) ≈ 2× t(1/4)); full
 t(0.05) propagation at these sizes is a measurement-infrastructure
 limit (10–30 h per start), not a chain property: the sampler itself
-runs at ~200k attempts/s regardless of n. n12het is documented by
-extrapolation only.
+runs at 161k–200k attempts/s at the sizes measured (n ≤ 62). n12het is
+documented by extrapolation only.
 
 Early shape: t(1/4) grows slowly — 50 (n=6) → 250 (n=8–9) → 500 (n=10) —
 tracking C(n,4), **not** n⁸. The practical reading: *a few hundred to a
@@ -120,11 +133,14 @@ two textbook networks, opposite conclusions.
 The validation study moved burn and spacing together; this grid separates
 them (8 chains × 200 draws/cell; reference = the long-run means above):
 
-- **Burn-in barely matters on these networks**: bias stays within ±0.4
-  triangles for burn 0 → 125,000 attempted switches (dolphins), ±0.5 (karate)
-  — consistent with the measured t(1/4) of hundreds of attempts: the
-  observed-graph start is near-stationary almost immediately at these
-  sizes/densities.
+- **Burn-in barely matters on these networks**: bias stays within ±0.5
+  triangles for burn 0 → 125,000 attempted switches on both networks
+  (true against either reference convention — see the note below)
+  — plausibly in line with the measured t(1/4) of hundreds of attempts
+  (a plausibility note, not a consistency check: the exact constants
+  are quadruple-kernel at n ≤ 12, while this grid runs the edge-pair
+  kernel at n = 62/34): the observed-graph start is near-stationary
+  almost immediately at these sizes/densities.
 - **Spacing matters**: thin=1 (consecutive states) biases karate by −1.39
   (~5× the between-chain MCSE) — consecutive retained states are strongly
   autocorrelated (a single switch changes the triangle count by ≤ 2).

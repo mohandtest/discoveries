@@ -55,9 +55,12 @@ def main():
           f"{'2n^8':>11} {'over':>11}")
     for r in rows:
         seq = r['sequence'] if len(r['sequence']) <= 26 else r['sequence'][:23] + '...'
+        # --t25only rows carry t05 = -1 -> sweep ratio None; print a dash
+        s25 = f"{r['t25_per_sweep']:.2f}" if r['t25_per_sweep'] is not None else '—'
+        s05 = f"{r['t05_per_sweep']:.2f}" if r['t05_per_sweep'] is not None else '—'
         print(f"{r['tag']:10} {r['n']:>2} {seq:26} {r['states']:>10,} "
-              f"{r['t25']:>7} {r['t05']:>8} {r['t25_per_sweep']:>8} "
-              f"{r['t05_per_sweep']:>8} {r['proven_2n8']:>11,} "
+              f"{r['t25']:>7} {r['t05']:>8} {s25:>8} "
+              f"{s05:>8} {r['proven_2n8']:>11,} "
               f"{r['overprovision']:>10.0f}x")
     with open(root / 'mixing_table.csv', 'w', newline='') as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys()) if rows else

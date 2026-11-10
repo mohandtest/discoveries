@@ -6,3 +6,5 @@ canonical t=10 tv=0.993958
 canonical t=25 tv=0.979070
 canonical t=50 tv=0.910378
 canonical t=100 tv=0.742429
+canonical t=250 tv=0.276278
+Killed
