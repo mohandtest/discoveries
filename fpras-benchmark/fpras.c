@@ -20,6 +20,8 @@
 #include <math.h>
 #include <time.h>
 #include <stdint.h>
+#include <unistd.h>
+#include <sys/wait.h>
 
 /* ---------- xorshift128+ RNG ---------- */
 static uint64_t s[2];
@@ -40,18 +42,19 @@ static int nedges;
 static char gname[256];
 
 /* ---------- exact reachable-state DP ---------- */
-typedef struct { uint64_t key; uint64_t val; int used; } slot;
+/* 16-byte slots: key==0 marks an empty slot (S==0 is a base case, never memoized) */
+typedef struct { uint64_t key; uint64_t val; } slot;
 static slot *table;
-static size_t tcap, tsize, tmax_slots;
+static size_t tcap, tsize;
 static uint64_t states_visited;
 
 static void tput_raw(slot *tbl, size_t cap, uint64_t key, uint64_t val) {
     size_t i = (size_t)(key * 0x9E3779B97F4A7C15ULL) & (cap - 1);
-    while (tbl[i].used) {
+    while (tbl[i].key) {
         if (tbl[i].key == key) { tbl[i].val = val; return; }
         i = (i + 1) & (cap - 1);
     }
-    tbl[i].used = 1; tbl[i].key = key; tbl[i].val = val;
+    tbl[i].key = key; tbl[i].val = val;
 }
 static void tinit(size_t cap) {
     tcap = cap; tsize = 0;
@@ -63,13 +66,13 @@ static void tgrow(void) {
     slot *nt = calloc(ncap, sizeof(slot));
     if (!nt) { fprintf(stderr, "OOM growing hash table to %zu slots\n", ncap); exit(1); }
     for (size_t i = 0; i < tcap; i++)
-        if (table[i].used) tput_raw(nt, ncap, table[i].key, table[i].val);
+        if (table[i].key) tput_raw(nt, ncap, table[i].key, table[i].val);
     free(table);
     table = nt; tcap = ncap;
 }
 static uint64_t *tget(uint64_t key) {
     size_t i = (size_t)(key * 0x9E3779B97F4A7C15ULL) & (tcap - 1);
-    while (table[i].used) {
+    while (table[i].key) {
         if (table[i].key == key) return &table[i].val;
         i = (i + 1) & (tcap - 1);
     }
@@ -109,6 +112,54 @@ static void run_exact(void) {
            nverts, nedges, (unsigned long long)count,
            (unsigned long long)states_visited, secs);
     free(table);
+}
+
+/* Parallel exact DP: split the top-level branches (partners of vertex 0)
+ * across N forked workers, each with its own hash table. Overlapping reachable
+ * states are recomputed per worker (bounded duplication), sums combined. */
+static void run_exact_parallel(int nwork) {
+    uint64_t full = (1ULL << nverts) - 1;
+    int partners[64], np = 0;
+    uint64_t m = adj[0];
+    while (m) { partners[np++] = __builtin_ctzll(m); m &= m - 1; }
+    if (np == 0) { printf("mode=exact vertices=%d exact=0\n", nverts); return; }
+    if (nwork > np) nwork = np;
+
+    int pipes[64][2];
+    pid_t pids[64];
+    struct timespec ts0, ts1;
+    clock_gettime(CLOCK_MONOTONIC, &ts0);
+    for (int k = 0; k < nwork; k++) {
+        if (pipe(pipes[k])) { perror("pipe"); exit(1); }
+        pid_t pid = fork();
+        if (pid < 0) { perror("fork"); exit(1); }
+        if (pid == 0) {
+            close(pipes[k][0]);
+            tinit(1ULL << 22);
+            states_visited = 0;
+            uint64_t tot = 0;
+            for (int idx = k; idx < np; idx += nwork)
+                tot += exact_rec(full ^ 1ULL ^ (1ULL << partners[idx]));
+            uint64_t out[2] = { tot, states_visited };
+            if (write(pipes[k][1], out, 16) != 16) _exit(2);
+            _exit(0);
+        }
+        pids[k] = pid;
+        close(pipes[k][1]);
+    }
+    uint64_t total = 0, total_states = 0, out[2];
+    for (int k = 0; k < nwork; k++) {
+        if (read(pipes[k][0], out, 16) != 16) { fprintf(stderr, "worker %d died\n", k); exit(1); }
+        total += out[0]; total_states += out[1];
+        close(pipes[k][0]);
+        waitpid(pids[k], NULL, 0);
+    }
+    double secs = 0;
+    clock_gettime(CLOCK_MONOTONIC, &ts1);
+    secs = (ts1.tv_sec - ts0.tv_sec) + (ts1.tv_nsec - ts0.tv_nsec) / 1e9;
+    printf("mode=exact vertices=%d edges=%d exact=%llu states=%llu workers=%d seconds=%.3f\n",
+           nverts, nedges, (unsigned long long)total,
+           (unsigned long long)total_states, nwork, secs);
 }
 
 /* ---------- FPRAS ---------- */
@@ -161,6 +212,7 @@ static void cycle_exchange(int *A, int *B, const int *cyc, int len) {
 /* W stored as full n x n double matrix per stage (rebuilt each stage: O(n^2),
  * negligible vs chain steps). */
 static double *W;
+static int dump = 0;
 
 static void run_fpras(double eps, int samples, int burn, int replicas, uint64_t seed) {
     double b = 1.0 + 1.0 / nverts;
@@ -252,6 +304,9 @@ static void run_fpras(double eps, int samples, int burn, int replicas, uint64_t 
     printf("mode=fpras vertices=%d edges=%d stages=%d replicas=%d "
            "estimate=%.6g se=%.6g seconds=%.2f\n",
            nverts, nedges, J, replicas, mean, se, secs);
+    if (dump)
+        for (int i = 0; i < replicas; i++)
+            printf("replica=%d estimate=%.6g\n", i, ests[i]);
     free(inG); free(W); free(M1); free(M2); free(cyc); free(visited); free(ests);
 }
 
@@ -276,7 +331,7 @@ int main(int argc, char **argv) {
     const char *edges = NULL;
     const char *mode = "both";
     double eps = 0.25, p = 0.5;
-    int samples = 1024, burn = 1024, replicas = 8;
+    int samples = 1024, burn = 1024, replicas = 8, exact_par = 0;
     uint64_t seed = 42;
     int gnp_n = 0;
 
@@ -290,6 +345,8 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--burn")) burn = atoi(argv[++i]);
         else if (!strcmp(argv[i], "--replicas")) replicas = atoi(argv[++i]);
         else if (!strcmp(argv[i], "--seed")) seed = strtoull(argv[++i], NULL, 10);
+        else if (!strcmp(argv[i], "--exact-par")) exact_par = atoi(argv[++i]);
+        else if (!strcmp(argv[i], "--dump")) dump = 1;
         else { fprintf(stderr, "unknown arg %s\n", argv[i]); return 1; }
     }
     if (edges) load_edges(edges);
@@ -306,6 +363,7 @@ int main(int argc, char **argv) {
                  (unsigned long long)seed);
     } else { fprintf(stderr, "need --edges or --gnp n\n"); return 1; }
 
+    if (exact_par > 0) { run_exact_parallel(exact_par); return 0; }
     if (!strcmp(mode, "exact") || !strcmp(mode, "both")) run_exact();
     if (!strcmp(mode, "fpras") || !strcmp(mode, "both"))
         run_fpras(eps, samples, burn, replicas, seed);
