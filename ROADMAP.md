@@ -76,19 +76,24 @@ the uniform-quadruple lazy kernel in the codebase (TV(1/4) ≤ 2n⁸).
   degrees explain the clustering), florentine (tail ~0.5), **dolphins
   (95 vs null 34.0–34.2, zero upper-tail hits in 800 draws — strong
   descriptive contrast, tail unresolved)**.
-- Phase C — the measurement campaign (remaining; real-world-implication
-  oriented):
-  1. **Practitioner burn-in constants**: exact TV(1/4) mixing times
-     from worst start, by enumeration + exact propagation, at n≈8–12
-     across degree sequences (regular, heterogeneous) → the measured
-     "2n⁸ vs reality" table and a burn-in rule of practice.
-  2. **Dolphins tail quantified**: the unresolved zero-hit tail →
-     high-draw server runs + distributional bound, turning "95 vs 34"
-     into a calibrated statement for animal-association structure.
-  3. **Burn vs spacing isolation** on the real networks (the study
-     flagged that its budgets moved both together).
-  4. Wall-clock kernel throughput (the study punted on speed due to
-     tracing overhead).
+- Phase C — the measurement campaign (in flight, 2026-11-10; results in
+  `graph-sampling/results/MIXING_RESULTS.md`):
+  1. **Practitioner burn-in constants** (running): exact TV(1/4)/TV(0.05)
+     mixing times by enumeration at n=6–12 across d=2..4 and heterogeneous
+     shapes. Measured so far: t(1/4) = 50/250/250/500 at n=6/8/9/10 —
+     ~2× per +1 n, **not** n⁸; complement symmetry d↔n−1−d observed exactly
+     (n8d3 ≡ n8d4). Over-provision vs the proven 2n⁸: 67,000–400,000×
+     (and growing with n). n=11/12 + heavy-tail rows in flight.
+  2. **Dolphins tail quantified (done)**: observed 95 vs null 34.28 ± 4.94
+     over 800,000 retained draws — 0 hits (tail < 1.25e-6), z = 12.3.
+     Karate contrast: tail 12.6% (z = 1.2). Degrees explain the karate
+     club's clustering; they do **not** explain the dolphins'.
+  3. **Burn vs spacing isolated (done)**: burn 0→125k moves means ≤ 0.5
+     triangles (consistent with measured t_mix); thin=1 biases karate
+     −1.39. Rule: budget goes to thinning and chains, not burn-in.
+  4. **Throughput (done)**: 161k–200k attempts/s single-core Python; an
+     800k-draw null study costs ~5 minutes — the switch chain is not the
+     bottleneck at social-network scale.
   Then: adversarial audit → in-repo constants report (private).
 
 ## Current writing task (scoped down)

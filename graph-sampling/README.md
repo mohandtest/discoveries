@@ -54,6 +54,18 @@ python3 exact_mixing.py --n 6 --degree 2 --steps 0 10 100 1000
 
 The empirical TV estimate from a single correlated sample histogram additionally contains **finite-sample noise**. It is not a mixing-time estimate. Exact mixing evaluates the full probability distribution but only scales to very small graphs.
 
+## Mixing-curve campaign (2026-11-10)
+
+`switch_exact.c` extends the exact machinery to n≈12 (verified against
+`exact_mixing.py`; fork-parallel on the server) and measures first hitting
+times of TV ≤ 1/4 and ≤ 0.05 across sizes, densities and heterogeneous
+sequences — the practical-cost question the paper's 2n⁸ bound does not
+answer. Measured results, including the quantified dolphins tail
+(z = 12.3, 0/800,000 draws), the karate contrast (tail 12.6%), and the
+burn-vs-spacing isolation grid: **[results/MIXING_RESULTS.md](results/MIXING_RESULTS.md)**.
+Ladder driver: `mixing_ladder.sh`; consolidator: `mixing_table.py`;
+real-network scripts: `dolphins_tail.py`, `burn_spacing.py`.
+
 ## Research questions
 
 1. How do proposal choice, graph size, and degree heterogeneity affect accepted switches per second?
