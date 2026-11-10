@@ -45,13 +45,19 @@ independent reviewer's implementation). 8 replicas, 1024 samples/stage,
 | 28 | 8,698,633,677 | 1.25 s | 495,866 | 8.28B ± 0.56B | 0.048 | −0.8 | 0.95 s |
 | 30 | 175,250,798,667 | 1.09 s | 1,295,709 | 167.0B ± 8.2B | 0.047 | −1.0 | 1.16 s |
 | 32 | 1,835,224,024,020 | 1.76 s | 3,467,417 | 1.815T ± 0.067T | 0.011 | −0.3 | 1.37 s |
+| 36 | 592,998,646,745,549 | 25.6 s | 23,972,066 | 5.364e14 ± 3.96e13 | 0.096 | −1.4 | 2.07 s |
+| 40 | 179,249,264,420,609,805 | 2798.7 s (46.6 min) | 164,793,195 | 1.724e17 ± 1.017e16 | 0.038 | −0.7 | 2.52 s |
 
-Honest reading: **at these sizes the optimized exact counter beats the FPRAS
-on both speed and precision.** The reachable-state count grows
-super-exponentially (61k → 3.5M from n=24→32, ×57 per +8 vertices), so the
-exact method's cost explodes eventually; the FPRAS's cost grows smoothly
-(stages ∝ n² log n). The FPRAS's value case is beyond the exact method's
-reachable-state explosion, not at n=24.
+Honest reading: **n=36 is where the FPRAS pulls ahead, n=40 is the blowout.**
+Up to n=32 the exact counter is faster and exact. At n=36 exact needs 25.6 s
+vs 2.1 s (FPRAS within ~1.5σ but 7.4% SE). At n=40 the exact counter needs
+**46.6 minutes** and a ~4 GB hash table (165M reachable states), while the
+FPRAS answers in **2.5 seconds within 1σ of truth** — a ~1,100× speed gap.
+Reachable states grow super-exponentially (61k → 3.5M → 24M → 165M across
+n = 24 → 32 → 36 → 40); the FPRAS's cost grows smoothly (stages ∝ n² log n,
+seconds at every size tested). All timings same-machine; the exact n=36/40
+runs coincided with background load, so ratios are conservative in the
+FPRAS's favor on a loaded box and large regardless.
 
 **Known failure mode:** a Python-implementation run on
 G(24,0.5) seed 4711 (true count 26,118,833, confirmed by two independent
@@ -93,7 +99,8 @@ replication architecture exists to close the worst-case mixing proof.
 ## Files
 
 - `exact.py`, `exact2.py` — exact counters (full-table and reachable-state DP)
-- `chain.py`, `fpras.c` — paired kernel K (C port: exact + FPRAS in one binary)
+- `fpras.c` — C port: exact reachable-state DP (dynamically growing hash) +
+  FPRAS in one binary
 - `anneal.py` — plain annealing counter (practical winner, heuristic)
 - `windowed.py`, `awindow.py`, `hierarchy.py` — structural variants (negative)
 - `test_chain.py` — unit + regression tests (all pass, incl. issue #1 fixes)

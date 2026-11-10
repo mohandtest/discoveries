@@ -42,13 +42,30 @@ static char gname[256];
 /* ---------- exact reachable-state DP ---------- */
 typedef struct { uint64_t key; uint64_t val; int used; } slot;
 static slot *table;
-static size_t tcap, tsize;
+static size_t tcap, tsize, tmax_slots;
 static uint64_t states_visited;
 
+static void tput_raw(slot *tbl, size_t cap, uint64_t key, uint64_t val) {
+    size_t i = (size_t)(key * 0x9E3779B97F4A7C15ULL) & (cap - 1);
+    while (tbl[i].used) {
+        if (tbl[i].key == key) { tbl[i].val = val; return; }
+        i = (i + 1) & (cap - 1);
+    }
+    tbl[i].used = 1; tbl[i].key = key; tbl[i].val = val;
+}
 static void tinit(size_t cap) {
     tcap = cap; tsize = 0;
     table = calloc(cap, sizeof(slot));
     if (!table) { fprintf(stderr, "OOM hash table\n"); exit(1); }
+}
+static void tgrow(void) {
+    size_t ncap = tcap * 2;
+    slot *nt = calloc(ncap, sizeof(slot));
+    if (!nt) { fprintf(stderr, "OOM growing hash table to %zu slots\n", ncap); exit(1); }
+    for (size_t i = 0; i < tcap; i++)
+        if (table[i].used) tput_raw(nt, ncap, table[i].key, table[i].val);
+    free(table);
+    table = nt; tcap = ncap;
 }
 static uint64_t *tget(uint64_t key) {
     size_t i = (size_t)(key * 0x9E3779B97F4A7C15ULL) & (tcap - 1);
@@ -59,13 +76,9 @@ static uint64_t *tget(uint64_t key) {
     return NULL;
 }
 static void tput(uint64_t key, uint64_t val) {
-    if (tsize * 10 >= tcap * 7) { fprintf(stderr, "hash table full\n"); exit(1); }
-    size_t i = (size_t)(key * 0x9E3779B97F4A7C15ULL) & (tcap - 1);
-    while (table[i].used) {
-        if (table[i].key == key) { table[i].val = val; return; }
-        i = (i + 1) & (tcap - 1);
-    }
-    table[i].used = 1; table[i].key = key; table[i].val = val; tsize++;
+    if (tsize * 10 >= tcap * 7) tgrow();
+    tput_raw(table, tcap, key, val);
+    tsize++;
 }
 
 static uint64_t exact_rec(uint64_t S) {
@@ -87,11 +100,7 @@ static uint64_t exact_rec(uint64_t S) {
 }
 
 static void run_exact(void) {
-    size_t cap = 1024;
-    while (cap < (1ULL << 26)) cap <<= 1;   /* start reasonable, we grow-in-advance below */
-    /* estimate: allocate big upfront for known sizes; restart if full is fine */
-    cap = 1ULL << 26;                        /* 64M slots * 24B = 1.5 GB max */
-    tinit(cap);
+    tinit(1ULL << 22);                       /* grows dynamically on demand */
     states_visited = 0;
     clock_t t0 = clock();
     uint64_t count = exact_rec((1ULL << nverts) - 1);
