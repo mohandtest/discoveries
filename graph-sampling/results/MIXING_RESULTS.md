@@ -60,13 +60,24 @@ units is ~n⁴/3 — an over-provision growing like n⁴). Heterogeneous
 sequences share t(1/4) with regular ones but converge slower in the tail
 (t(0.05) up to 16.7 sweeps at n=6) — small lumpy state spaces.
 
+**Pre-registered predictions** (t(1/4) = 2–4 × C(n,4); t(0.05) ≈ 2×
+t(1/4) for dense classes, up to ~5× for heterogeneous ones), stated
+before the in-flight rows land:
+
+| case | C(n,4) | predicted t(1/4) | predicted t(0.05) |
+|---|---:|---:|---:|
+| n=10 d=3 / d=4 | 210 | 420–840 | 840–1,700 |
+| n=11 d=2 | 330 | 660–1,320 | 1,300–2,600 |
+| n=12 d=2 | 495 | 990–1,980 | 2,000–4,000 |
+| n=8 het (hub d=6) | 70 | 140–280 | 300–1,400 |
+| n=10–12 het (heavy tail) | 210–495 | 420–1,980 | 800–10,000 |
+
 Early shape: t(1/4) grows slowly — 50 (n=6) → 250 (n=8–9) → 500 (n=10) —
-tracking C(n,4), **not** n⁸. If the sweep law holds to n=12
-(C(12,4)=495), the prediction is t(1/4) ≈ 1,000–2,000 — the in-flight
-frontier rows test this directly. The practical reading: *a few hundred
-to a few thousand attempted switches bring the chain to TV ≤ 1/4 on all
+tracking C(n,4), **not** n⁸. The practical reading: *a few hundred to a
+few thousand attempted switches bring the chain to TV ≤ 1/4 on all
 tested sequences — the proven 2n⁸ is armor against adversarial degree
-sequences, not guidance for burn-in.*
+sequences, not guidance for burn-in.* Rows that land outside these
+bands refute the sweep law and will be reported as such.
 
 ## 2. Dolphins tail quantified (results/dolphins_tail.json)
 
