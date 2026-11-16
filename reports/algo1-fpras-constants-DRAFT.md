@@ -17,8 +17,9 @@ kernel, an annealing counter, and — as ground truth — an exact
 reachable-state dynamic program that turns out to be practical far
 beyond the naive 2ⁿ bound. On identical saved graphs and one machine we
 measured where exact counting ends and sampling becomes necessary
-(**n = 44** on this hardware: the first published-exact perfect-matching
-count at that size, 3.90×10¹⁹, reproduced bit-identically), what the
+(**n = 44** on this hardware: an exact perfect-matching count at a
+size the classical O(n·2ⁿ) permanent DP cannot reach — the first we
+can find in our survey, 3.90×10¹⁹, reproduced bit-identically), what the
 FPRAS costs there (~1 s per run, ~1,270× faster than exact), and how
 accurate it is at practical budgets (600 independent runs: unbiased
 means on dense graphs, coverage 84–93.5% at ε = 0.25 against a nominal
